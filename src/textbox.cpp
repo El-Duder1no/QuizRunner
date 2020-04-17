@@ -39,6 +39,16 @@ public:
 		limit = lim;
 	}
 
+	void setSelection(bool sel) {
+		isSelected = sel;
+		if (!sel) {
+			std::string t = text.str();
+			std::string newT = "";
+			for (int i = 0; i < t.length() - 1; i++)
+				newT += t[i];
+			textbox.setString(newT);
+		}
+	}
 private:
 	sf::Text textbox;
 	bool isSelected = false;

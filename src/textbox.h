@@ -14,6 +14,7 @@ public:
 	void setPosition(sf::Vector2f pos);
 	void setLimit(bool ToF);
 	void setLimit(bool ToF, int lim);
+	void setSelection(bool sel);
 private:
 	sf::Text textbox;
 	bool isSelected = false;
