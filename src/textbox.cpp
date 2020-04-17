@@ -49,6 +49,11 @@ public:
 			textbox.setString(newT);
 		}
 	}
+
+	std::string getText() {
+		return text.str();
+	}
+
 private:
 	sf::Text textbox;
 	bool isSelected = false;
