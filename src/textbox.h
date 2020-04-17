@@ -13,6 +13,10 @@ public:
 private:
 	sf::Text textbox;
 	bool isSelected = false;
+	std::ostringstream text;
+
+	void inputLogic(int charTyped);
+	void deleteLastChar();
 };
 
 #endif
