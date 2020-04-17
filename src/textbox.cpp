@@ -54,6 +54,9 @@ public:
 		return text.str();
 	}
 
+	void drawTo(sf::RenderWindow &window) {
+		window.draw(textbox);
+	}
 private:
 	sf::Text textbox;
 	bool isSelected = false;

@@ -18,7 +18,7 @@ public:
 
 	std::string getText();
 
-
+	void drawTo(sf::RenderWindow& window);
 private:
 	sf::Text textbox;
 	bool isSelected = false;
