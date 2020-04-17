@@ -13,6 +13,7 @@ public:
 	void setFont(sf::Font &font);
 	void setPosition(sf::Vector2f pos);
 	void setLimit(bool ToF);
+	void setLimit(bool ToF, int lim);
 private:
 	sf::Text textbox;
 	bool isSelected = false;

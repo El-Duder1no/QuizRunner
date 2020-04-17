@@ -38,6 +38,7 @@ public:
 		hasLimit = ToF;
 		limit = lim;
 	}
+
 private:
 	sf::Text textbox;
 	bool isSelected = false;
