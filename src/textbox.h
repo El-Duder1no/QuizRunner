@@ -11,6 +11,7 @@ public:
 	Textbox(int size, sf::Color color, bool sel);
 
 	void setFont(sf::Font &font);
+	void setPosition(sf::Vector2f pos);
 private:
 	sf::Text textbox;
 	bool isSelected = false;

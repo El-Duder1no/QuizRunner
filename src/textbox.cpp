@@ -26,6 +26,9 @@ public:
 		textbox.setFont(font);
 	}
 
+	void setPosition(sf::Vector2f pos) {
+		textbox.setPosition(pos);
+	}
 private:
 	sf::Text textbox;
 	bool isSelected = false;
