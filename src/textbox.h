@@ -19,6 +19,7 @@ public:
 	std::string getText();
 
 	void drawTo(sf::RenderWindow& window);
+	void typedOn(sf::Event input);
 private:
 	sf::Text textbox;
 	bool isSelected = false;

@@ -57,6 +57,22 @@ public:
 	void drawTo(sf::RenderWindow &window) {
 		window.draw(textbox);
 	}
+
+	void typedOn(sf::Event input) {
+		if (isSelected) {
+			int charTyped = input.text.unicode;
+			if (hasLimit) {
+				if (text.str().length() <= limit) {
+					inputLogic(charTyped);
+				} else if(text.str().length() > limit &&
+					charTyped == DELETE_KEY) {
+					deleteLastChar();
+				}
+			} else {
+				inputLogic(charTyped);
+			}
+		}
+	}
 private:
 	sf::Text textbox;
 	bool isSelected = false;
