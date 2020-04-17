@@ -22,6 +22,10 @@ public:
 		}
 	}
 
+	void setFont(sf::Font& font) {
+		textbox.setFont(font);
+	}
+
 private:
 	sf::Text textbox;
 	bool isSelected = false;

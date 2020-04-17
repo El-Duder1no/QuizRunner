@@ -10,6 +10,7 @@ public:
 	Textbox();
 	Textbox(int size, sf::Color color, bool sel);
 
+	void setFont(sf::Font &font);
 private:
 	sf::Text textbox;
 	bool isSelected = false;
