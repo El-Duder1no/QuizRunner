@@ -29,10 +29,21 @@ public:
 	void setPosition(sf::Vector2f pos) {
 		textbox.setPosition(pos);
 	}
+
+	void setLimit(bool ToF) {
+		hasLimit = ToF;
+	}
+
+	void setLimit(bool ToF, int lim) {
+		hasLimit = ToF;
+		limit = lim;
+	}
 private:
 	sf::Text textbox;
 	bool isSelected = false;
 	std::ostringstream text;
+	bool hasLimit = false;
+	int limit;
 
 	void inputLogic(int charTyped) {
 		if (charTyped != DELETE_KEY &&

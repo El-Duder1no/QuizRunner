@@ -12,10 +12,13 @@ public:
 
 	void setFont(sf::Font &font);
 	void setPosition(sf::Vector2f pos);
+	void setLimit(bool ToF);
 private:
 	sf::Text textbox;
 	bool isSelected = false;
 	std::ostringstream text;
+	bool hasLimit = false;
+	int limit;
 
 	void inputLogic(int charTyped);
 	void deleteLastChar();
