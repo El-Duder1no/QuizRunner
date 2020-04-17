@@ -1,3 +1,4 @@
+#pragma warning(disable : 4996)
 #include "textbox.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -7,100 +8,91 @@
 #define ENTER_KEY 13
 #define ESCAPE_KEY 27
 
-class Textbox {
-public:
-	Textbox() {}
-	Textbox(int size, sf::Color color, bool sel) {
-		textbox.setCharacterSize = size;
-		textbox.setColor(color);
-		isSelected = sel;
+Textbox::Textbox() {}
+Textbox::Textbox(int size, sf::Color color, bool sel) {
+	textbox.setCharacterSize(size);
+	textbox.setColor(color);
+	isSelected = sel;
 
-		if (sel) {
-			textbox.setString("_");
-		} else {
-			textbox.setString("");
-		}
+	if (sel) {
+		textbox.setString("_");
+	} else {
+		textbox.setString("");
 	}
+}
 
-	void setFont(sf::Font& font) {
-		textbox.setFont(font);
-	}
+void Textbox::setFont(sf::Font& font) {
+	textbox.setFont(font);
+}
 
-	void setPosition(sf::Vector2f pos) {
-		textbox.setPosition(pos);
-	}
+void Textbox::setPosition(sf::Vector2f pos) {
+	textbox.setPosition(pos);
+}
 
-	void setLimit(bool ToF) {
-		hasLimit = ToF;
-	}
+void Textbox::setLimit(bool ToF) {
+	hasLimit = ToF;
+}
 
-	void setLimit(bool ToF, int lim) {
-		hasLimit = ToF;
-		limit = lim;
-	}
+void Textbox::setLimit(bool ToF, int lim) {
+	hasLimit = ToF;
+	limit = lim;
+}
 
-	void setSelection(bool sel) {
-		isSelected = sel;
-		if (!sel) {
-			std::string t = text.str();
-			std::string newT = "";
-			for (int i = 0; i < t.length() - 1; i++)
-				newT += t[i];
-			textbox.setString(newT);
-		}
-	}
-
-	std::string getText() {
-		return text.str();
-	}
-
-	void drawTo(sf::RenderWindow &window) {
-		window.draw(textbox);
-	}
-
-	void typedOn(sf::Event input) {
-		if (isSelected) {
-			int charTyped = input.text.unicode;
-			if (hasLimit) {
-				if (text.str().length() <= limit) {
-					inputLogic(charTyped);
-				} else if(text.str().length() > limit &&
-					charTyped == DELETE_KEY) {
-					deleteLastChar();
-				}
-			} else {
-				inputLogic(charTyped);
-			}
-		}
-	}
-private:
-	sf::Text textbox;
-	bool isSelected = false;
-	std::ostringstream text;
-	bool hasLimit = false;
-	int limit;
-
-	void inputLogic(int charTyped) {
-		if (charTyped != DELETE_KEY &&
-			charTyped != ENTER_KEY &&
-			charTyped != ESCAPE_KEY) {
-			text << static_cast<char>(charTyped);
-		} else if (charTyped == DELETE_KEY) {
-			if (text.str().length() > 0) {
-				deleteLastChar();
-			}
-		}
-		textbox.setString(text.str() + "_");
-	}
-
-	void deleteLastChar() {
+void Textbox::setSelection(bool sel) {
+	isSelected = sel;
+	if (!sel) {
 		std::string t = text.str();
 		std::string newT = "";
-		for (int i = 0; i < t.length() - 1; i++) 
+		for (int i = 0; i < t.length() - 1; i++)
 			newT += t[i];
-		text.str("");
-		text << newT;
-
-		textbox.setString(text.str());
+		textbox.setString(newT);
 	}
-};
+}
+
+std::string Textbox::getText() {
+	return text.str();
+}
+
+void Textbox::drawTo(sf::RenderWindow &window) {
+	window.draw(textbox);
+}
+
+void Textbox::typedOn(sf::Event input) {
+	if (isSelected) {
+		int charTyped = input.text.unicode;
+		if (hasLimit) {
+			if (text.str().length() <= limit) {
+				inputLogic(charTyped);
+			} else if(text.str().length() > limit &&
+				charTyped == DELETE_KEY) {
+				deleteLastChar();
+			}
+		} else {
+			inputLogic(charTyped);
+		}
+	}
+}
+
+void Textbox::inputLogic(int charTyped) {
+	if (charTyped != DELETE_KEY &&
+		charTyped != ENTER_KEY &&
+		charTyped != ESCAPE_KEY) {
+		text << static_cast<char>(charTyped);
+	} else if (charTyped == DELETE_KEY) {
+		if (text.str().length() > 0) {
+			deleteLastChar();
+		}
+	}
+	textbox.setString(text.str() + "_");
+}
+
+void Textbox::deleteLastChar() {
+	std::string t = text.str();
+	std::string newT = "";
+	for (int i = 0; i < t.length() - 1; i++) 
+		newT += t[i];
+	text.str("");
+	text << newT;
+
+	textbox.setString(text.str());
+}
