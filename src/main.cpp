@@ -5,6 +5,8 @@ using namespace sf;
 
 int main()
 {
+	setlocale(LC_ALL, "RUS");
+	
 	sf::RenderWindow window(VideoMode(400, 200), "Window");
 
 	sf::Font arial;
@@ -33,7 +35,6 @@ int main()
 			case sf::Event::TextEntered:
 				textbox1.typedOn(event);
 			}
-			
 		}
 
 		window.clear();
