@@ -35,7 +35,7 @@ void Textbox::setLimit(bool ToF) {
 
 void Textbox::setLimit(bool ToF, int lim) {
 	hasLimit = ToF;
-	limit = lim;
+	limit = lim - 1;
 }
 
 void Textbox::setSelection(bool sel) {
