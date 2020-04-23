@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
+
 #include "textbox.h"
+#include "parseString.h"
 
 using namespace sf;
 
