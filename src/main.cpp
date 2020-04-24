@@ -2,10 +2,14 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+#include <vector>
+#include <fstream>
 
 #include "parseString.h"
 
 using namespace std;
+
+#define CAEZAR_SHIFT 3
 
 bool isPassCorrect(string password)
 {
@@ -34,10 +38,8 @@ bool isPassCorrect(string password)
     }
 }
 
-string registration()
+bool registration(string& username, string& password)
 {
-    string username, password;
-
     system("CLS");
 
     cout << "Длина пароля от 8 до 25 символов." << endl
@@ -52,12 +54,13 @@ string registration()
     cin >> password;
 
     if (isPassCorrect(password) == true) {
-        return username;
+        return true;
     } else {
-        return "ERROR";
+        return false;
     }
 }
 
+// ШАПКИ МЕНЮ
 void registrationMenu()
 {
     cout << "Выберите пункт меню:" << endl;
@@ -67,9 +70,18 @@ void registrationMenu()
     cout << ">> ";
 }
 
+struct Account
+{
+	string username;
+	string password;
+	int accountType;
+};
+
 int main()
 {
     setlocale(LC_ALL, "RUS");
+
+	vector<Account> accounts;
 
     char chooseKey;
     bool registrationState = true;
@@ -80,15 +92,18 @@ int main()
 
     while (registrationState) {
         switch (chooseKey = _getch()) {
+		// ВХОД
         case '1': {
             cout << "Ты выбрал вход в учетку" << endl;
             // ФУНКЦИЯ ВХОДА
             registrationState = false;
             break;
         }
+		// РЕГИСТРАЦИЯ
         case '2': {
-            string temp = registration();
-            if (temp == "ERROR") {
+			string username, password;
+            bool temp = registration(username, password);
+            if (temp == false) {
                 system("CLS");
                 cout << "Введен неправильный пароль" << endl;
                 system("PAUSE");
@@ -96,8 +111,22 @@ int main()
                 break;
             } else {
                 cout << "Регистрация прошла успешно" << endl;
-                currentUser = temp;
-                registrationState = false;
+                currentUser = username;
+				
+				wstring accountPath = L"D:\\code\\TRPO\\QuizRunner\\res\\Accounts.txt";
+				ofstream file; 
+				file.open(accountPath, ios_base::app);
+
+				if (!file.is_open())
+					cerr << endl << "Файл не открыт!" << endl;
+
+				for (int i = 0; i < password.size(); i++) {
+					password[i] += CAEZAR_SHIFT;
+				}
+				file << username << " " << password << " 0" << endl;
+				
+				file.close();
+				registrationState = false;
                 break;
             }
         }
