@@ -6,12 +6,31 @@
 
 using namespace std;
 
+string registration()
+{
+	string username, password;
+
+	system("CLS");
+
+	cout << "Длина пароля от 8 до 25 символов" << endl
+		 << "Пароль должен содержать:" << endl
+		 << "Как минимум одну заглавную букву и цифру" << endl << endl;
+
+	cout << "Введите логин:" << endl << ">>";
+	cin >> username;
+	cout << "Введите пароль:" << endl << ">>";
+	cin >> password;
+
+	return username;
+}
+
 int main()
 {
 	setlocale(LC_ALL, "RUS");
 
 	char chooseKey;
 	bool registrationState = true;
+	string currentUser;
 
 	cout << "Выберите пункт меню:" << endl;
 	cout << "1 - Вход в учетную запись" << endl;
@@ -27,7 +46,8 @@ int main()
 			break;
 		case '2':
 			cout << "Ты выбрал регистрацию" << endl;
-			// ФУНКЦИЯ РЕГИСТРАЦИИ
+			currentUser = registration();
+			registrationState = false;
 			break;
 		case 27:
 			cout << "Ты выбрал выйти из программы" << endl;
