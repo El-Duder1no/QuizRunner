@@ -11,6 +11,29 @@ using namespace std;
 
 #define CAEZAR_SHIFT 3
 
+void accountsParse(vector<Account>& a)
+{
+	wstring accountPath = L"D:\\code\\TRPO\\QuizRunner\\res\\Accounts.txt";
+	ifstream file(accountPath);
+
+	while (!file.eof()) {
+		string temp;
+		Account buff;
+
+		getline(file, temp, '\n');
+		vector<string> words;
+		parseString(temp, " ", words);
+
+		int type = atoi(words[2].c_str);
+
+		buff.accountType = type;
+		buff.username = words[0];
+		buff.password = words[1];
+
+		a.push_back(buff);
+	}
+}
+
 bool isPassCorrect(string password)
 {
     if (password.size() < 8 || password.size() > 25)
@@ -113,6 +136,7 @@ int main()
                 cout << "Регистрация прошла успешно" << endl;
                 currentUser = username;
 				
+				// Переделать по человечески,а не как сейчас
 				wstring accountPath = L"D:\\code\\TRPO\\QuizRunner\\res\\Accounts.txt";
 				ofstream file; 
 				file.open(accountPath, ios_base::app);
