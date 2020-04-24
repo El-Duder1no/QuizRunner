@@ -4,15 +4,10 @@
 #include <iostream>
 #include <sstream>
 #include <stdlib.h>
+#include "Questions.h"
 #include <vector>
 using namespace std;
 
-struct Questions {
-    string type;
-    string question;
-    vector<string> answers;
-    vector<string> RightAnswers;
-};
 
 int main()
 {
