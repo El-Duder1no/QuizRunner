@@ -7,32 +7,25 @@
 #include <vector>
 using namespace std;
 
-struct t1 {
-    string question1;
-    string answer1;
-    string answer2;
-    string answer3;
-    string RightAnswer;
+struct Questions {
+    string type;
+    string question;
+    vector<string> answers;
+    vector<string> RightAnswers;
 };
-
-struct t2 {
-    string question2;
-    string answer1;
-    string answer2;
-    string answer3;
-    string answer4;
-    string RightAnswer;
-};
-
-struct t3 {
-    string question3;
-    string RightAnswer1;
-    string RightAnswer2;
-};
-
 
 int main()
 {
+    setlocale(LC_ALL, "ru");
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
+    ifstream inputText;
+    inputText.open("questions.txt");
+    if (!inputText)
+    {
+        cout << "File open error." << endl;
+        return 0;
+    }
     system("PAUSE");
     return 0;
 }
