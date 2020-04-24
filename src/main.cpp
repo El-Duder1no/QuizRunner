@@ -73,6 +73,7 @@ int main()
 
     char chooseKey;
     bool registrationState = true;
+
     string currentUser;
 
     registrationMenu();
