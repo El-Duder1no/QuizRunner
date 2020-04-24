@@ -11,6 +11,18 @@ using namespace std;
 
 #define CAEZAR_SHIFT 3
 
+struct Account
+{
+	string username;
+	string password;
+	int accountType;
+};
+
+/*void enterAccount()
+{
+
+}*/
+
 void accountsParse(vector<Account>& a)
 {
 	wstring accountPath = L"D:\\code\\TRPO\\QuizRunner\\res\\Accounts.txt";
@@ -24,7 +36,7 @@ void accountsParse(vector<Account>& a)
 		vector<string> words;
 		parseString(temp, " ", words);
 
-		int type = atoi(words[2].c_str);
+		int type = stoi(words[2]);
 
 		buff.accountType = type;
 		buff.username = words[0];
@@ -92,13 +104,6 @@ void registrationMenu()
     cout << "ESC - выход" << endl;
     cout << ">> ";
 }
-
-struct Account
-{
-	string username;
-	string password;
-	int accountType;
-};
 
 int main()
 {
