@@ -22,26 +22,22 @@ void SecondType(std::ifstream& questions, std::vector<Questions>& text)
 
     for (int i = 0; i < 4; ++i) {
         n = words[i].substr(0, 1);
-        if (n == "1") 
-		{
+        if (n == "1") {
             if (i != 0) {
                 swap(words[0], words[i]);
             }
         }
-        if (n == "2") 
-		{
+        if (n == "2") {
             if (i != 1) {
                 swap(words[1], words[i]);
             }
         }
-        if (n == "3") 
-		{
+        if (n == "3") {
             if (i != 2) {
                 swap(words[2], words[i]);
             }
         }
-        if (n == "4")
-		{
+        if (n == "4") {
             if (i != 3) {
                 swap(words[3], words[i]);
             }
