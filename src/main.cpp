@@ -1,4 +1,5 @@
 #include "FirstType.h"
+#include "ThirdType.h"
 #include "Questions.h"
 #include "parseString.h"
 #include <Windows.h>
@@ -35,7 +36,7 @@ int main()
             }
 
             if (type == "3") {
-                //                ThirdType(inputText, QuestionsBank);
+                           ThirdType(inputText, QuestionsBank);
             }
         }
 
