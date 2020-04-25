@@ -1,13 +1,13 @@
+#include "FirstType.h"
+#include "Questions.h"
 #include "parseString.h"
 #include <Windows.h>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <stdlib.h>
-#include "Questions.h"
 #include <vector>
 using namespace std;
-
 
 int main()
 {
@@ -15,12 +15,31 @@ int main()
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
     ifstream inputText;
+    vector<Questions> QuestionsBank;
     inputText.open("questions.txt");
-    if (!inputText)
-    {
+    if (!inputText) {
         cout << "File open error." << endl;
         return 0;
+    } else {
+        inputText.seekg(ios_base::beg);
+        while (!inputText.eof()) {
+            string type, question;
+            getline(inputText, type, '\n');
+
+            if (type == "1") {
+                FirstType(inputText, QuestionsBank);
+            }
+
+            if (type == "2") {
+                //                SecondType(inputText, QuestionsBank);
+            }
+
+            if (type == "3") {
+                //                ThirdType(inputText, QuestionsBank);
+            }
+        }
+
+        system("PAUSE");
+        return 0;
     }
-    system("PAUSE");
-    return 0;
 }
