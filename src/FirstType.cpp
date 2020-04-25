@@ -6,7 +6,7 @@ void FirstType(std::ifstream& questions, std::vector<Questions>& text)
 {
     Questions BUF;
     std::string n, temp, TrueAnswer, FalseAnswers;
-    std::getline(questions, temp, '\n');
+    getline(questions, temp, '\n');
     BUF.question = temp;
 
     getline(questions, temp, '\n');
