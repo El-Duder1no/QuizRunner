@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <algorithm>
 
 #include "parseString.h"
 
@@ -18,10 +19,47 @@ struct Account
 	int accountType;
 };
 
-/*void enterAccount()
+void SelectSort(vector<Account> &a, int *ind)
 {
+	for (int i = 0; i < a.size() - 1; i++) {
+		int min = i;
+		for (int j = i + 1; j < a.size(); j++) {
+			if (a[ind[j]].username < a[ind[min]].username) {
+				min = i;
+			}
+		}
+		swap(ind[i], ind[min]); 
+	}
+}
 
-}*/
+int BinSearch(vector<Account>& a, int* ind, string key) {
+	int l = 0, r = a.size() - 1, m;
+	while (l < r)
+	{
+		m = floor((l + r) / 2);
+		if (a[ind[m]].username < key)
+			l = m + 1;
+		else
+			r = m;
+	}
+	if (a[ind[r]].username == key)
+		return r;
+	else
+		return -1;
+}
+
+void enterAccount(vector<Account>& a, int &ind)
+{
+	string username, password;
+
+	system("CLS");
+	
+	cout << "¬ведите логин:" << endl << ">>";
+	cin >> username;
+	cout << "¬ведите пароль:" << endl << ">>";
+	cin >> password;
+
+}
 
 void accountsParse(vector<Account>& a)
 {
@@ -44,6 +82,8 @@ void accountsParse(vector<Account>& a)
 
 		a.push_back(buff);
 	}
+
+	file.close();
 }
 
 bool isPassCorrect(string password)
@@ -113,7 +153,7 @@ int main()
 
     char chooseKey;
     bool registrationState = true;
-
+	
     string currentUser;
 
     registrationMenu();
@@ -123,8 +163,14 @@ int main()
 		// ¬’ќƒ
         case '1': {
             cout << "“ы выбрал вход в учетку" << endl;
+
+			accountsParse(accounts);
+			int* index = new int[accounts.size()];
+			SelectSort(accounts, index);
             // ‘”Ќ ÷»я ¬’ќƒј
             registrationState = false;
+
+			delete[] index;
             break;
         }
 		// –≈√»—“–ј÷»я
@@ -141,7 +187,7 @@ int main()
                 cout << "–егистраци€ прошла успешно" << endl;
                 currentUser = username;
 				
-				// ѕеределать по человечески,а не как сейчас
+				// ѕеределать по человечески, а не как сейчас
 				wstring accountPath = L"D:\\code\\TRPO\\QuizRunner\\res\\Accounts.txt";
 				ofstream file; 
 				file.open(accountPath, ios_base::app);
