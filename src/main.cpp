@@ -36,7 +36,7 @@ int main()
             }
 
             if (type == "3") {
-                           ThirdType(inputText, QuestionsBank);
+                ThirdType(inputText, QuestionsBank);
             }
         }
 
