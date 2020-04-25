@@ -1,4 +1,5 @@
 #include "FirstType.h"
+#include "SecondType.h"
 #include "ThirdType.h"
 #include "Questions.h"
 #include "parseString.h"
@@ -27,20 +28,22 @@ int main()
             string type, question;
             getline(inputText, type, '\n');
 
-            if (type == "1") {
+            if (type == "1") 
+			{
                 FirstType(inputText, QuestionsBank);
             }
 
-            if (type == "2") {
-                //                SecondType(inputText, QuestionsBank);
+            if (type == "2")
+			 {
+                SecondType(inputText, QuestionsBank);
             }
-
-            if (type == "3") {
+            if (type == "3") 
+			{	
                 ThirdType(inputText, QuestionsBank);
             }
+        
         }
-
         system("PAUSE");
-        return 0;
     }
+    return 0;
 }
