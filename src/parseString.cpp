@@ -1,6 +1,4 @@
 #include "parseString.h"
-#include <string>
-#include <vector>
 
 void parseString(
         std::string s, std::string delim, std::vector<std::string>& text)
@@ -13,6 +11,7 @@ void parseString(
         std::string tmp = s.substr(prev, next - prev);
 
         text.push_back(s.substr(prev, next - prev));
+
         prev = next + delta;
     }
     std::string tmp = s.substr(prev);
