@@ -1,4 +1,4 @@
-#include <algorithm>
+﻿#include <algorithm>
 #include <conio.h>
 #include <fstream>
 #include <iostream>
@@ -8,11 +8,15 @@
 
 #include "parseString.h"
 
-#pragma warning(once : C6386)
-
 using namespace std;
 
 #define CAEZAR_SHIFT 3
+
+// ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+void PAUSE();
+void CLS();
+// ШАПКИ МЕНЮ
+void registrationMenu();
 
 struct Account {
     string username;
@@ -44,22 +48,17 @@ int BinSearch(vector<Account>& a, int* ind, string key)
             r = m;
     }
     if (a[ind[r]].username == key) {
-        cout << "Поиск-логин: " << a[ind[r]].username << endl;
         return r;
     } else {
-        cout << "Поиск-логин: " << a[ind[r]].username << endl;
         return -1;
     }
 }
 
-bool enterAccount(vector<Account>& a, int* ind)
+bool enterAccount(vector<Account>& a, int* ind, string &User)
 {
-    // return 0 - аккаунта не существует/пароль неверен
-    // return 1 - аккаунт существует, пароль верный
-
     string username, password;
 
-    system("CLS");
+	CLS();
 
     cout << "Введите логин:" << endl << ">>";
     cin >> username;
@@ -75,7 +74,7 @@ bool enterAccount(vector<Account>& a, int* ind)
     if (temp == -1) {
         return false;
     } else if (a[ind[temp]].password == password) {
-        cout << "true" << endl;
+		User = username;
         return true;
     }
 }
@@ -136,9 +135,9 @@ bool isPassCorrect(string password)
     }
 }
 
-bool registration(string& username, string& password)
+int registration(vector<Account>& a, string& username, string& password)
 {
-    system("CLS");
+	CLS();
 
     cout << "Длина пароля от 8 до 25 символов." << endl
          << "Пароль должен состоять из букв" << endl
@@ -151,21 +150,32 @@ bool registration(string& username, string& password)
     cout << "Введите пароль:" << endl << ">>";
     cin >> password;
 
-    if (isPassCorrect(password) == true) {
-        return true;
-    } else {
-        return false;
-    }
-}
+	//---------
+	accountsParse(a);
+	int* ind = new int[a.size()];
+	for (int i = 0; i < a.size(); i++) {
+		ind[i] = i;
+	}
+	SelectSort(&a, ind);
 
-// ШАПКИ МЕНЮ
-void registrationMenu()
-{
-    cout << "Выберите пункт меню:" << endl;
-    cout << "1 - Вход в учетную запись" << endl;
-    cout << "2 - Регистрация" << endl;
-    cout << "ESC - выход" << endl;
-    cout << ">> ";
+	for (int i = 0; i < username.size(); i++) {
+		username[i] += CAEZAR_SHIFT;
+	}
+
+	int temp = BinSearch(a, ind, username);
+
+	delete[] ind;
+
+	if (temp == -1) {
+		return 0;
+	}
+	//---------
+
+    if (isPassCorrect(password) == true) {
+        return 1;
+    } else {
+        return 2;
+    }
 }
 
 int main()
@@ -193,7 +203,7 @@ int main()
             }
             SelectSort(&accounts, index);
 
-            bool temp = enterAccount(accounts, index);
+            bool temp = enterAccount(accounts, index, currentUser);
 
             switch (temp) {
             case false: {
@@ -206,6 +216,7 @@ int main()
             case true: {
                 system("CLS");
                 cout << "Вход в личный кабинет" << endl;
+				cout << "currentUser-" << currentUser << endl;
                 registrationState = false;
                 break;
             }
@@ -216,31 +227,39 @@ int main()
         // РЕГИСТРАЦИЯ
         case '2': {
             string username, password;
-            bool temp = registration(username, password);
-            if (temp == false) {
-                system("CLS");
+            int temp = registration(accounts, username, password);
+            if (temp == 2) {
+				CLS();
                 cout << "Введен неправильный пароль" << endl;
-                system("PAUSE");
+				PAUSE();
                 registrationMenu();
                 break;
-            } else {
-                cout << "Регистрация прошла успешно" << endl;
-                currentUser = username;
+            } 
+			if (temp == 0) {
+				CLS();
+				cout << "Такой аккаунт уже существует" << endl;
+				PAUSE();
+				registrationMenu();
+				break;
+			}
+			if (temp == 1) {
+				cout << "Регистрация прошла успешно" << endl;
+				currentUser = username;
 
-                ofstream file(accountPath, ios_base::app);
+				ofstream file(accountPath, ios_base::app);
 
-                if (!file.is_open())
-                    cerr << endl << "Файл не открыт!" << endl;
+				if (!file.is_open())
+					cerr << endl << "Файл не открыт!" << endl;
 
-                for (int i = 0; i < password.size(); i++) {
-                    password[i] += CAEZAR_SHIFT;
-                }
-                file << username << " " << password << " 0" << endl;
+				for (int i = 0; i < password.size(); i++) {
+					password[i] += CAEZAR_SHIFT;
+				}
+				file << username << " " << password << " 0" << endl;
 
-                file.close();
-                registrationState = false;
-                break;
-            }
+				file.close();
+				registrationState = false;
+				break;
+			}
         }
         // ВЫХОД ИЗ ПРОГРАММЫ
         case 27: {
@@ -254,6 +273,31 @@ int main()
         }
     }
 
-    system("PAUSE");
+	PAUSE();
     return 0;
+}
+
+void PAUSE()
+{
+	cout << "Нажмите любую клавишу чтобы продолжить" << endl;
+	cin.ignore();
+	cin.get();
+}
+
+void CLS()
+{
+#ifdef _WIN32
+	system("cls");
+#else
+	system("clear");
+#endif
+}
+
+void registrationMenu()
+{
+	cout << "Выберите пункт меню:" << endl;
+	cout << "1 - Вход в учетную запись" << endl;
+	cout << "2 - Регистрация" << endl;
+	cout << "ESC - выход" << endl;
+	cout << ">> ";
 }
