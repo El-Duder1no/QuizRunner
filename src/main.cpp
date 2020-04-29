@@ -1,89 +1,112 @@
+#include <algorithm>
 #include <conio.h>
+#include <fstream>
 #include <iostream>
 #include <stdlib.h>
 #include <string>
 #include <vector>
-#include <fstream>
-#include <algorithm>
 
 #include "parseString.h"
+
+#pragma warning(once : C6386)
 
 using namespace std;
 
 #define CAEZAR_SHIFT 3
 
-struct Account
-{
-	string username;
-	string password;
-	int accountType;
+struct Account {
+    string username;
+    string password;
+    int accountType;
 };
 
-void SelectSort(vector<Account> &a, int *ind)
+void SelectSort(vector<Account>* a, int* ind)
 {
-	for (int i = 0; i < a.size() - 1; i++) {
-		int min = i;
-		for (int j = i + 1; j < a.size(); j++) {
-			if (a[ind[j]].username < a[ind[min]].username) {
-				min = i;
-			}
-		}
-		swap(ind[i], ind[min]); 
-	}
+    for (int i = 0; i < a->size() - 1; i++) {
+        int min = i;
+        for (int j = i + 1; j < a->size(); j++) {
+            if (a->at(ind[j]).username < a->at(ind[min]).username) {
+                min = j;
+            }
+        }
+        swap(ind[i], ind[min]);
+    }
 }
 
-int BinSearch(vector<Account>& a, int* ind, string key) {
-	int l = 0, r = a.size() - 1, m;
-	while (l < r)
-	{
-		m = floor((l + r) / 2);
-		if (a[ind[m]].username < key)
-			l = m + 1;
-		else
-			r = m;
-	}
-	if (a[ind[r]].username == key)
-		return r;
-	else
-		return -1;
+int BinSearch(vector<Account>& a, int* ind, string key)
+{
+    int l = 0, r = a.size() - 1, m;
+    while (l < r) {
+        m = floor((l + r) / 2);
+        if (a[ind[m]].username < key)
+            l = m + 1;
+        else
+            r = m;
+    }
+    if (a[ind[r]].username == key) {
+        cout << "–ü–æ–∏—Å–∫-–ª–æ–≥–∏–Ω: " << a[ind[r]].username << endl;
+        return r;
+    } else {
+        cout << "–ü–æ–∏—Å–∫-–ª–æ–≥–∏–Ω: " << a[ind[r]].username << endl;
+        return -1;
+    }
 }
 
-void enterAccount(vector<Account>& a, int &ind)
+bool enterAccount(vector<Account>& a, int* ind)
 {
-	string username, password;
+    // return 0 - –∞–∫–∫–∞—É–Ω—Ç–∞ –Ω–µ —Å—É—â–µ—Å—Ç–≤—É–µ—Ç/–ø–∞—Ä–æ–ª—å –Ω–µ–≤–µ—Ä–µ–Ω
+    // return 1 - –∞–∫–∫–∞—É–Ω—Ç —Å—É—â–µ—Å—Ç–≤—É–µ—Ç, –ø–∞—Ä–æ–ª—å –≤–µ—Ä–Ω—ã–π
 
-	system("CLS");
-	
-	cout << "¬‚Â‰ËÚÂ ÎÓ„ËÌ:" << endl << ">>";
-	cin >> username;
-	cout << "¬‚Â‰ËÚÂ Ô‡ÓÎ¸:" << endl << ">>";
-	cin >> password;
+    string username, password;
 
+    system("CLS");
+
+    cout << "–í–≤–µ–¥–∏—Ç–µ –ª–æ–≥–∏–Ω:" << endl << ">>";
+    cin >> username;
+    cout << "–í–≤–µ–¥–∏—Ç–µ –ø–∞—Ä–æ–ª—å:" << endl << ">>";
+    cin >> password;
+
+    for (int i = 0; i < password.size(); i++) {
+        password[i] += CAEZAR_SHIFT;
+    }
+
+    int temp = BinSearch(a, ind, username);
+
+    if (temp == -1) {
+        return false;
+    } else if (a[ind[temp]].password == password) {
+        cout << "true" << endl;
+        return true;
+    }
 }
 
 void accountsParse(vector<Account>& a)
 {
-	wstring accountPath = L"D:\\code\\TRPO\\QuizRunner\\res\\Accounts.txt";
-	ifstream file(accountPath);
+    wstring accountPath = L"D:\\code\\TRPO\\QuizRunner\\res\\Accounts.txt";
+    ifstream file(accountPath);
 
-	while (!file.eof()) {
-		string temp;
-		Account buff;
+    while (!file.eof()) {
+        string temp;
+        Account buff;
 
-		getline(file, temp, '\n');
-		vector<string> words;
-		parseString(temp, " ", words);
+        getline(file, temp, '\n');
 
-		int type = stoi(words[2]);
+        if (temp == "") {
+            return;
+        }
 
-		buff.accountType = type;
-		buff.username = words[0];
-		buff.password = words[1];
+        vector<string> words;
+        parseString(temp, " ", words);
 
-		a.push_back(buff);
-	}
+        buff.accountType = stoi(words.at(2));
+        buff.username = words.at(0);
+        buff.password = words.at(1);
 
-	file.close();
+        words.clear();
+        a.push_back(buff);
+    }
+
+    file.close();
 }
 
 bool isPassCorrect(string password)
@@ -117,15 +140,15 @@ bool registration(string& username, string& password)
 {
     system("CLS");
 
-    cout << "ƒÎËÌ‡ Ô‡ÓÎˇ ÓÚ 8 ‰Ó 25 ÒËÏ‚ÓÎÓ‚." << endl
-         << "œ‡ÓÎ¸ ‰ÓÎÊÂÌ ÒÓÒÚÓˇÚ¸ ËÁ ·ÛÍ‚" << endl
-         << "Î‡ÚËÌÒÍÓ„Ó ‡ÎÙ‡‚ËÚ‡ Ë ‰ÓÎÊÂÌ ÒÓ‰ÂÊ‡Ú¸" << endl
-         << "Í‡Í ÏËÌËÏÛÏ Ó‰ÌÛ Á‡„Î‡‚ÌÛ˛ ·ÛÍ‚Û Ë ˆËÙÛ.\n"
+    cout << "–î–ª–∏–Ω–∞ –ø–∞—Ä–æ–ª—è –æ—Ç 8 –¥–æ 25 —Å–∏–º–≤–æ–ª–æ–≤." << endl
+         << "–ü–∞—Ä–æ–ª—å –¥–æ–ª–∂–µ–Ω —Å–æ—Å—Ç–æ—è—Ç—å –∏–∑ –±—É–∫–≤" << endl
+         << "–ª–∞—Ç–∏–Ω—Å–∫–æ–≥–æ –∞–ª—Ñ–∞–≤–∏—Ç–∞ –∏ –¥–æ–ª–∂–µ–Ω —Å–æ–¥–µ—Ä–∂–∞—Ç—å" << endl
+         << "–∫–∞–∫ –º–∏–Ω–∏–º—É–º –æ–¥–Ω—É –∑–∞–≥–ª–∞–≤–Ω—É—é –±—É–∫–≤—É –∏ —Ü–∏—Ñ—Ä—É.\n"
          << endl;
 
-    cout << "¬‚Â‰ËÚÂ ÎÓ„ËÌ:" << endl << ">>";
+    cout << "–í–≤–µ–¥–∏—Ç–µ –ª–æ–≥–∏–Ω:" << endl << ">>";
     cin >> username;
-    cout << "¬‚Â‰ËÚÂ Ô‡ÓÎ¸:" << endl << ">>";
+    cout << "–í–≤–µ–¥–∏—Ç–µ –ø–∞—Ä–æ–ª—å:" << endl << ">>";
     cin >> password;
 
     if (isPassCorrect(password) == true) {
@@ -135,13 +158,13 @@ bool registration(string& username, string& password)
     }
 }
 
-// ÿ¿œ » Ã≈Õﬁ
+// –®–ê–ü–ö–ò –ú–ï–ù–Æ
 void registrationMenu()
 {
-    cout << "¬˚·ÂËÚÂ ÔÛÌÍÚ ÏÂÌ˛:" << endl;
-    cout << "1 - ¬ıÓ‰ ‚ Û˜ÂÚÌÛ˛ Á‡ÔËÒ¸" << endl;
-    cout << "2 - –Â„ËÒÚ‡ˆËˇ" << endl;
-    cout << "ESC - ‚˚ıÓ‰" << endl;
+    cout << "–í—ã–±–µ—Ä–∏—Ç–µ –ø—É–Ω–∫—Ç –º–µ–Ω—é:" << endl;
+    cout << "1 - –í—Ö–æ–¥ –≤ —É—á–µ—Ç–Ω—É—é –∑–∞–ø–∏—Å—å" << endl;
+    cout << "2 - –†–µ–≥–∏—Å—Ç—Ä–∞—Ü–∏—è" << endl;
+    cout << "ESC - –≤—ã—Ö–æ–¥" << endl;
     cout << ">> ";
 }
 
@@ -149,69 +172,83 @@ int main()
 {
     setlocale(LC_ALL, "RUS");
 
-	vector<Account> accounts;
+    vector<Account> accounts;
 
     char chooseKey;
     bool registrationState = true;
-	
+
     string currentUser;
 
-    registrationMenu();
+    wstring accountPath = L"\res\Accounts.txt";
 
+    registrationMenu();
     while (registrationState) {
         switch (chooseKey = _getch()) {
-		// ¬’Œƒ
+        // –í–•–û–î
         case '1': {
-            cout << "“˚ ‚˚·‡Î ‚ıÓ‰ ‚ Û˜ÂÚÍÛ" << endl;
+            accountsParse(accounts);
+            int* index = new int[accounts.size()];
+            for (int i = 0; i < accounts.size(); i++) {
+                index[i] = i;
+            }
+            SelectSort(&accounts, index);
 
-			accountsParse(accounts);
-			int* index = new int[accounts.size()];
-			SelectSort(accounts, index);
-            // ‘”Õ ÷»ﬂ ¬’Œƒ¿
-            registrationState = false;
+            bool temp = enterAccount(accounts, index);
 
-			delete[] index;
+            switch (temp) {
+            case false: {
+                system("CLS");
+                cout << "–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω—ã–π –ª–æ–≥–∏–Ω –∏–ª–∏ –ø–∞—Ä–æ–ª—å" << endl;
+                system("PAUSE");
+                registrationMenu();
+                break;
+            }
+            case true: {
+                system("CLS");
+                cout << "–í—Ö–æ–¥ –≤ –ª–∏—á–Ω—ã–π –∫–∞–±–∏–Ω–µ—Ç" << endl;
+                registrationState = false;
+                break;
+            }
+            }
+            delete[] index;
             break;
         }
-		// –≈√»—“–¿÷»ﬂ
+        // –†–ï–ì–ò–°–¢–†–ê–¶–ò–Ø
         case '2': {
-			string username, password;
+            string username, password;
             bool temp = registration(username, password);
             if (temp == false) {
                 system("CLS");
-                cout << "¬‚Â‰ÂÌ ÌÂÔ‡‚ËÎ¸Ì˚È Ô‡ÓÎ¸" << endl;
+                cout << "–í–≤–µ–¥–µ–Ω –Ω–µ–ø—Ä–∞–≤–∏–ª—å–Ω—ã–π –ø–∞—Ä–æ–ª—å" << endl;
                 system("PAUSE");
                 registrationMenu();
                 break;
             } else {
-                cout << "–Â„ËÒÚ‡ˆËˇ ÔÓ¯Î‡ ÛÒÔÂ¯ÌÓ" << endl;
+                cout << "–†–µ–≥–∏—Å—Ç—Ä–∞—Ü–∏—è –ø—Ä–æ—à–ª–∞ —É—Å–ø–µ—à–Ω–æ" << endl;
                 currentUser = username;
-				
-				// œÂÂ‰ÂÎ‡Ú¸ ÔÓ ˜ÂÎÓ‚Â˜ÂÒÍË, ‡ ÌÂ Í‡Í ÒÂÈ˜‡Ò
-				wstring accountPath = L"D:\\code\\TRPO\\QuizRunner\\res\\Accounts.txt";
-				ofstream file; 
-				file.open(accountPath, ios_base::app);
 
-				if (!file.is_open())
-					cerr << endl << "‘‡ÈÎ ÌÂ ÓÚÍ˚Ú!" << endl;
+                ofstream file(accountPath, ios_base::app);
 
-				for (int i = 0; i < password.size(); i++) {
-					password[i] += CAEZAR_SHIFT;
-				}
-				file << username << " " << password << " 0" << endl;
-				
-				file.close();
-				registrationState = false;
+                if (!file.is_open())
+                    cerr << endl << "–§–∞–π–ª –Ω–µ –æ—Ç–∫—Ä—ã—Ç!" << endl;
+
+                for (int i = 0; i < password.size(); i++) {
+                    password[i] += CAEZAR_SHIFT;
+                }
+                file << username << " " << password << " 0" << endl;
+
+                file.close();
+                registrationState = false;
                 break;
             }
         }
+        // –í–´–•–û–î –ò–ó –ü–†–û–ì–†–ê–ú–ú–´
         case 27: {
-            cout << "“˚ ‚˚·‡Î ‚˚ÈÚË ËÁ ÔÓ„‡ÏÏ˚" << endl;
             registrationState = false;
             break;
         }
         default: {
-            cout << "Œÿ»¡ ¿ ¬¬Œƒ¿" << endl;
+            cout << "–û–®–ò–ë–ö–ê –í–í–û–î–ê" << endl;
             break;
         }
         }
