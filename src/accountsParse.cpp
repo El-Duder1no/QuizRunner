@@ -1,9 +1,11 @@
 #include "accountsParse.h"
 
-void accountsParse(std::vector<Account>& a)
+void accountsParse(std::vector<Account>& a, std::wstring accountPath)
 {
-    std::wstring accountPath = L"\\res\\Accounts.txt";
     std::ifstream file(accountPath);
+
+    if (!file.is_open())
+        std::cout << "Oaee ia ioe?uo" << std::endl;
 
     while (!file.eof()) {
         std::string temp;

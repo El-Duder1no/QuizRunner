@@ -7,6 +7,6 @@
 #include <string>
 #include <vector>
 
-void accountsParse(std::vector<Account>& a);
+void accountsParse(std::vector<Account>& a, std::wstring accountPath);
 
 #endif
