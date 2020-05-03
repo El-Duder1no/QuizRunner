@@ -3,6 +3,5 @@
 void PAUSE()
 {
     std::cout << "Нажмите любую клавишу чтобы продолжить" << std::endl;
-    std::cin.ignore();
     std::cin.get();
 }
