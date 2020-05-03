@@ -7,9 +7,9 @@ bool enterAccount(std::vector<Account>& a, int* ind, std::string& User)
     CLS();
 
     std::cout << "¬ведите логин:" << std::endl << ">>";
-    std::cin >> username;
+	std::getline(std::cin, username);
     std::cout << "¬ведите пароль:" << std::endl << ">>";
-    std::cin >> password;
+	std::getline(std::cin, password);
 
     for (int i = 0; i < password.size(); i++) {
         password[i] += 3;
@@ -17,10 +17,11 @@ bool enterAccount(std::vector<Account>& a, int* ind, std::string& User)
 
     int temp = BinSearch(a, ind, username);
 
-    if (temp == -1) {
-        return false;
-    } else if (a[ind[temp]].password == password) {
+	if (temp != -1 && a[ind[temp]].password == password) {
         User = username;
         return true;
-    }
+	}
+	else {
+		return false;
+	}
 }
