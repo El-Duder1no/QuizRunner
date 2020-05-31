@@ -9,7 +9,7 @@
 #include "Questions.h"
 #include "parseString.h"
 
-void FirstType(std::ifstream &questions, std::vector<Questions>& text);
+void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text);
 void SecondType(std::ifstream &questions, std::vector<Questions>& text);
 void ThirdType(std::ifstream &questions, std::vector<Questions>& text);
 #endif
