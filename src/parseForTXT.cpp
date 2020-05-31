@@ -33,10 +33,12 @@ std::vector<std::string> words;
     text.push_back(BUF);
 }
 
-void SecondType(std::ifstream& questions, std::vector<Questions>& text)
+void ParseSecondQuestions(
+        std::ifstream& questions, std::vector<Questions>& text)
 {
     Questions BUF;
-    std::string n, temp, TrueAnswers, FalseAnswers;
+    std::string temp, TrueAnswers, FalseAnswers;
+    int CheckAnswer;
     getline(questions, temp, '\n');
     BUF.question = temp;
 
@@ -45,39 +47,40 @@ void SecondType(std::ifstream& questions, std::vector<Questions>& text)
     std::vector<std::string> word;
     parseString(temp, ", ", words);
     parseString(temp, ", ", word);
-    word[0] = word[0].substr(2);
-    word[1] = word[1].substr(2);
-    word[2] = word[2].substr(2);
-    word[3] = word[3].substr(2);
+    for (int i = 0; i < ANSWERS_SIZE; ++i) {
+        word[i] = word[i].substr(2);
+    }
     FalseAnswers = word[0] + " " + word[1] + " " + word[2] + " " + word[3];
 
-    for (int i = 0; i < 4; ++i) {
-        n = words[i].substr(0, 1);
-        if (n == "1") {
+    for (int i = 0; i < ANSWERS_SIZE; ++i) {
+        temp = words[i].substr(0, 1);
+        switch (CheckAnswer = atoi(temp.c_str())) {
+        case 1:
             if (i != 0) {
                 swap(words[0], words[i]);
             }
-        }
-        if (n == "2") {
+            break;
+        case 2:
             if (i != 1) {
                 swap(words[1], words[i]);
             }
-        }
-        if (n == "3") {
+            break;
+        case 3:
             if (i != 2) {
                 swap(words[2], words[i]);
             }
-        }
-        if (n == "4") {
+            break;
+        case 4:
             if (i != 3) {
                 swap(words[3], words[i]);
             }
+            break;
         }
     }
-    words[0] = words[0].substr(2);
-    words[1] = words[1].substr(2);
-    words[2] = words[2].substr(2);
-    words[3] = words[3].substr(2);
+    for (int i = 0; i < 4; ++i) {
+        words[i] = words[i].substr(2);
+    }
+
     TrueAnswers = words[0] + " " + words[1] + " " + words[2] + " " + words[3];
     BUF.type = "2";
     BUF.answers.push_back(FalseAnswers);
