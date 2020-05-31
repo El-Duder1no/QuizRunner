@@ -3,21 +3,21 @@
 void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
 {
     Questions BUF;
-   std::string CheckAnswer, temp, TrueAnswer, FalseAnswers;
+    std::string CheckAnswer, temp, TrueAnswer, FalseAnswers;
     std::getline(questions, temp, '\n');
     BUF.question = temp;
-	
-   getline(questions, temp, '\n');
-std::vector<std::string> words;
+
+    getline(questions, temp, '\n');
+    std::vector<std::string> words;
     std::vector<std::string> word;
     parseString(temp, ", ", words);
-   parseString(temp, ", ", word);    
-		for(int i = 0; i < ANSWERS_SIZE; ++i){
-		words[i] = words[i].substr(2);
-	}
+    parseString(temp, ", ", word);
+    for (int i = 0; i < ANSWERS_SIZE; ++i) {
+        words[i] = words[i].substr(2);
+    }
     FalseAnswers = words[0] + " " + words[1] + " " + words[2] + " " + words[3];
 
-	for (int i = 0; i < ANSWERS_SIZE; ++i) {
+    for (int i = 0; i < ANSWERS_SIZE; ++i) {
         CheckAnswer = word[i].substr(0, 1);
         if (CheckAnswer == "1") {
             if (i != RIGHT_ANSWER) {
@@ -98,9 +98,9 @@ void ParseThirdQuestions(std::ifstream& questions, std::vector<Questions>& text)
 
     getline(questions, temp, '\n');
     parseString(temp, ", ", words);
-    for(int i = 0; i < 2; ++i){
-		words[i] = words[i].substr(2);	
-	}
+    for (int i = 0; i < 2; ++i) {
+        words[i] = words[i].substr(2);
+    }
     TrueAnswers = words[0] + " " + words[1];
     BUF.type = "3";
     BUF.answers.push_back(TrueAnswers);
