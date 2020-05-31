@@ -12,5 +12,5 @@
 void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text);
 void ParseSecondQuestions(
         std::ifstream& questions, std::vector<Questions>& text);
-void ThirdType(std::ifstream &questions, std::vector<Questions>& text);
+void ParseThirdQuestions(std::ifstream& questions, std::vector<Questions>& text);
 #endif

@@ -88,7 +88,7 @@ void ParseSecondQuestions(
     text.push_back(BUF);
 }
 
-void ThirdType(std::ifstream& questions, std::vector<Questions>& text)
+void ParseThirdQuestions(std::ifstream& questions, std::vector<Questions>& text)
 {
     Questions BUF;
     std::string temp, TrueAnswers;
@@ -98,8 +98,9 @@ void ThirdType(std::ifstream& questions, std::vector<Questions>& text)
 
     getline(questions, temp, '\n');
     parseString(temp, ", ", words);
-    words[0] = words[0].substr(2);
-    words[1] = words[1].substr(2);
+    for(int i = 0; i < 2; ++i){
+		words[i] = words[i].substr(2);	
+	}
     TrueAnswers = words[0] + " " + words[1];
     BUF.type = "3";
     BUF.answers.push_back(TrueAnswers);
