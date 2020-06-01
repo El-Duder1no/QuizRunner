@@ -1,6 +1,6 @@
 #include "testFunctions.h"
 
-bool CheckPath(std::ifstream& questions, std::vector<Questions>& QuestionsBank, const std::string questionsPath)
+bool CheckPath(std::ifstream& questions, std::vector<Questions>& QuestionsBank)
 {
 	if (!questions) {
         return false;
@@ -25,19 +25,20 @@ bool CheckPath(std::ifstream& questions, std::vector<Questions>& QuestionsBank, 
 }
 }
 
-bool CheckPath(std::fstream& FileTxt, std::vector<Questions>& QuestionForTest)
+bool CheckPath(std::fstream& questions, std::vector<Questions>& QuestionForTest)
 {
-    if (FileTxt) {
+    if (!questions) {
         return false;
     } else {
-        FileTxt.seekg(std::ios_base::beg);
-        while (!FileTxt.eof()) {
+        questions.seekg(std::ios_base::beg);
+        while (!questions.eof()) {
             std::string type;
-            getline(FileTxt, type, '\n');
+            getline(questions, type, '\n');
             if (!(type == ""))
-            std::cout<<" ";
-                //PROVERKA(FileTxt, QuestionForTest, type);
-        }
+            {
+            ParseTest(questions, QuestionForTest, type);
+    }
+		}
         return true;
     }
 }
