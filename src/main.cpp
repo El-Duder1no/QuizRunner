@@ -2,14 +2,13 @@
 #include "accountsParse.h"
 #include "adminMenu.h"
 #include "binSearch.h"
-#include "cls.h"
 #include "enterAccount.h"
 #include "loginCheck.h"
 #include "parseString.h"
 #include "passCheck.h"
-#include "pause.h"
 #include "registration.h"
 #include "selectSort.h"
+#include "screenFunctions.h"
 
 #include <Windows.h>
 #include <conio.h>
