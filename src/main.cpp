@@ -1,5 +1,4 @@
 #include "Questions.h"
-#include "accountStruct.h"
 #include "accountsParse.h"
 #include "adminMenu.h"
 #include "binSearch.h"
