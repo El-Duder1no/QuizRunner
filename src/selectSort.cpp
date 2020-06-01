@@ -9,7 +9,6 @@ void SelectSort(std::vector<Account>& a, int* ind)
                 min = j;
             }
         }
-        // std::swap(ind[i], ind[min]);
         int temp = ind[i];
         ind[i] = ind[min];
         ind[min] = temp;
