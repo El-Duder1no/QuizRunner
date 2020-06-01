@@ -130,13 +130,13 @@ void EditingTest(std::vector<Questions>& textBuf, std::vector<Questions>& textOu
             switch (chooseKey = _getch()) {
             case '1': {
                 CLS();
-            //    RemoveQuestionFromTest
+            //    RemoveQuestionFromTest;
                 ;
                 break;
             }
             case '2': {
                 CLS();
-            //    AddQuestionToTest
+                AddQuestions(textBuf, textOut);
                 break;
             }
             case '3': {
@@ -254,5 +254,45 @@ bool Filing(std::fstream& questions, std::vector<Questions>& textBuf, const std:
         }
     }
     return true;
+}
+
+void AddQuestions(std::vector<Questions>& textBuf, std::vector<Questions>& textOut)
+{
+    int i = 0, chooseKey;
+    while (i < textOut.size()) {
+        PrintQuestions(textOut, i);
+
+        std::cout << std::endl
+             << "1.Добавить вопрос в тест" << std::endl
+             << "2.Следующий вопрос" << std::endl
+             << "3.Вернуться назад" << std::endl
+             << "<< ";
+
+        switch (chooseKey = _getch()) {
+        case '1': {
+            textBuf.push_back(textOut[i]);
+            textOut.erase(textOut.begin() + i);
+            ++i;
+            CLS();
+            break;
+        }
+        case '2': {
+            ++i;
+            CLS();
+            break;
+        }
+        default: {
+            std::cout << "ОШИБКА ВВОДА" << std::endl;
+            PAUSE();
+            CLS();
+            break;
+        }
+        case '3': {
+            CLS();
+            return;
+        }
+        }
+    }
+    return;
 }
 
