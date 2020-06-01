@@ -1,18 +1,12 @@
 #include "Questions.h"
-#include "accountsParse.h"
 #include "adminMenu.h"
 #include "binSearch.h"
-#include "cls.h"
 #include "currentUserStruct.h"
-#include "enterAccount.h"
-#include "loginCheck.h"
 #include "parseString.h"
-#include "passCheck.h"
-#include "pause.h"
-#include "registration.h"
 #include "resultStruct.h"
 #include "selectSort.h"
 #include "userMenu.h"
+#include "screenFunctions.h"
 
 #include <conio.h>
 #include <fstream>
