@@ -303,7 +303,7 @@ void RemoveQuestion(
         std::vector<Questions>& textBuf, std::vector<Questions>& textOut)
 {
     int i = 0, chooseKey, z = textBuf.size();
-    while (i < z) {
+    while (i < textBuf.size()) {
         PrintQuestions(textBuf, i);
         std::cout << std::endl
                   << "1.Удалить вопрос из теста" << std::endl

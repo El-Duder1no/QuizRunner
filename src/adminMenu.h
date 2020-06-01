@@ -1,8 +1,7 @@
 #ifndef adminMenu
-
 #define adminMenu
-#include "cls.h"
-#include "pause.h"
+
+#include "screenFunctions.h"
 #include "testFunctions.h"
 #include <Windows.h>
 #include <conio.h>
