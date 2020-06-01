@@ -45,7 +45,7 @@ bool Administrator(const std::string questionsPath, const std::string TestPath, 
             }
             case '2': {
                 CLS();
-                //EditingTest
+                EditingTest(QuestionsForTest, QuestionsOutOfTest);
                                if (!Filing(Test, QuestionsForTest, TestPath)){
 				
                     return 0;
@@ -115,6 +115,64 @@ void CreateTest(
         }
     }
 }
+
+void EditingTest(std::vector<Questions>& textBuf, std::vector<Questions>& textOut)
+{
+    bool Editing = true;
+    int i = 0;
+    char chooseKey;
+    while (Editing) {
+        if (!textBuf.empty()) {
+            std::cout << "1.Удалить некоторые вопросы из теста" << std::endl
+                 << "2.Добавить вопросы в существубщий тест" << std::endl
+                 << "3.Вернуться в меню." << std::endl
+                 << "<< ";
+            switch (chooseKey = _getch()) {
+            case '1': {
+                CLS();
+            //    RemoveQuestionFromTest
+                ;
+                break;
+            }
+            case '2': {
+                CLS();
+            //    AddQuestionToTest
+                break;
+            }
+            case '3': {
+                CLS();
+                Editing = false;
+                break;
+            }
+            default: {
+                std::cout << "ОШИБКА ВВОДА" << std::endl;
+                PAUSE();
+                CLS();
+                break;
+            }
+            }
+        } else {
+            std::cout << "Нет существующего теста!" << std::endl
+                 << "1. Вернуться в меню" << std::endl
+                 << "<< ";
+
+            switch (chooseKey = _getch()) {
+            case '1': {
+                CLS();
+                Editing = false;
+                break;
+            }
+            default: {
+                std::cout << "Ошибка ввода" << std::endl;
+                PAUSE();
+                CLS();
+                break;
+            }
+            }
+        }
+    }
+}
+
 
 void PrintQuestions(std::vector<Questions>& questions, int i)
 {
