@@ -3,14 +3,14 @@
 void CLS()
 {
 #ifdef _WIN32
-	system("cls");
+    system("cls");
 #else
-	system("clear");
+    system("clear");
 #endif
 }
 
 void PAUSE()
 {
-	std::cout << "Íàæìèòå ëþáóþ êëàâèøó ÷òîáû ïðîäîëæèòü" << std::endl;
-	std::cin.get();
+    std::cout << "ÐÐ°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ»Ð°Ð²Ð¸ÑˆÑƒ Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶Ð¸Ñ‚ÑŒ" << std::endl;
+    std::cin.get();
 }
