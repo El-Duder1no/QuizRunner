@@ -4,9 +4,9 @@
 #include <string>
 
 struct Account {
-	std::string username;
-	std::string password;
-	int accountType;
+    std::string username;
+    std::string password;
+    int accountType;
 };
 
 #endif
