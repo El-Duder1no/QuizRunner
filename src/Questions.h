@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-struct Questions{
+struct Questions {
     std::string type;
     std::string question;
     std::vector<std::string> answers;
