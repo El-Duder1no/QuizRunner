@@ -2,10 +2,10 @@
 
 void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
 {
-    Questions BUF;
+    Questions buff;
     std::string CheckAnswer, temp, TrueAnswer, FalseAnswers;
     std::getline(questions, temp, '\n');
-    BUF.question = temp;
+    buff.question = temp;
 
     getline(questions, temp, '\n');
     std::vector<std::string> words;
@@ -27,20 +27,20 @@ void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
             TrueAnswer = word[RIGHT_ANSWER];
         }
     }
-    BUF.type = "1";
-    BUF.answers.push_back(FalseAnswers);
-    BUF.RightAnswers.push_back(TrueAnswer);
-    text.push_back(BUF);
+    buff.type = "1";
+    buff.answers.push_back(FalseAnswers);
+    buff.RightAnswers.push_back(TrueAnswer);
+    text.push_back(buff);
 }
 
 void ParseSecondQuestions(
         std::ifstream& questions, std::vector<Questions>& text)
 {
-    Questions BUF;
+    Questions buff;
     std::string temp, TrueAnswers, FalseAnswers;
     int CheckAnswer;
     getline(questions, temp, '\n');
-    BUF.question = temp;
+    buff.question = temp;
 
     getline(questions, temp, '\n');
     std::vector<std::string> words;
@@ -82,18 +82,18 @@ void ParseSecondQuestions(
     }
 
     TrueAnswers = words[0] + " " + words[1] + " " + words[2] + " " + words[3];
-    BUF.type = "2";
-    BUF.answers.push_back(FalseAnswers);
-    BUF.RightAnswers.push_back(TrueAnswers);
-    text.push_back(BUF);
+    buff.type = "2";
+    buff.answers.push_back(FalseAnswers);
+    buff.RightAnswers.push_back(TrueAnswers);
+    text.push_back(buff);
 }
 
 void ParseThirdQuestions(std::ifstream& questions, std::vector<Questions>& text)
 {
-    Questions BUF;
+    Questions buff;
     std::string temp, TrueAnswers;
     getline(questions, temp, '\n');
-    BUF.question = temp;
+    buff.question = temp;
     std::vector<std::string> words;
 
     getline(questions, temp, '\n');
@@ -102,8 +102,27 @@ void ParseThirdQuestions(std::ifstream& questions, std::vector<Questions>& text)
         words[i] = words[i].substr(2);
     }
     TrueAnswers = words[0] + " " + words[1];
-    BUF.type = "3";
-    BUF.answers.push_back(TrueAnswers);
-    BUF.RightAnswers.push_back(TrueAnswers);
-    text.push_back(BUF);
+    buff.type = "3";
+    buff.answers.push_back(TrueAnswers);
+    buff.RightAnswers.push_back(TrueAnswers);
+    text.push_back(buff);
+}
+
+void ParseTest(
+        std::fstream& questions, std::vector<Questions>& text, std::string type)
+{
+    Questions buff;
+    std::string temp, TrueAnswers, WrongAnswers;
+    buff.type = type;
+    std::getline(questions, temp, '\n');
+    buff.question = temp;
+    std::vector<std::string> words;
+
+    getline(questions, temp, '\n');
+    WrongAnswers = temp;
+    getline(questions, temp, '\n');
+    TrueAnswers = temp;
+    buff.answers.push_back(WrongAnswers);
+    buff.RightAnswers.push_back(TrueAnswers);
+    text.push_back(buff);
 }

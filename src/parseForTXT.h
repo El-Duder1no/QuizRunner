@@ -13,4 +13,6 @@ void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
 void ParseSecondQuestions(
         std::ifstream& questions, std::vector<Questions>& text);
 void ParseThirdQuestions(std::ifstream& questions, std::vector<Questions>& text);
+void ParseTest(
+        std::fstream& questions, std::vector<Questions>& text, std::string type);
 #endif
