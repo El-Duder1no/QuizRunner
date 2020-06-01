@@ -32,7 +32,7 @@ bool Administrator(const std::string questionsPath, const std::string TestPath, 
             switch (chooseKey = _getch()) {
             case '1': {
                 CLS();
-            //    CreateTest
+                CreateTest(QuestionsBank, QuestionsForTest, QuestionsOutOfTest);
                 if (!Filing(Test, QuestionsForTest, TestPath)){
 				
                     return 0;
@@ -75,6 +75,47 @@ break;
 
 }
 
+void CreateTest(
+        std::vector<Questions>& text,
+        std::vector<Questions>& textBuf,
+        std::vector<Questions>& textOut)
+{
+    bool Create = true;
+    char chooseKey;
+    while (Create) {
+    	
+        if (textBuf.empty()) {
+            AddQuestions(text, textBuf, textOut);
+            return;
+        } else {
+            std::cout << "У вас уже создан тест, вы можете:" << std::endl
+                 << "1. Удалить существующий тест" << std::endl
+                 << "2. Вернуться в меню" << std::endl
+                 << "<< ";
+
+            switch (chooseKey = _getch()) {
+            case '1': {
+                textBuf.clear();
+                textOut.clear();
+                CLS();
+                break;
+            }
+            case '2': {
+                CLS();
+                Create = false;
+                break;
+            }
+            default: {
+                std::cout << "ОШИБКА ВВОДА" << std::endl;
+                PAUSE();
+                CLS();
+                break;
+            }
+            }
+        }
+    }
+}
+
 void PrintQuestions(std::vector<Questions>& questions, int i)
 {
     std::cout << "Номер вопроса: " << i + 1 << " | " << questions.size() << std::endl;
@@ -86,6 +127,55 @@ void PrintQuestions(std::vector<Questions>& questions, int i)
     }
 }
 
+void AddQuestions(
+        std::vector<Questions>& text,
+        std::vector<Questions>& textBuf,
+        std::vector<Questions>& textOut)
+{
+    int i = 0;
+    char chooseKey;
+    textOut.clear();
+    while (i < text.size()) {
+        PrintQuestions(text, i);
+        std::cout << std::endl
+             << "1.Добавить вопрос в тест" << std::endl
+             << "2.Следующий вопрос" << std::endl
+             << "3.Вернуться в меню." << std::endl
+             << "<< ";
+
+        switch (chooseKey = _getch()) {
+        case '1': {
+            textBuf.push_back(text[i]);
+            ++i;
+            CLS();
+            break;
+        }
+        case '2': {
+            textOut.push_back(text[i]);
+            ++i;
+            CLS();
+            break;
+        }
+
+        default: {
+            std::cout << "ОШИБКА ВВОДА" << std::endl;
+            PAUSE();
+            CLS();
+            break;
+        }
+        case '3': {
+            if (i + 1 != text.size()) {
+                for (; i < text.size(); ++i) {
+                    textOut.push_back(text[i]);
+                }
+            }
+            CLS();
+            return;
+        }
+        }
+    }
+    return;
+}
 
 bool Filing(std::fstream& questions, std::vector<Questions>& textBuf, const std::string questionsPath)
 {
