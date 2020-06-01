@@ -1,9 +1,7 @@
-#include "FirstType.h"
 #include "Questions.h"
-#include "SecondType.h"
-#include "ThirdType.h"
 #include "accountStruct.h"
 #include "accountsParse.h"
+#include "adminMenu.h"
 #include "binSearch.h"
 #include "cls.h"
 #include "enterAccount.h"
@@ -22,6 +20,10 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
+#define TEST_PATH "..\\res\\Test.txt"
+#define QUESTIONS_PATH "..\\res\\Questions.txt"
+#define NOT_IN_TEST_PATH "..\\res\\NotInTheTest.txt"
+
 using namespace std;
 
 // ШАПКИ МЕНЮ
@@ -30,14 +32,14 @@ void registrationMenu();
 int main()
 {
     setlocale(LC_ALL, "RUS");
-	SetConsoleOutputCP(1251);
+    SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
 
-    //vector<Account> accounts;
-	
-	ifstream inputText;
+    vector<Account> accounts;
+
+    ifstream inputText;
     vector<Questions> QuestionsBank;
-	
+
     char chooseKey;
     bool registrationState = true;
 
@@ -50,8 +52,8 @@ int main()
         switch (chooseKey = _getch()) {
         // ВХОД
         case '1': {
-			vector<Account> accounts;
-			accountsParse(accounts, accountPath);
+            vector<Account> accounts;
+            accountsParse(accounts, accountPath);
             int* index = new int[accounts.size()];
             for (int i = 0; i < accounts.size(); i++) {
                 index[i] = i;
@@ -81,41 +83,41 @@ int main()
         // РЕГИСТРАЦИЯ
         case '2': {
             string username, password;
-			vector<Account> accounts;
+            vector<Account> accounts;
 
             int temp = registration(accounts, username, password, accountPath);
             if (temp == 2) {
-				CLS();
+                CLS();
                 cout << "Введен неправильный логин или пароль" << endl;
-				PAUSE();
+                PAUSE();
                 registrationMenu();
                 break;
-            } 
-			if (temp == 0) {
-				CLS();
-				cout << "Такой аккаунт уже существует" << endl;
-				PAUSE();
-				registrationMenu();
-				break;
-			}
-			if (temp == 1) {
-				cout << "Регистрация прошла успешно" << endl;
-				currentUser = username;
+            }
+            if (temp == 0) {
+                CLS();
+                cout << "Такой аккаунт уже существует" << endl;
+                PAUSE();
+                registrationMenu();
+                break;
+            }
+            if (temp == 1) {
+                cout << "Регистрация прошла успешно" << endl;
+                currentUser = username;
 
-				ofstream file(accountPath, ios_base::app | ios_base::ate);
+                ofstream file(accountPath, ios_base::app | ios_base::ate);
 
-				if (!file.is_open())
-					cerr << endl << "Файл не открыт!" << endl;
+                if (!file.is_open())
+                    cerr << endl << "Файл не открыт!" << endl;
 
-				for (int i = 0; i < password.size(); i++) {
-					password[i] += 3;
-				}
-				file << username << " " << password << " 0" << endl;
+                for (int i = 0; i < password.size(); i++) {
+                    password[i] += 3;
+                }
+                file << username << " " << password << " 0" << endl;
 
-				file.close();
-				registrationState = false;
-				break;
-			}
+                file.close();
+                registrationState = false;
+                break;
+            }
         }
         // ВЫХОД ИЗ ПРОГРАММЫ
         case 27: {
@@ -128,39 +130,18 @@ int main()
         }
         }
     }
-	
-	inputText.open("questions.txt");
-    if (!inputText) {
-        cout << "File open error." << endl;
-        return 0;
-    } else {
-        inputText.seekg(ios_base::beg);
-        while (!inputText.eof()) {
-            string type, question;
-            getline(inputText, type, '\n');
-
-            if (type == "1") {
-                FirstType(inputText, QuestionsBank);
-            }
-
-            if (type == "2") {
-                SecondType(inputText, QuestionsBank);
-            }
-            if (type == "3") {
-                ThirdType(inputText, QuestionsBank);
-            }
-        }
+    if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
+        cout << " Fail";
     }
-	
-	PAUSE();
+    PAUSE();
     return 0;
 }
 
 void registrationMenu()
 {
-	cout << "Выберите пункт меню:" << endl;
-	cout << "1 - Вход в учетную запись" << endl;
-	cout << "2 - Регистрация" << endl;
-	cout << "ESC - выход" << endl;
-	cout << ">> ";
+    cout << "Выберите пункт меню:" << endl;
+    cout << "1 - Вход в учетную запись" << endl;
+    cout << "2 - Регистрация" << endl;
+    cout << "ESC - выход" << endl;
+    cout << ">> ";
 }
