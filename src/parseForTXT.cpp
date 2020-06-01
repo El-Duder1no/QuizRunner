@@ -23,10 +23,11 @@ void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
             if (i != RIGHT_ANSWER) {
                 swap(word[RIGHT_ANSWER], word[i]);
             }
-            word[RIGHT_ANSWER] = word[RIGHT_ANSWER].substr(2);
-            TrueAnswer = word[RIGHT_ANSWER];
+            
         }
     }
+    word[RIGHT_ANSWER] = word[RIGHT_ANSWER].substr(2);
+            TrueAnswer = word[RIGHT_ANSWER];
     buff.type = "1";
     buff.answers.push_back(FalseAnswers);
     buff.RightAnswers.push_back(TrueAnswer);
