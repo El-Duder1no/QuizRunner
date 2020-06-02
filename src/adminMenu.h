@@ -38,5 +38,5 @@ bool Filing(
         std::vector<Questions>& textBuf,
         const std::string questionsPath);
 void RemoveQuestion(
-        std::vector<Questions>& textBuf, std::vector<Questions>& textOut);
+        std::vector<Questions>& text, std::vector<Questions>& textOut);
 #endif
