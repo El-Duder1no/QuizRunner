@@ -7,5 +7,4 @@
 #include <vector>
 
 void SelectSort(std::vector<Account>& a, int* ind);
-void SelectSort(std::vector<Results>& a, int* ind);
 #endif
