@@ -1,10 +1,10 @@
 #include "userMenu.h"
 void UserMenu()
 {
-    std::cout << "Âûáåðèòå ïóíêò ìåíþ:" << std::endl;
-    std::cout << "1 - Ïðîñìîòð ðåçóëüòàòîâ" << std::endl;
-    std::cout << "2 - Íà÷àòü òåñò" << std::endl;
-    std::cout << "ESC - Âûõîä" << std::endl;
+    std::cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¿ÑƒÐ½ÐºÑ‚ Ð¼ÐµÐ½ÑŽ:" << std::endl;
+    std::cout << "1 - ÐŸÑ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð²" << std::endl;
+    std::cout << "2 - ÐÐ°Ñ‡Ð°Ñ‚ÑŒ Ñ‚ÐµÑÑ‚" << std::endl;
+    std::cout << "ESC - Ð’Ñ‹Ñ…Ð¾Ð´" << std::endl;
     std::cout << ">> ";
 }
 
@@ -24,7 +24,7 @@ bool User(const std::string ResultsPath, currentUser& user)
         case '1': {
             CLS();
             if (!CheckResult(user, UsersResults)) {
-                std::cout << "Ïðåäûäóùèå ðåçóëüòàòû íå íàéäåíû!\n\n";
+                std::cout << "ÐŸÑ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰Ð¸Ðµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ñ‹!\n\n";
                 PAUSE();
             }
             CLS();
@@ -40,7 +40,7 @@ bool User(const std::string ResultsPath, currentUser& user)
             break;
         }
         default: {
-            std::cout << "Îøèáêà ââîäà" << std::endl;
+            std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°" << std::endl;
             PAUSE();
             CLS();
             break;
@@ -64,15 +64,15 @@ bool CheckResult(currentUser& user, std::vector<Results>& usersResults)
     } else {
         bool check = true;
         while (check) {
-            std::cout << "Ðåçóëüòàòû ïîëüçîâàòåëÿ: " << user.username
-                      << "\n Áàëëû"
+            std::cout << "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ: " << user.username
+                      << "\n Ð‘Ð°Ð»Ð»Ñ‹"
                       << "\t | \t"
-                      << "Âðåìÿ ïðîõîæäåíèÿ\n";
+                      << "Ð’Ñ€ÐµÐ¼Ñ Ð¿Ñ€Ð¾Ñ…Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ\n";
             for (int i = 0; i < CurrentUser.size(); ++i) {
                 std::cout << CurrentUser[i].point << "\t | \t"
                           << CurrentUser[i].time << "\n";
             }
-            std::cout << "\n\n 1.Âåðíóòüñÿ â ìåíþ\n"
+            std::cout << "\n\n 1.Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð² Ð¼ÐµÐ½ÑŽ\n"
                       << "<<";
             switch (chooseKey = _getch()) {
             case '1': {
@@ -81,7 +81,7 @@ bool CheckResult(currentUser& user, std::vector<Results>& usersResults)
                 break;
             }
             default: {
-                std::cout << "Îøèáêà ââîäà" << std::endl;
+                std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°" << std::endl;
                 PAUSE();
                 CLS();
                 break;
