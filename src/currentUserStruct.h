@@ -4,8 +4,8 @@
 #include <string>
 
 struct currentUser {
-	std::string username;
-	int accountType;
+    std::string username;
+    int accountType;
 };
 
 #endif

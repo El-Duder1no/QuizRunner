@@ -4,9 +4,9 @@
 #include <string>
 
 struct Results {
-	std::string username;
-	std::string point;
-	std::string time;
+    std::string username;
+    std::string point;
+    std::string time;
 };
 
 #endif

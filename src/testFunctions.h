@@ -1,8 +1,8 @@
 #ifndef TEST_FUNCTIONS
 #define TEST_FUNCTIONS
 #include "Questions.h"
-#include "resultStruct.h"
 #include "parseForTXT.h"
+#include "resultStruct.h"
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
