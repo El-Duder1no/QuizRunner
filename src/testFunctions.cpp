@@ -41,3 +41,16 @@ bool CheckPath(std::fstream& questions, std::vector<Questions>& QuestionForTest)
         return true;
     }
 }
+
+bool CheckPath(std::ifstream& results, std::vector<Results>& userResult)
+{
+    if (!results) {
+        return false;
+    } else {
+        results.seekg(std::ios_base::beg);
+        while (!results.eof()) {
+    //parse 
+        }
+        return true;
+    }
+}
