@@ -300,11 +300,11 @@ void AddQuestions(
 }
 
 void RemoveQuestion(
-        std::vector<Questions>& textBuf, std::vector<Questions>& textOut)
+        std::vector<Questions>& text, std::vector<Questions>& textOut)
 {
-    int i = 0, chooseKey, z = textBuf.size();
-    while (i < z) {
-        PrintQuestions(textBuf, i);
+	int i = 0, chooseKey;
+    while (i < text.size()) {
+        PrintQuestions(text, i);
         std::cout << std::endl
                   << "1.Удалить вопрос из теста" << std::endl
                   << "2.Следующий вопрос" << std::endl
@@ -313,9 +313,8 @@ void RemoveQuestion(
 
         switch (chooseKey = _getch()) {
         case '1': {
-            textOut.push_back(textBuf[i]);
-            textBuf.erase(textBuf.begin() + i);
-            ++i;
+            textOut.push_back(text[i]);
+            text.erase(text.begin() + i);
             CLS();
             break;
         }
