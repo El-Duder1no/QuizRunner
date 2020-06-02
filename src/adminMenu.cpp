@@ -2,10 +2,10 @@
 
 void AdminMenu()
 {
-    std::cout << "Âûáåğèòå ïóíêò ìåíş:" << std::endl;
-    std::cout << "1 - Ñîçäàíèå òåñòà" << std::endl;
-    std::cout << "2 - Ğåäàêòèğîâàíèå òåñòà" << std::endl;
-    std::cout << "ESC - Âûõîä" << std::endl;
+    std::cout << "Ğ’Ñ‹Ğ±ĞµÑ€Ğ¸Ñ‚Ğµ Ğ¿ÑƒĞ½ĞºÑ‚ Ğ¼ĞµĞ½Ñ:" << std::endl;
+    std::cout << "1 - Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ğµ Ñ‚ĞµÑÑ‚Ğ°" << std::endl;
+    std::cout << "2 - Ğ ĞµĞ´Ğ°ĞºÑ‚Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ¸Ğµ Ñ‚ĞµÑÑ‚Ğ°" << std::endl;
+    std::cout << "ESC - Ğ’Ñ‹Ñ…Ğ¾Ğ´" << std::endl;
     std::cout << ">> ";
 }
 
@@ -59,7 +59,7 @@ bool Administrator(
                 break;
             }
             default: {
-                std::cout << "Îøèáêà ââîäà" << std::endl;
+                std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -85,9 +85,9 @@ void CreateTest(
             AddQuestions(text, textBuf, textOut);
             return;
         } else {
-            std::cout << "Ó âàñ óæå ñîçäàí òåñò, âû ìîæåòå:" << std::endl
-                      << "1. Óäàëèòü ñóùåñòâóşùèé òåñò" << std::endl
-                      << "2. Âåğíóòüñÿ â ìåíş" << std::endl
+            std::cout << "Ğ£ Ğ²Ğ°Ñ ÑƒĞ¶Ğµ ÑĞ¾Ğ·Ğ´Ğ°Ğ½ Ñ‚ĞµÑÑ‚, Ğ²Ñ‹ Ğ¼Ğ¾Ğ¶ĞµÑ‚Ğµ:" << std::endl
+                      << "1. Ğ£Ğ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ ÑÑƒÑ‰ĞµÑÑ‚Ğ²ÑƒÑÑ‰Ğ¸Ğ¹ Ñ‚ĞµÑÑ‚" << std::endl
+                      << "2. Ğ’ĞµÑ€Ğ½ÑƒÑ‚ÑŒÑÑ Ğ² Ğ¼ĞµĞ½Ñ" << std::endl
                       << "<< ";
 
             switch (chooseKey = _getch()) {
@@ -103,7 +103,7 @@ void CreateTest(
                 break;
             }
             default: {
-                std::cout << "ÎØÈÁÊÀ ÂÂÎÄÀ" << std::endl;
+                std::cout << "ĞĞ¨Ğ˜Ğ‘ĞšĞ Ğ’Ğ’ĞĞ”Ğ" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -121,9 +121,9 @@ void EditingTest(
     char chooseKey;
     while (Editing) {
         if (!textBuf.empty()) {
-            std::cout << "1.Óäàëèòü íåêîòîğûå âîïğîñû èç òåñòà" << std::endl
-                      << "2.Äîáàâèòü âîïğîñû â ñóùåñòâóáùèé òåñò" << std::endl
-                      << "3.Âåğíóòüñÿ â ìåíş." << std::endl
+            std::cout << "1.Ğ£Ğ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ Ğ½ĞµĞºĞ¾Ñ‚Ğ¾Ñ€Ñ‹Ğµ Ğ²Ğ¾Ğ¿Ñ€Ğ¾ÑÑ‹ Ğ¸Ğ· Ñ‚ĞµÑÑ‚Ğ°" << std::endl
+                      << "2.Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ¸Ñ‚ÑŒ Ğ²Ğ¾Ğ¿Ñ€Ğ¾ÑÑ‹ Ğ² ÑÑƒÑ‰ĞµÑÑ‚Ğ²ÑƒĞ±Ñ‰Ğ¸Ğ¹ Ñ‚ĞµÑÑ‚" << std::endl
+                      << "3.Ğ’ĞµÑ€Ğ½ÑƒÑ‚ÑŒÑÑ Ğ² Ğ¼ĞµĞ½Ñ." << std::endl
                       << "<< ";
             switch (chooseKey = _getch()) {
             case '1': {
@@ -143,15 +143,15 @@ void EditingTest(
                 break;
             }
             default: {
-                std::cout << "ÎØÈÁÊÀ ÂÂÎÄÀ" << std::endl;
+                std::cout << "ĞĞ¨Ğ˜Ğ‘ĞšĞ Ğ’Ğ’ĞĞ”Ğ" << std::endl;
                 PAUSE();
                 CLS();
                 break;
             }
             }
         } else {
-            std::cout << "Íåò ñóùåñòâóşùåãî òåñòà!" << std::endl
-                      << "1. Âåğíóòüñÿ â ìåíş" << std::endl
+            std::cout << "ĞĞµÑ‚ ÑÑƒÑ‰ĞµÑÑ‚Ğ²ÑƒÑÑ‰ĞµĞ³Ğ¾ Ñ‚ĞµÑÑ‚Ğ°!" << std::endl
+                      << "1. Ğ’ĞµÑ€Ğ½ÑƒÑ‚ÑŒÑÑ Ğ² Ğ¼ĞµĞ½Ñ" << std::endl
                       << "<< ";
 
             switch (chooseKey = _getch()) {
@@ -161,7 +161,7 @@ void EditingTest(
                 break;
             }
             default: {
-                std::cout << "Îøèáêà ââîäà" << std::endl;
+                std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -173,13 +173,13 @@ void EditingTest(
 
 void PrintQuestions(std::vector<Questions>& questions, int i)
 {
-    std::cout << "Íîìåğ âîïğîñà: " << i + 1 << " | " << questions.size()
+    std::cout << "ĞĞ¾Ğ¼ĞµÑ€ Ğ²Ğ¾Ğ¿Ñ€Ğ¾ÑĞ°: " << i + 1 << " | " << questions.size()
               << std::endl;
-    std::cout << "Âîïğîñ: " << questions[i].question << std::endl;
+    std::cout << "Ğ’Ğ¾Ğ¿Ñ€Ğ¾Ñ: " << questions[i].question << std::endl;
     for (int j = 0; j < questions[i].RightAnswers.size(); ++j) {
-        std::cout << "Âàğèàíòû îòâåòîâ: " << questions[i].answers[j]
+        std::cout << "Ğ’Ğ°Ñ€Ğ¸Ğ°Ğ½Ñ‚Ñ‹ Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ¾Ğ²: " << questions[i].answers[j]
                   << std::endl;
-        std::cout << "Ïğàâèëüíûå îòâåòû: " << questions[i].RightAnswers[j]
+        std::cout << "ĞŸÑ€Ğ°Ğ²Ğ¸Ğ»ÑŒĞ½Ñ‹Ğµ Ğ¾Ñ‚Ğ²ĞµÑ‚Ñ‹: " << questions[i].RightAnswers[j]
                   << std::endl;
     }
 }
@@ -195,9 +195,9 @@ void AddQuestions(
     while (i < text.size()) {
         PrintQuestions(text, i);
         std::cout << std::endl
-                  << "1.Äîáàâèòü âîïğîñ â òåñò" << std::endl
-                  << "2.Ñëåäóşùèé âîïğîñ" << std::endl
-                  << "3.Âåğíóòüñÿ â ìåíş." << std::endl
+                  << "1.Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ¸Ñ‚ÑŒ Ğ²Ğ¾Ğ¿Ñ€Ğ¾Ñ Ğ² Ñ‚ĞµÑÑ‚" << std::endl
+                  << "2.Ğ¡Ğ»ĞµĞ´ÑƒÑÑ‰Ğ¸Ğ¹ Ğ²Ğ¾Ğ¿Ñ€Ğ¾Ñ" << std::endl
+                  << "3.Ğ’ĞµÑ€Ğ½ÑƒÑ‚ÑŒÑÑ Ğ² Ğ¼ĞµĞ½Ñ." << std::endl
                   << "<< ";
 
         switch (chooseKey = _getch()) {
@@ -215,7 +215,7 @@ void AddQuestions(
         }
 
         default: {
-            std::cout << "ÎØÈÁÊÀ ÂÂÎÄÀ" << std::endl;
+            std::cout << "ĞĞ¨Ğ˜Ğ‘ĞšĞ Ğ’Ğ’ĞĞ”Ğ" << std::endl;
             PAUSE();
             CLS();
             break;
@@ -268,9 +268,9 @@ void AddQuestions(
             PrintQuestions(textOut, i);
 
             std::cout << std::endl
-                      << "1.Äîáàâèòü âîïğîñ â òåñò" << std::endl
-                      << "2.Ñëåäóşùèé âîïğîñ" << std::endl
-                      << "3.Âåğíóòüñÿ íàçàä" << std::endl
+                      << "1.Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ¸Ñ‚ÑŒ Ğ²Ğ¾Ğ¿Ñ€Ğ¾Ñ Ğ² Ñ‚ĞµÑÑ‚" << std::endl
+                      << "2.Ğ¡Ğ»ĞµĞ´ÑƒÑÑ‰Ğ¸Ğ¹ Ğ²Ğ¾Ğ¿Ñ€Ğ¾Ñ" << std::endl
+                      << "3.Ğ’ĞµÑ€Ğ½ÑƒÑ‚ÑŒÑÑ Ğ½Ğ°Ğ·Ğ°Ğ´" << std::endl
                       << "<< ";
 
             switch (chooseKey = _getch()) {
@@ -286,7 +286,7 @@ void AddQuestions(
                 break;
             }
             default: {
-                std::cout << "ÎØÈÁÊÀ ÂÂÎÄÀ" << std::endl;
+                std::cout << "ĞĞ¨Ğ˜Ğ‘ĞšĞ Ğ’Ğ’ĞĞ”Ğ" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -298,7 +298,7 @@ void AddQuestions(
             }
         }
     } else {
-        std::cout << "Â òåñò äîáàâëåíû âñå âîïğîñû!\n";
+        std::cout << "Ğ’ Ñ‚ĞµÑÑ‚ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½Ñ‹ Ğ²ÑĞµ Ğ²Ğ¾Ğ¿Ñ€Ğ¾ÑÑ‹!\n";
         PAUSE();
         CLS();
     }
@@ -312,9 +312,9 @@ void RemoveQuestion(
     while (i < text.size()) {
         PrintQuestions(text, i);
         std::cout << std::endl
-                  << "1.Óäàëèòü âîïğîñ èç òåñòà" << std::endl
-                  << "2.Ñëåäóşùèé âîïğîñ" << std::endl
-                  << "3.Âåğíóòüñÿ â ìåíş." << std::endl
+                  << "1.Ğ£Ğ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ Ğ²Ğ¾Ğ¿Ñ€Ğ¾Ñ Ğ¸Ğ· Ñ‚ĞµÑÑ‚Ğ°" << std::endl
+                  << "2.Ğ¡Ğ»ĞµĞ´ÑƒÑÑ‰Ğ¸Ğ¹ Ğ²Ğ¾Ğ¿Ñ€Ğ¾Ñ" << std::endl
+                  << "3.Ğ’ĞµÑ€Ğ½ÑƒÑ‚ÑŒÑÑ Ğ² Ğ¼ĞµĞ½Ñ." << std::endl
                   << "<< ";
 
         switch (chooseKey = _getch()) {
@@ -331,7 +331,7 @@ void RemoveQuestion(
         }
 
         default: {
-            std::cout << "Îøèáêà ââîäà" << std::endl;
+            std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°" << std::endl;
             PAUSE();
             CLS();
             break;
