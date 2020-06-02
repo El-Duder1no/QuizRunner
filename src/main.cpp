@@ -1,18 +1,15 @@
 #include "Questions.h"
-#include "accountStruct.h"
-#include "accountsParse.h"
 #include "adminMenu.h"
 #include "binSearch.h"
-#include "cls.h"
 #include "currentUserStruct.h"
-#include "enterAccount.h"
-#include "loginCheck.h"
 #include "parseString.h"
 #include "passCheck.h"
 #include "pause.h"
 #include "registration.h"
 #include "resultStruct.h"
+#include "screenFunctions.h"
 #include "selectSort.h"
+#include "signInOut.h"
 #include "userMenu.h"
 
 #include <conio.h>
@@ -22,129 +19,32 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
+using namespace std;
+
+#define ACCOUNTS_PATH "..\\res\\Accounts.txt"
 #define TEST_PATH "..\\res\\Test.txt"
 #define QUESTIONS_PATH "..\\res\\Questions.txt"
 #define NOT_IN_TEST_PATH "..\\res\\NotInTheTest.txt"
 #define RESULTS_PATH "..\\res\\Results.txt"
-using namespace std;
-
-// ШАПКИ МЕНЮ
-void registrationMenu();
 
 int main()
 {
     setlocale(LC_ALL, "RUS");
 
-    vector<Account> accounts;
-
     ifstream inputText;
     vector<Questions> QuestionsBank;
 
-    char chooseKey;
-    bool registrationState = true;
+    currentUser currUser;
 
-    string currentUser = "";
+    signInOut(ACCOUNTS_PATH, currUser);
 
-    wstring accountPath = L"..\\res\\Accounts.txt";
-
-    registrationMenu();
-    while (registrationState) {
-        switch (chooseKey = _getch()) {
-        // ВХОД
-        case '1': {
-            vector<Account> accounts;
-            accountsParse(accounts, accountPath);
-            int* index = new int[accounts.size()];
-            for (int i = 0; i < accounts.size(); i++) {
-                index[i] = i;
-            }
-            SelectSort(accounts, index);
-
-            bool temp = enterAccount(accounts, index, currentUser);
-
-            switch (temp) {
-            case false: {
-                system("CLS");
-                cout << "Неправильный логин или пароль" << endl;
-                system("PAUSE");
-                registrationMenu();
-                break;
-            }
-            case true: {
-                system("CLS");
-                cout << "Вход в личный кабинет" << endl;
-                registrationState = false;
-                break;
-            }
-            }
-            delete[] index;
-            break;
-        }
-        // РЕГИСТРАЦИЯ
-        case '2': {
-            string username, password;
-            vector<Account> accounts;
-
-            int temp = registration(accounts, username, password, accountPath);
-            if (temp == 2) {
-                CLS();
-                cout << "Введен неправильный логин или пароль" << endl;
-                PAUSE();
-                registrationMenu();
-                break;
-            }
-            if (temp == 0) {
-                CLS();
-                cout << "Такой аккаунт уже существует" << endl;
-                PAUSE();
-                registrationMenu();
-                break;
-            }
-            if (temp == 1) {
-                cout << "Регистрация прошла успешно" << endl;
-                currentUser = username;
-
-                ofstream file(accountPath, ios_base::app | ios_base::ate);
-
-                if (!file.is_open())
-                    cerr << endl << "Файл не открыт!" << endl;
-
-                for (int i = 0; i < password.size(); i++) {
-                    password[i] += 3;
-                }
-                file << username << " " << password << " 0" << endl;
-
-                file.close();
-                registrationState = false;
-                break;
-            }
-        }
-        // ВЫХОД ИЗ ПРОГРАММЫ
-        case 27: {
-            registrationState = false;
-            break;
-        }
-        default: {
-            cout << "ОШИБКА ВВОДА" << endl;
-            break;
-        }
-        }
-    }
     if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
         cout << "Fail\n";
     }
-    if (!User(RESULTS_PATH, g)) {
+    if (!User(RESULTS_PATH, currUser)) {
         cout << "Fail\n";
     }
+
     PAUSE();
     return 0;
-}
-
-void registrationMenu()
-{
-    cout << "Выберите пункт меню:" << endl;
-    cout << "1 - Вход в учетную запись" << endl;
-    cout << "2 - Регистрация" << endl;
-    cout << "ESC - выход" << endl;
-    cout << ">> ";
 }

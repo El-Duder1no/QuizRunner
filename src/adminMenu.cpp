@@ -1,4 +1,4 @@
-#include "adminMenu.h"
+﻿#include "adminMenu.h"
 
 void AdminMenu()
 {
@@ -56,6 +56,7 @@ bool Administrator(
             }
             case 27: {
                 adminMenuState = false;
+                CLS();
                 break;
             }
             default: {

@@ -2,10 +2,9 @@
 
 #define userMenu
 #include "accountStruct.h"
-#include "cls.h"
 #include "currentUserStruct.h"
 #include "parseString.h"
-#include "pause.h"
+#include "screenFunctions.h"
 #include "resultStruct.h"
 #include "testFunctions.h"
 #include <conio.h>
