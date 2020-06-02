@@ -68,6 +68,7 @@ bool Administrator(
         }
         return true;
     }
+    NotInTest.close();
     Test.close();
     inputText.close();
 }
