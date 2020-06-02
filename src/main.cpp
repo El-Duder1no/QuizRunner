@@ -32,14 +32,14 @@ int main()
     ifstream inputText;
     vector<Questions> QuestionsBank;
 
-    string currentUser = "";
+    currentUser currUser;
 
-    signInOut(ACCOUNTS_PATH, currentUser);
+    signInOut(ACCOUNTS_PATH, currUser);
 
     if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
         cout << "Fail\n";
     }
-    if (!User(RESULTS_PATH, g)) {
+    if (!User(RESULTS_PATH, currUser)) {
         cout << "Fail\n";
     }
 
