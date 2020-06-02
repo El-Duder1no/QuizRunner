@@ -5,6 +5,7 @@
 
 #include "accountStruct.h"
 #include "binSearch.h"
+#include "currentUserStruct.h"
 #include "parseString.h"
 #include "screenFunctions.h"
 #include "selectSort.h"
@@ -23,7 +24,7 @@ bool isPassCorrect(std::string password);
 
 void accountsParse(std::vector<Account>& a, const std::string accountPath);
 bool enterAccount(
-        std::string& User,
+	    currentUser& User,
         std::string password,
         std::string username,
         const std::string accountPath);
@@ -33,6 +34,6 @@ int registration(
         const std::string password,
         const std::string accountPath);
 
-void signInOut(const std::string accountPath, std::string& User);
+void signInOut(const std::string accountPath, currentUser& User);
 
 #endif

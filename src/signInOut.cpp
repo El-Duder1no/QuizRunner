@@ -97,7 +97,7 @@ void accountsParse(std::vector<Account>& a, const std::string accountPath)
 }
 
 bool enterAccount(
-        std::string& User,
+	    currentUser& User,
         std::string password,
         std::string username,
         const std::string accountPath)
@@ -118,7 +118,8 @@ bool enterAccount(
     int temp = BinSearch(accounts, index, username);
 
     if (temp != -1 && accounts[index[temp]].password == password) {
-        User = username;
+        User.username = accounts[index[temp]].username;
+		User.accountType = accounts[index[temp]].accountType;
         delete[] index;
         return true;
     } else {
@@ -154,7 +155,7 @@ int registration(
     }
 }
 
-void signInOut(const std::string accountPath, std::string& User)
+void signInOut(const std::string accountPath, currentUser& User)
 {
     char chooseKey;
     bool registrationState = true;
@@ -214,7 +215,8 @@ void signInOut(const std::string accountPath, std::string& User)
             }
             case 1: {
                 std::cout << "Регистрация прошла успешно\n";
-                User = username;
+				User.username = username;
+				User.accountType = 0;
 
                 std::ofstream file(
                         accountPath, std::ios_base::app | std::ios_base::ate);
