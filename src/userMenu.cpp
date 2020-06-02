@@ -24,7 +24,10 @@ bool User(const std::string ResultsPath, currentUser& user)
             switch (chooseKey = _getch()) {
             case '1': {
             	CLS();
-				CheckResult(user, UsersResults);
+				if(!CheckResult(user, UsersResults)){
+					std::cout<<"Предыдущие результаты не найдены!\n\n";
+					PAUSE();
+				}
                 CLS();
                 break;
             }
@@ -50,12 +53,19 @@ bool User(const std::string ResultsPath, currentUser& user)
 
 bool CheckResult(currentUser& user, std::vector<Results>& usersResults)
 {
+	int chooseKey;
 	std::vector<Results> CurrentUser;
 	for(int i = 0; i < usersResults.size(); ++i){
 		if(usersResults[i].username == user.username){
 			CurrentUser.push_back(usersResults[i]);
 		}
 	}
+	if(CurrentUser.empty())
+	{
+		return false;
+	}else{
+		bool check = true;
+				while(check){	
 	std::cout << "Результаты пользователя: " << user.username
 	<< "\n Баллы" << "\t | \t" << "Время прохождения\n";
 	for(int i = 0; i < CurrentUser.size(); ++i)
@@ -63,6 +73,21 @@ bool CheckResult(currentUser& user, std::vector<Results>& usersResults)
 		std::cout<< CurrentUser[i].point << "\t | \t" << CurrentUser[i].time 
 		<< "\n";
 			}
-			PAUSE();
+			std::cout<<"\n\n 1.Вернуться в меню\n"
+			<< "<<";
+switch (chooseKey = _getch()) {
+            case '1': {
                 CLS();
+                check = false;
+                break;
+            }
+            default: {
+                std::cout << "Ошибка ввода" << std::endl;
+                PAUSE();
+                CLS();
+                break;
+            }}
+        }
+        return true;
+}
 }
