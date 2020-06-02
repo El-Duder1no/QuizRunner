@@ -8,19 +8,24 @@ void UserMenu()
     std::cout << ">> ";
 }
 
-bool User()
+bool User(const std::string ResultsPath)
 {
+	std::ifstream inputText(ResultsPath.c_str());
+	std::vector<Results> UserResults;
     bool userMenuState = true;
     int chooseKey;
         while (userMenuState) {
             UserMenu();
             switch (chooseKey = _getch()) {
             case '1': {
+            	//CheckResult()
                 CLS();
                 break;
             }
             case '2': {
+            	//TestStart
                 CLS();
+                userMenuState = false;
                 break;
             }
             case 27: {
