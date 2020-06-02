@@ -262,7 +262,10 @@ void AddQuestions(
         std::vector<Questions>& textBuf, std::vector<Questions>& textOut)
 {
     int i = 0, chooseKey;
-    while (i < textOut.size()) {
+    if(!textOut.empty())
+    {
+	
+	while (i < textOut.size()) {
         PrintQuestions(textOut, i);
 
         std::cout << std::endl
@@ -275,7 +278,6 @@ void AddQuestions(
         case '1': {
             textBuf.push_back(textOut[i]);
             textOut.erase(textOut.begin() + i);
-            ++i;
             CLS();
             break;
         }
@@ -296,6 +298,13 @@ void AddQuestions(
         }
         }
     }
+}
+else{
+	std::cout<< "В тест добавлены все вопросы!\n";
+	PAUSE();
+            CLS();
+            
+}
     return;
 }
 
