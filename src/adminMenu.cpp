@@ -263,56 +263,52 @@ void AddQuestions(
         std::vector<Questions>& textBuf, std::vector<Questions>& textOut)
 {
     int i = 0, chooseKey;
-    if(!textOut.empty())
-    {
-	
-	while (i < textOut.size()) {
-        PrintQuestions(textOut, i);
+    if (!textOut.empty()) {
+        while (i < textOut.size()) {
+            PrintQuestions(textOut, i);
 
-        std::cout << std::endl
-                  << "1.Добавить вопрос в тест" << std::endl
-                  << "2.Следующий вопрос" << std::endl
-                  << "3.Вернуться назад" << std::endl
-                  << "<< ";
+            std::cout << std::endl
+                      << "1.Добавить вопрос в тест" << std::endl
+                      << "2.Следующий вопрос" << std::endl
+                      << "3.Вернуться назад" << std::endl
+                      << "<< ";
 
-        switch (chooseKey = _getch()) {
-        case '1': {
-            textBuf.push_back(textOut[i]);
-            textOut.erase(textOut.begin() + i);
-            CLS();
-            break;
+            switch (chooseKey = _getch()) {
+            case '1': {
+                textBuf.push_back(textOut[i]);
+                textOut.erase(textOut.begin() + i);
+                CLS();
+                break;
+            }
+            case '2': {
+                ++i;
+                CLS();
+                break;
+            }
+            default: {
+                std::cout << "ОШИБКА ВВОДА" << std::endl;
+                PAUSE();
+                CLS();
+                break;
+            }
+            case '3': {
+                CLS();
+                return;
+            }
+            }
         }
-        case '2': {
-            ++i;
-            CLS();
-            break;
-        }
-        default: {
-            std::cout << "ОШИБКА ВВОДА" << std::endl;
-            PAUSE();
-            CLS();
-            break;
-        }
-        case '3': {
-            CLS();
-            return;
-        }
-        }
+    } else {
+        std::cout << "В тест добавлены все вопросы!\n";
+        PAUSE();
+        CLS();
     }
-}
-else{
-	std::cout<< "В тест добавлены все вопросы!\n";
-	PAUSE();
-            CLS();
-            
-}
     return;
 }
 
 void RemoveQuestion(
         std::vector<Questions>& text, std::vector<Questions>& textOut)
 {
-	int i = 0, chooseKey;
+    int i = 0, chooseKey;
     while (i < text.size()) {
         PrintQuestions(text, i);
         std::cout << std::endl
