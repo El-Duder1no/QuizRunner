@@ -2,9 +2,10 @@
 
 void SelectSort(std::vector<Account>& a, int* ind)
 {
-    for (int i = 0; i < a.size() - 1; i++) {
+	int size = a.size();
+    for (int i = 0; i < size - 1; i++) {
         int min = i;
-        for (int j = i + 1; j < a.size(); j++) {
+        for (int j = i + 1; j < size; j++) {
             if (a.at(ind[j]).username < a.at(ind[min]).username) {
                 min = j;
             }

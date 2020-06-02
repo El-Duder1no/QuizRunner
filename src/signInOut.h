@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #ifndef SIGN_IN_OUT_H
 #define SIGN_IN_OUT_H
 
@@ -15,7 +14,7 @@
 #include <ctype.h>
 #include <fstream>
 #include <iostream>
-#include <string>
+#include <string.h>
 #include <vector>
 
 void registrationMenu();
