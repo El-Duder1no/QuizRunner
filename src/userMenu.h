@@ -1,6 +1,6 @@
-#ifndef adminMenu
+#ifndef userMenu
 
-#define adminMenu
+#define userMenu
 #include <iostream>
 #include <sstream>
 #include <stdlib.h>
@@ -10,8 +10,8 @@
 #include <fstream>
 #include "cls.h"
 #include "pause.h"
+#include "resultStruct.h"
 
-
+bool User(const std::string ResultsPath);
 void UserMenu();
-bool User();
 #endif
