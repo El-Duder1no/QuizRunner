@@ -6,7 +6,6 @@
 #include "selectSort.h"
 #include "signInOut.h"
 
-#include <Windows.h>
 #include <conio.h>
 #include <fstream>
 #include <iostream>
@@ -25,8 +24,6 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "RUS");
-    SetConsoleOutputCP(1251);
-    SetConsoleCP(1251);
 
     ifstream inputText;
     vector<Questions> QuestionsBank;
