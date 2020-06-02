@@ -11,8 +11,8 @@ void UserMenu()
 bool User(const std::string ResultsPath, currentUser& user)
 {
 	std::ifstream results(ResultsPath.c_str());
-	std::vector<Results> UserResults;
-    if(!CheckPath(results, UserResults))
+	std::vector<Results> UsersResults;
+    if(!CheckPath(results, UsersResults))
     {
     	std::cout<<"File open error";
     	return false;
@@ -23,7 +23,8 @@ bool User(const std::string ResultsPath, currentUser& user)
             UserMenu();
             switch (chooseKey = _getch()) {
             case '1': {
-            	//CheckResult()
+            	CLS();
+				CheckResult(user, UsersResults);
                 CLS();
                 break;
             }
@@ -47,7 +48,21 @@ bool User(const std::string ResultsPath, currentUser& user)
         return true;
 }
 
-bool CheckResult()
+bool CheckResult(currentUser& user, std::vector<Results>& usersResults)
 {
+	std::vector<Results> CurrentUser;
+	for(int i = 0; i < usersResults.size(); ++i){
+		if(usersResults[i].username == user.username){
+			CurrentUser.push_back(usersResults[i]);
+		}
+	}
+	std::cout << "Результаты пользователя: " << user.username
+	<< "\n Баллы" << "\t | \t" << "Время прохождения\n";
+	for(int i = 0; i < CurrentUser.size(); ++i)
+	{
+		std::cout<< CurrentUser[i].point << "\t | \t" << CurrentUser[i].time 
+		<< "\n";
+			}
+			PAUSE();
+                CLS();
 }
-
