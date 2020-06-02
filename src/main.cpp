@@ -3,6 +3,9 @@
 #include "binSearch.h"
 #include "currentUserStruct.h"
 #include "parseString.h"
+#include "passCheck.h"
+#include "pause.h"
+#include "registration.h"
 #include "resultStruct.h"
 #include "screenFunctions.h"
 #include "selectSort.h"
@@ -16,7 +19,6 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
-
 using namespace std;
 
 #define ACCOUNTS_PATH "..\\res\\Accounts.txt"

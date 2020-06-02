@@ -56,7 +56,7 @@ bool Administrator(
             }
             case 27: {
                 adminMenuState = false;
-				CLS();
+                CLS();
                 break;
             }
             default: {

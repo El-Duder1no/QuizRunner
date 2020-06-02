@@ -1,6 +1,7 @@
-﻿#include "signInOut.h"
+? #include "signInOut.h"
 
-void registrationMenu()
+        void
+        registrationMenu()
 {
     std::cout << "Выберите пункт меню:\n";
     std::cout << "1 - Вход в учетную запись\n";
@@ -97,7 +98,7 @@ void accountsParse(std::vector<Account>& a, const std::string accountPath)
 }
 
 bool enterAccount(
-	    currentUser& User,
+        currentUser& User,
         std::string password,
         std::string username,
         const std::string accountPath)
@@ -119,7 +120,7 @@ bool enterAccount(
 
     if (temp != -1 && accounts[index[temp]].password == password) {
         User.username = accounts[index[temp]].username;
-		User.accountType = accounts[index[temp]].accountType;
+        User.accountType = accounts[index[temp]].accountType;
         delete[] index;
         return true;
     } else {
@@ -215,8 +216,8 @@ void signInOut(const std::string accountPath, currentUser& User)
             }
             case 1: {
                 std::cout << "Регистрация прошла успешно\n";
-				User.username = username;
-				User.accountType = 0;
+                User.username = username;
+                User.accountType = 0;
 
                 std::ofstream file(
                         accountPath, std::ios_base::app | std::ios_base::ate);

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef SIGN_IN_OUT_H
 #define SIGN_IN_OUT_H
 
