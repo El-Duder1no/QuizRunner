@@ -4,15 +4,17 @@
 #include "adminMenu.h"
 #include "binSearch.h"
 #include "cls.h"
+#include "currentUserStruct.h"
 #include "enterAccount.h"
 #include "loginCheck.h"
 #include "parseString.h"
 #include "passCheck.h"
 #include "pause.h"
 #include "registration.h"
+#include "resultStruct.h"
 #include "selectSort.h"
+#include "userMenu.h"
 
-#include <Windows.h>
 #include <conio.h>
 #include <fstream>
 #include <iostream>
@@ -23,7 +25,7 @@
 #define TEST_PATH "..\\res\\Test.txt"
 #define QUESTIONS_PATH "..\\res\\Questions.txt"
 #define NOT_IN_TEST_PATH "..\\res\\NotInTheTest.txt"
-
+#define RESULTS_PATH "..\\res\\Results.txt"
 using namespace std;
 
 // ШАПКИ МЕНЮ
@@ -32,8 +34,6 @@ void registrationMenu();
 int main()
 {
     setlocale(LC_ALL, "RUS");
-    SetConsoleOutputCP(1251);
-    SetConsoleCP(1251);
 
     vector<Account> accounts;
 
@@ -131,7 +131,10 @@ int main()
         }
     }
     if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
-        cout << " Fail";
+        cout << "Fail\n";
+    }
+    if (!User(RESULTS_PATH, g)) {
+        cout << "Fail\n";
     }
     PAUSE();
     return 0;
