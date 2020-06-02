@@ -22,12 +22,15 @@ bool isLoginCorrect(std::string username);
 bool isPassCorrect(std::string password);
 
 void accountsParse(std::vector<Account>& a, const std::string accountPath);
-bool enterAccount(std::vector<Account>& a, int* ind, std::string& User);
+bool enterAccount(
+        std::string& User,
+        std::string password,
+        std::string username,
+        const std::string accountPath);
 
 int registration(
-        std::vector<Account>& a,
-        std::string& username,
-        std::string& password,
+        const std::string username,
+        const std::string password,
         const std::string accountPath);
 
 void signInOut(const std::string accountPath, std::string& User);
