@@ -8,11 +8,16 @@ void UserMenu()
     std::cout << ">> ";
 }
 
-bool User(const std::string ResultsPath)
+bool User(const std::string ResultsPath, currentUser& user)
 {
-	std::ifstream inputText(ResultsPath.c_str());
+	std::ifstream results(ResultsPath.c_str());
 	std::vector<Results> UserResults;
-    bool userMenuState = true;
+    if(!CheckPath(results, UserResults))
+    {
+    	std::cout<<"File open error";
+    	return false;
+	}
+	bool userMenuState = true;
     int chooseKey;
         while (userMenuState) {
             UserMenu();
@@ -25,7 +30,6 @@ bool User(const std::string ResultsPath)
             case '2': {
             	//TestStart
                 CLS();
-                userMenuState = false;
                 break;
             }
             case 27: {
@@ -42,3 +46,8 @@ bool User(const std::string ResultsPath)
         }
         return true;
 }
+
+bool CheckResult()
+{
+}
+
