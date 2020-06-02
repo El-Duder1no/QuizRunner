@@ -2,10 +2,10 @@
 
 void AdminMenu()
 {
-    std::cout << "Âûáåðèòå ïóíêò ìåíþ:" << std::endl;
-    std::cout << "1 - Ñîçäàíèå òåñòà" << std::endl;
-    std::cout << "2 - Ðåäàêòèðîâàíèå òåñòà" << std::endl;
-    std::cout << "ESC - Âûõîä" << std::endl;
+    std::cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¿ÑƒÐ½ÐºÑ‚ Ð¼ÐµÐ½ÑŽ:" << std::endl;
+    std::cout << "1 - Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ñ‚ÐµÑÑ‚Ð°" << std::endl;
+    std::cout << "2 - Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ñ‚ÐµÑÑ‚Ð°" << std::endl;
+    std::cout << "ESC - Ð’Ñ‹Ñ…Ð¾Ð´" << std::endl;
     std::cout << ">> ";
 }
 
@@ -59,7 +59,7 @@ bool Administrator(
                 break;
             }
             default: {
-                std::cout << "Îøèáêà ââîäà" << std::endl;
+                std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -68,6 +68,7 @@ bool Administrator(
         }
         return true;
     }
+    NotInTest.close();
     Test.close();
     inputText.close();
 }
@@ -84,9 +85,9 @@ void CreateTest(
             AddQuestions(text, textBuf, textOut);
             return;
         } else {
-            std::cout << "Ó âàñ óæå ñîçäàí òåñò, âû ìîæåòå:" << std::endl
-                      << "1. Óäàëèòü ñóùåñòâóþùèé òåñò" << std::endl
-                      << "2. Âåðíóòüñÿ â ìåíþ" << std::endl
+            std::cout << "Ð£ Ð²Ð°Ñ ÑƒÐ¶Ðµ ÑÐ¾Ð·Ð´Ð°Ð½ Ñ‚ÐµÑÑ‚, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ:" << std::endl
+                      << "1. Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹ Ñ‚ÐµÑÑ‚" << std::endl
+                      << "2. Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð² Ð¼ÐµÐ½ÑŽ" << std::endl
                       << "<< ";
 
             switch (chooseKey = _getch()) {
@@ -102,7 +103,7 @@ void CreateTest(
                 break;
             }
             default: {
-                std::cout << "ÎØÈÁÊÀ ÂÂÎÄÀ" << std::endl;
+                std::cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ Ð’Ð’ÐžÐ”Ð" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -120,9 +121,9 @@ void EditingTest(
     char chooseKey;
     while (Editing) {
         if (!textBuf.empty()) {
-            std::cout << "1.Óäàëèòü íåêîòîðûå âîïðîñû èç òåñòà" << std::endl
-                      << "2.Äîáàâèòü âîïðîñû â ñóùåñòâóáùèé òåñò" << std::endl
-                      << "3.Âåðíóòüñÿ â ìåíþ." << std::endl
+            std::cout << "1.Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð½ÐµÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð²Ð¾Ð¿Ñ€Ð¾ÑÑ‹ Ð¸Ð· Ñ‚ÐµÑÑ‚Ð°" << std::endl
+                      << "2.Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð²Ð¾Ð¿Ñ€Ð¾ÑÑ‹ Ð² ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐ±Ñ‰Ð¸Ð¹ Ñ‚ÐµÑÑ‚" << std::endl
+                      << "3.Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð² Ð¼ÐµÐ½ÑŽ." << std::endl
                       << "<< ";
             switch (chooseKey = _getch()) {
             case '1': {
@@ -142,15 +143,15 @@ void EditingTest(
                 break;
             }
             default: {
-                std::cout << "ÎØÈÁÊÀ ÂÂÎÄÀ" << std::endl;
+                std::cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ Ð’Ð’ÐžÐ”Ð" << std::endl;
                 PAUSE();
                 CLS();
                 break;
             }
             }
         } else {
-            std::cout << "Íåò ñóùåñòâóþùåãî òåñòà!" << std::endl
-                      << "1. Âåðíóòüñÿ â ìåíþ" << std::endl
+            std::cout << "ÐÐµÑ‚ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ Ñ‚ÐµÑÑ‚Ð°!" << std::endl
+                      << "1. Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð² Ð¼ÐµÐ½ÑŽ" << std::endl
                       << "<< ";
 
             switch (chooseKey = _getch()) {
@@ -160,7 +161,7 @@ void EditingTest(
                 break;
             }
             default: {
-                std::cout << "Îøèáêà ââîäà" << std::endl;
+                std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -172,13 +173,13 @@ void EditingTest(
 
 void PrintQuestions(std::vector<Questions>& questions, int i)
 {
-    std::cout << "Íîìåð âîïðîñà: " << i + 1 << " | " << questions.size()
+    std::cout << "ÐÐ¾Ð¼ÐµÑ€ Ð²Ð¾Ð¿Ñ€Ð¾ÑÐ°: " << i + 1 << " | " << questions.size()
               << std::endl;
-    std::cout << "Âîïðîñ: " << questions[i].question << std::endl;
+    std::cout << "Ð’Ð¾Ð¿Ñ€Ð¾Ñ: " << questions[i].question << std::endl;
     for (int j = 0; j < questions[i].RightAnswers.size(); ++j) {
-        std::cout << "Âàðèàíòû îòâåòîâ: " << questions[i].answers[j]
+        std::cout << "Ð’Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ð¾Ñ‚Ð²ÐµÑ‚Ð¾Ð²: " << questions[i].answers[j]
                   << std::endl;
-        std::cout << "Ïðàâèëüíûå îòâåòû: " << questions[i].RightAnswers[j]
+        std::cout << "ÐŸÑ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ñ‹Ðµ Ð¾Ñ‚Ð²ÐµÑ‚Ñ‹: " << questions[i].RightAnswers[j]
                   << std::endl;
     }
 }
@@ -194,9 +195,9 @@ void AddQuestions(
     while (i < text.size()) {
         PrintQuestions(text, i);
         std::cout << std::endl
-                  << "1.Äîáàâèòü âîïðîñ â òåñò" << std::endl
-                  << "2.Ñëåäóþùèé âîïðîñ" << std::endl
-                  << "3.Âåðíóòüñÿ â ìåíþ." << std::endl
+                  << "1.Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð²Ð¾Ð¿Ñ€Ð¾Ñ Ð² Ñ‚ÐµÑÑ‚" << std::endl
+                  << "2.Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ Ð²Ð¾Ð¿Ñ€Ð¾Ñ" << std::endl
+                  << "3.Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð² Ð¼ÐµÐ½ÑŽ." << std::endl
                   << "<< ";
 
         switch (chooseKey = _getch()) {
@@ -214,7 +215,7 @@ void AddQuestions(
         }
 
         default: {
-            std::cout << "ÎØÈÁÊÀ ÂÂÎÄÀ" << std::endl;
+            std::cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ Ð’Ð’ÐžÐ”Ð" << std::endl;
             PAUSE();
             CLS();
             break;
@@ -262,60 +263,64 @@ void AddQuestions(
         std::vector<Questions>& textBuf, std::vector<Questions>& textOut)
 {
     int i = 0, chooseKey;
-    while (i < textOut.size()) {
-        PrintQuestions(textOut, i);
+    if (!textOut.empty()) {
+        while (i < textOut.size()) {
+            PrintQuestions(textOut, i);
 
-        std::cout << std::endl
-                  << "1.Äîáàâèòü âîïðîñ â òåñò" << std::endl
-                  << "2.Ñëåäóþùèé âîïðîñ" << std::endl
-                  << "3.Âåðíóòüñÿ íàçàä" << std::endl
-                  << "<< ";
+            std::cout << std::endl
+                      << "1.Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð²Ð¾Ð¿Ñ€Ð¾Ñ Ð² Ñ‚ÐµÑÑ‚" << std::endl
+                      << "2.Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ Ð²Ð¾Ð¿Ñ€Ð¾Ñ" << std::endl
+                      << "3.Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð°Ð·Ð°Ð´" << std::endl
+                      << "<< ";
 
-        switch (chooseKey = _getch()) {
-        case '1': {
-            textBuf.push_back(textOut[i]);
-            textOut.erase(textOut.begin() + i);
-            ++i;
-            CLS();
-            break;
+            switch (chooseKey = _getch()) {
+            case '1': {
+                textBuf.push_back(textOut[i]);
+                textOut.erase(textOut.begin() + i);
+                CLS();
+                break;
+            }
+            case '2': {
+                ++i;
+                CLS();
+                break;
+            }
+            default: {
+                std::cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ Ð’Ð’ÐžÐ”Ð" << std::endl;
+                PAUSE();
+                CLS();
+                break;
+            }
+            case '3': {
+                CLS();
+                return;
+            }
+            }
         }
-        case '2': {
-            ++i;
-            CLS();
-            break;
-        }
-        default: {
-            std::cout << "ÎØÈÁÊÀ ÂÂÎÄÀ" << std::endl;
-            PAUSE();
-            CLS();
-            break;
-        }
-        case '3': {
-            CLS();
-            return;
-        }
-        }
+    } else {
+        std::cout << "Ð’ Ñ‚ÐµÑÑ‚ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð²ÑÐµ Ð²Ð¾Ð¿Ñ€Ð¾ÑÑ‹!\n";
+        PAUSE();
+        CLS();
     }
     return;
 }
 
 void RemoveQuestion(
-        std::vector<Questions>& textBuf, std::vector<Questions>& textOut)
+        std::vector<Questions>& text, std::vector<Questions>& textOut)
 {
-    int i = 0, chooseKey, z = textBuf.size();
-    while (i < z) {
-        PrintQuestions(textBuf, i);
+    int i = 0, chooseKey;
+    while (i < text.size()) {
+        PrintQuestions(text, i);
         std::cout << std::endl
-                  << "1.Óäàëèòü âîïðîñ èç òåñòà" << std::endl
-                  << "2.Ñëåäóþùèé âîïðîñ" << std::endl
-                  << "3.Âåðíóòüñÿ â ìåíþ." << std::endl
+                  << "1.Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð²Ð¾Ð¿Ñ€Ð¾Ñ Ð¸Ð· Ñ‚ÐµÑÑ‚Ð°" << std::endl
+                  << "2.Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ Ð²Ð¾Ð¿Ñ€Ð¾Ñ" << std::endl
+                  << "3.Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð² Ð¼ÐµÐ½ÑŽ." << std::endl
                   << "<< ";
 
         switch (chooseKey = _getch()) {
         case '1': {
-            textOut.push_back(textBuf[i]);
-            textBuf.erase(textBuf.begin() + i);
-            ++i;
+            textOut.push_back(text[i]);
+            text.erase(text.begin() + i);
             CLS();
             break;
         }
@@ -326,7 +331,7 @@ void RemoveQuestion(
         }
 
         default: {
-            std::cout << "Îøèáêà ââîäà" << std::endl;
+            std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°" << std::endl;
             PAUSE();
             CLS();
             break;
