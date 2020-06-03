@@ -1,5 +1,5 @@
-EXE = bin/QuizRunner.exe
-TEST = bin/test.exe
+EXE = bin/QuizRunner
+TEST = bin/test
 
 DIR_SRC = build/src
 DIR_TEST = build/test
