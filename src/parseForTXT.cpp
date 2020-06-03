@@ -1,4 +1,4 @@
-#include "parseForTXT.h"
+﻿#include "parseForTXT.h"
 
 void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
 {

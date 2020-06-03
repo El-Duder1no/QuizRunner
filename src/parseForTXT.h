@@ -1,4 +1,4 @@
-#ifndef PARSE_FOR_TXT
+﻿#ifndef PARSE_FOR_TXT
 #define PARSE_FOR_TXT
 #define RIGHT_ANSWER 3
 #define ANSWERS_SIZE 4

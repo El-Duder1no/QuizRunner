@@ -1,4 +1,4 @@
-#include "binSearch.h"
+﻿#include "binSearch.h"
 
 int BinSearch(std::vector<Account>& a, int* ind, std::string key)
 {

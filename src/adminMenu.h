@@ -1,4 +1,4 @@
-#ifndef adminMenu
+﻿#ifndef adminMenu
 #define adminMenu
 
 #include "screenFunctions.h"

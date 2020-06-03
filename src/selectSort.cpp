@@ -1,4 +1,4 @@
-#include "selectSort.h"
+﻿#include "selectSort.h"
 
 void SelectSort(std::vector<Account>& a, int* ind)
 {

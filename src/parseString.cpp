@@ -1,4 +1,4 @@
-#include "parseString.h"
+﻿#include "parseString.h"
 
 void parseString(
         std::string s, std::string delim, std::vector<std::string>& text)

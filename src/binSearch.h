@@ -1,4 +1,4 @@
-#ifndef SEARCH_H
+﻿#ifndef SEARCH_H
 #define SEARCH_H
 
 #include "accountStruct.h"

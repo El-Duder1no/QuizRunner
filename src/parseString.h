@@ -1,4 +1,4 @@
-#ifndef PARSE_STRING
+﻿#ifndef PARSE_STRING
 #define PARSE_STRING
 
 #include <string>
