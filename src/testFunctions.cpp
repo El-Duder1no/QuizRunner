@@ -49,7 +49,7 @@ bool CheckPath(std::ifstream& results, std::vector<Results>& userResult)
     } else {
         results.seekg(std::ios_base::beg);
         while (!results.eof()) {
-            // parse
+            resultsParse(results, userResult);
         }
         return true;
     }
