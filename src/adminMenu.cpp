@@ -5,7 +5,7 @@ void AdminMenu()
     std::cout << "Выберите пункт меню:" << std::endl;
     std::cout << "1 - Создание теста" << std::endl;
     std::cout << "2 - Редактирование теста" << std::endl;
-    std::cout << "ESC - Выход" << std::endl;
+    std::cout << "3 - Выход" << std::endl;
     std::cout << ">> ";
 }
 
@@ -31,7 +31,8 @@ bool Administrator(
     } else {
         while (adminMenuState) {
             AdminMenu();
-            switch (chooseKey = _getch()) {
+            std::cin >> chooseKey;
+            switch (chooseKey) {
             case '1': {
                 CLS();
                 CreateTest(QuestionsBank, QuestionsForTest, QuestionsOutOfTest);
@@ -54,7 +55,7 @@ bool Administrator(
                 }
                 break;
             }
-            case 27: {
+            case '3': {
                 adminMenuState = false;
                 CLS();
                 break;
@@ -90,8 +91,8 @@ void CreateTest(
                       << "1. Удалить существующий тест" << std::endl
                       << "2. Вернуться в меню" << std::endl
                       << "<< ";
-
-            switch (chooseKey = _getch()) {
+            std::cin >> chooseKey;
+            switch (chooseKey) {
             case '1': {
                 textBuf.clear();
                 textOut.clear();
@@ -125,7 +126,9 @@ void EditingTest(
                       << "2.Добавить вопросы в существубщий тест" << std::endl
                       << "3.Вернуться в меню." << std::endl
                       << "<< ";
-            switch (chooseKey = _getch()) {
+            char n;
+            std::cin >> n;
+            switch (chooseKey = n) {
             case '1': {
                 CLS();
                 RemoveQuestion(textBuf, textOut);
@@ -153,8 +156,8 @@ void EditingTest(
             std::cout << "Нет существующего теста!" << std::endl
                       << "1. Вернуться в меню" << std::endl
                       << "<< ";
-
-            switch (chooseKey = _getch()) {
+            std::cin >> chooseKey;
+            switch (chooseKey) {
             case '1': {
                 CLS();
                 Editing = false;
@@ -201,8 +204,8 @@ void AddQuestions(
                   << "2.Следующий вопрос" << std::endl
                   << "3.Вернуться в меню." << std::endl
                   << "<< ";
-
-        switch (chooseKey = _getch()) {
+        std::cin >> chooseKey;
+        switch (chooseKey) {
         case '1': {
             textBuf.push_back(text[i]);
             ++i;
@@ -277,8 +280,8 @@ void AddQuestions(
                       << "2.Следующий вопрос" << std::endl
                       << "3.Вернуться назад" << std::endl
                       << "<< ";
-
-            switch (chooseKey = _getch()) {
+            std::cin >> chooseKey;
+            switch (chooseKey) {
             case '1': {
                 textBuf.push_back(textOut[i]);
                 textOut.erase(textOut.begin() + i);
@@ -323,8 +326,8 @@ void RemoveQuestion(
                   << "2.Следующий вопрос" << std::endl
                   << "3.Вернуться в меню." << std::endl
                   << "<< ";
-
-        switch (chooseKey = _getch()) {
+        std::cin >> chooseKey;
+        switch (chooseKey) {
         case '1': {
             textOut.push_back(text[i]);
             text.erase(text.begin() + i);

@@ -1,19 +1,32 @@
-FLAGS = -Wall -Werror --std=c++11
-OBJ = g++ $(FLAGS) -c $^ -o $@
-
 EXE = bin/QuizRunner
 TEST = bin/test
 
 DIR_SRC = build/src
 DIR_TEST = build/test
 
-all: $(EXE)
+GTEST_DIR = thirdparty/googletest
+GFLAGS += -isystem $(GTEST_DIR)/include
+LDFLAGS += -g -Wall -Wextra -pthread --std=c++17
+
+FLAGS = -Wall -Werror --std=c++11
+TEST_FLAGS = g++ $(GFLAGS) $(LDFLAGS) -L$(GTEST_DIR)/lib -l gtest_main -l gtest -lpthread
+
+OBJ = g++ $(FLAGS) -c $^ -o $@
+OBJ-TEST = g++ $(GFLAGS) $(LDFLAGS) -I src -c $^ -o $@
+
+all: $(EXE) $(TEST)
 
 .PHONY: clean all
 
 $(EXE): $(DIR_SRC)/main.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/screenFunctions.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/adminMenu.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/userMenu.o
 	g++ $(FLAGS) $^ -o $@
 
+$(TEST): $(DIR_TEST)/test.o
+	$(TEST_FLAGS) $^ -o $@
+	
+$(DIR_TEST)/test.o: test/test.cpp
+	$(OBJ-TEST)
+	
 $(DIR_SRC)/main.o: src/main.cpp
 	$(OBJ)
 $(DIR_SRC)/binSearch.o: src/binSearch.cpp
@@ -37,5 +50,5 @@ $(DIR_SRC)/userMenu.o: src/userMenu.cpp
 
 clean:
 	rm -rf $(DIR_SRC)/*.o
-	rm -rf %(DIR_TEST)/*.o
+	rm -rf $(DIR_TEST)/*.o
 	rm bin/*.exe
