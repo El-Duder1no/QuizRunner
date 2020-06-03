@@ -1,6 +1,6 @@
 ﻿#include "resultsParse.h"
 
-void resultsParse(std::vector<Results>& a, std::ifstream& results)
+void resultsParse(std::ifstream& results, std::vector<Results>& a)
 {
     while (!results.eof()) {
         std::string temp;
