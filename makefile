@@ -11,7 +11,7 @@ all: $(EXE)
 .PHONY: clean all
 
 $(EXE): $(DIR_SRC)/main.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/screenFunctions.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/adminMenu.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/userMenu.o
-	g++ $(FLAGS) $(DIR_SRC)/main.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/screenFunctions.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/adminMenu.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/userMenu.o
+	g++ $(FLAGS) $(DIR_SRC)/main.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/screenFunctions.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/adminMenu.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/userMenu.o -o $(EXE)
 
 $(DIR_SRC)/main.o: src/main.cpp
 	g++ $(FLAGS) -c src/main.cpp -o $(DIR_SRC)/main.o
@@ -31,7 +31,7 @@ $(DIR_SRC)/parseForTXT.o: src/parseForTXT.cpp
 	g++ $(FLAGS) -c src/parseForTXT.cpp -o $(DIR_SRC)/parseForTXT.o	
 $(DIR_SRC)/testFunctions.o: src/testFunctions.cpp
 	g++ $(FLAGS) -c src/testFunctions.cpp -o $(DIR_SRC)/testFunctions.o	
-$(DIR_SRC)/userMenu.o: src/userMenu.
+$(DIR_SRC)/userMenu.o: src/userMenu.cpp
 	g++ $(FLAGS) -c src/userMenu.cpp -o $(DIR_SRC)/userMenu.o	
 
 clean:
