@@ -3,7 +3,6 @@
 
 #include "screenFunctions.h"
 #include "testFunctions.h"
-#include <conio.h>
 #include <fstream>
 #include <iostream>
 #include <sstream>
