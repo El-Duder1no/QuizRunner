@@ -1,4 +1,4 @@
-﻿#include "adminMenu.h"
+#include "adminMenu.h"
 
 void AdminMenu()
 {
@@ -67,11 +67,11 @@ bool Administrator(
             }
             }
         }
-        return true;
     }
     NotInTest.close();
     Test.close();
     inputText.close();
+    return true;
 }
 
 void CreateTest(
@@ -118,7 +118,6 @@ void EditingTest(
         std::vector<Questions>& textBuf, std::vector<Questions>& textOut)
 {
     bool Editing = true;
-    int i = 0;
     char chooseKey;
     while (Editing) {
         if (!textBuf.empty()) {
@@ -177,7 +176,8 @@ void PrintQuestions(std::vector<Questions>& questions, int i)
     std::cout << "Номер вопроса: " << i + 1 << " | " << questions.size()
               << std::endl;
     std::cout << "Вопрос: " << questions[i].question << std::endl;
-    for (int j = 0; j < questions[i].RightAnswers.size(); ++j) {
+    int questionsSize = questions[i].RightAnswers.size();
+    for (int j = 0; j < questionsSize; ++j) {
         std::cout << "Варианты ответов: " << questions[i].answers[j]
                   << std::endl;
         std::cout << "Правильные ответы: " << questions[i].RightAnswers[j]
@@ -193,7 +193,8 @@ void AddQuestions(
     int i = 0;
     char chooseKey;
     textOut.clear();
-    while (i < text.size()) {
+    int textSize = text.size();
+    while (i < textSize) {
         PrintQuestions(text, i);
         std::cout << std::endl
                   << "1.Добавить вопрос в тест" << std::endl
@@ -222,8 +223,8 @@ void AddQuestions(
             break;
         }
         case '3': {
-            if (i + 1 != text.size()) {
-                for (; i < text.size(); ++i) {
+            if (i + 1 != textSize) {
+                for (; i < textSize; ++i) {
                     textOut.push_back(text[i]);
                 }
             }
@@ -247,10 +248,12 @@ bool Filing(
     if (!questions) {
         return false;
     } else if (!textBuf.empty()) {
-        while (i < textBuf.size()) {
+        int textBufSize = textBuf.size();
+		while (i < textBufSize) {
             questions << textBuf[i].type << std::endl;
             questions << textBuf[i].question << std::endl;
-            for (int j = 0; j < textBuf[i].RightAnswers.size(); ++j) {
+            int RightAnswersSize = textBuf[i].RightAnswers.size();
+            for (int j = 0; j < RightAnswersSize; ++j) {
                 questions << textBuf[i].answers[j] << std::endl;
                 questions << textBuf[i].RightAnswers[j] << std::endl;
             }
@@ -265,7 +268,8 @@ void AddQuestions(
 {
     int i = 0, chooseKey;
     if (!textOut.empty()) {
-        while (i < textOut.size()) {
+        int textOutSize = textOut.size();
+	    while (i < textOutSize) {
             PrintQuestions(textOut, i);
 
             std::cout << std::endl
@@ -278,7 +282,8 @@ void AddQuestions(
             case '1': {
                 textBuf.push_back(textOut[i]);
                 textOut.erase(textOut.begin() + i);
-                CLS();
+                textOutSize = textOut.size();
+				CLS();
                 break;
             }
             case '2': {
@@ -310,7 +315,8 @@ void RemoveQuestion(
         std::vector<Questions>& text, std::vector<Questions>& textOut)
 {
     int i = 0, chooseKey;
-    while (i < text.size()) {
+    int textSize = text.size(); 
+	while (i < textSize) {
         PrintQuestions(text, i);
         std::cout << std::endl
                   << "1.Удалить вопрос из теста" << std::endl
@@ -322,7 +328,8 @@ void RemoveQuestion(
         case '1': {
             textOut.push_back(text[i]);
             text.erase(text.begin() + i);
-            CLS();
+            textSize = text.size();
+			CLS();
             break;
         }
         case '2': {
