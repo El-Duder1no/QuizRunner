@@ -3,9 +3,9 @@
 
 #include "accountStruct.h"
 #include "resultStruct.h"
+#include <cmath>
 #include <string>
 #include <vector>
-#include <cmath>
 
 int BinSearch(std::vector<Account>& a, int* ind, std::string key);
 #endif

@@ -4,8 +4,8 @@
 #include "accountStruct.h"
 #include "currentUserStruct.h"
 #include "parseString.h"
-#include "screenFunctions.h"
 #include "resultStruct.h"
+#include "screenFunctions.h"
 #include "testFunctions.h"
 #include <conio.h>
 #include <fstream>

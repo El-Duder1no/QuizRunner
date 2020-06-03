@@ -1,7 +1,6 @@
-? #include "signInOut.h"
+#include "signInOut.h"
 
-        void
-        registrationMenu()
+void registrationMenu()
 {
     std::cout << "Выберите пункт меню:\n";
     std::cout << "1 - Вход в учетную запись\n";
@@ -30,10 +29,12 @@ bool isLoginCorrect(const std::string username)
         return false;
     }
 
-    char* buff = new char[username.length()];
-    strcpy_s(buff, username.length() + 1, username.c_str());
+    int usernameSize = username.length();
 
-    for (int i = 0; i < username.length(); i++) {
+    char* buff = new char[usernameSize];
+    strcpy(buff, username.c_str());
+
+    for (int i = 0; i < usernameSize; i++) {
         if (isgraph(buff[i]) == false) {
             return false;
         }
@@ -46,11 +47,13 @@ bool isPassCorrect(const std::string password)
         return false;
     }
 
-    char* buff = new char[password.length() + 1];
-    strcpy_s(buff, password.length() + 1, password.c_str());
+    int passwordSize = password.length();
+
+    char* buff = new char[passwordSize + 1];
+    strcpy(buff, password.c_str());
 
     bool isUpper = false, isDigit = false;
-    for (int i = 0; i < password.length() + 1; i++) {
+    for (int i = 0; i < passwordSize + 1; i++) {
         if (isgraph(buff[i])) {
             if (isdigit(buff[i])) {
                 isDigit = true;
@@ -106,13 +109,15 @@ bool enterAccount(
     std::vector<Account> accounts;
     accountsParse(accounts, accountPath);
 
-    int* index = new int[accounts.size()];
-    for (int i = 0; i < accounts.size(); i++) {
+    int accountsSize = accounts.size();
+    int* index = new int[accountsSize];
+    for (int i = 0; i < accountsSize; i++) {
         index[i] = i;
     }
     SelectSort(accounts, index);
 
-    for (int i = 0; i < password.size(); i++) {
+    int passwordSize = password.size();
+    for (int i = 0; i < passwordSize; i++) {
         password[i] += CAESAR_SHIFT;
     }
 
@@ -137,8 +142,9 @@ int registration(
     std::vector<Account> accounts;
     accountsParse(accounts, accountPath);
 
-    int* index = new int[accounts.size()];
-    for (int i = 0; i < accounts.size(); i++) {
+    int accountsSize = accounts.size();
+    int* index = new int[accountsSize];
+    for (int i = 0; i < accountsSize; i++) {
         index[i] = i;
     }
     SelectSort(accounts, index);
@@ -227,7 +233,8 @@ void signInOut(const std::string accountPath, currentUser& User)
                     break;
                 }
 
-                for (int i = 0; i < password.size(); i++) {
+                int passwordSize = password.size();
+                for (int i = 0; i < passwordSize; i++) {
                     password[i] += CAESAR_SHIFT;
                 }
                 file << username << " " << password << " 0\n";
