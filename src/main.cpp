@@ -31,21 +31,14 @@ int main()
     ifstream inputText;
     vector<Questions> QuestionsBank;
 
-	string accpath = "D:\\code\\TRPO\\QuizRunner\\res\\Accounts.txt";
-	string testpath = "D:\\code\\TRPO\\QuizRunner\\res\\Test.txt";
-	string quepath = "D:\\code\\TRPO\\QuizRunner\\res\\Questions.txt";
-	string notquepath = "D:\\code\\TRPO\\QuizRunner\\res\\NotInTheTest.txt";
-	string respath = "D:\\code\\TRPO\\QuizRunner\\res\\Results.txt";
-
-
     currentUser currUser;
 
-    signInOut(accpath, currUser);
+    signInOut(ACCOUNTS_PATH, currUser);
 
-    if (!Administrator(quepath, testpath, notquepath)) {
+    if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
         cout << "Fail\n";
     }
-    if (!User(respath, currUser)) {
+    if (!User(RESULTS_PATH, currUser)) {
         cout << "Fail\n";
     }
 
