@@ -22,7 +22,7 @@ bool User(const std::string ResultsPath, currentUser& user)
         UserMenu();
         std::cin >> chooseKey;
         switch (chooseKey) {
-		case '1': {
+        case '1': {
             CLS();
             if (!CheckResult(user, UsersResults)) {
                 std::cout << "Предыдущие результаты не найдены!\n\n";
@@ -78,8 +78,8 @@ bool CheckResult(currentUser& user, std::vector<Results>& usersResults)
             std::cout << "\n\n 1.Вернуться в меню\n"
                       << "<<";
             std::cin >> chooseKey;
-        switch (chooseKey) {
-		case '1': {
+            switch (chooseKey) {
+            case '1': {
                 CLS();
                 check = false;
                 break;
