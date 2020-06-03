@@ -1,4 +1,4 @@
-#ifndef userMenu
+﻿#ifndef userMenu
 
 #define userMenu
 #include "accountStruct.h"

@@ -1,4 +1,4 @@
-#ifndef SIGN_IN_OUT_H
+﻿#ifndef SIGN_IN_OUT_H
 #define SIGN_IN_OUT_H
 
 #define CAESAR_SHIFT 3

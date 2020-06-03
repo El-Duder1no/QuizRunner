@@ -1,4 +1,4 @@
-#ifndef CURRENT_USER_H
+﻿#ifndef CURRENT_USER_H
 #define CURRENT_USER_H
 
 #include <string>
