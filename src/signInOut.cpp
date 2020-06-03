@@ -29,10 +29,10 @@ bool isLoginCorrect(const std::string username)
         return false;
     }
 
-	int usernameSize = username.length();
+    int usernameSize = username.length();
 
     char* buff = new char[usernameSize];
-	strcpy(buff, username.c_str());
+    strcpy(buff, username.c_str());
 
     for (int i = 0; i < usernameSize; i++) {
         if (isgraph(buff[i]) == false) {
@@ -46,11 +46,11 @@ bool isPassCorrect(const std::string password)
     if (password.size() < 8 || password.size() > 25) {
         return false;
     }
-	
-	int passwordSize = password.length();
+
+    int passwordSize = password.length();
 
     char* buff = new char[passwordSize + 1];
-	strcpy(buff, password.c_str());
+    strcpy(buff, password.c_str());
 
     bool isUpper = false, isDigit = false;
     for (int i = 0; i < passwordSize + 1; i++) {
@@ -109,14 +109,14 @@ bool enterAccount(
     std::vector<Account> accounts;
     accountsParse(accounts, accountPath);
 
-	int accountsSize = accounts.size();
+    int accountsSize = accounts.size();
     int* index = new int[accountsSize];
     for (int i = 0; i < accountsSize; i++) {
         index[i] = i;
     }
     SelectSort(accounts, index);
 
-	int passwordSize = password.size();
+    int passwordSize = password.size();
     for (int i = 0; i < passwordSize; i++) {
         password[i] += CAESAR_SHIFT;
     }
@@ -142,7 +142,7 @@ int registration(
     std::vector<Account> accounts;
     accountsParse(accounts, accountPath);
 
-	int accountsSize = accounts.size();
+    int accountsSize = accounts.size();
     int* index = new int[accountsSize];
     for (int i = 0; i < accountsSize; i++) {
         index[i] = i;
@@ -233,7 +233,7 @@ void signInOut(const std::string accountPath, currentUser& User)
                     break;
                 }
 
-				int passwordSize = password.size();
+                int passwordSize = password.size();
                 for (int i = 0; i < passwordSize; i++) {
                     password[i] += CAESAR_SHIFT;
                 }

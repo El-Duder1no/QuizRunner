@@ -12,11 +12,11 @@
 #include "selectSort.h"
 
 #include <conio.h>
+#include <cstring>
 #include <ctype.h>
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <cstring>
 #include <vector>
 
 void registrationMenu();
@@ -26,7 +26,7 @@ bool isPassCorrect(std::string password);
 
 void accountsParse(std::vector<Account>& a, const std::string accountPath);
 bool enterAccount(
-	    currentUser& User,
+        currentUser& User,
         std::string password,
         std::string username,
         const std::string accountPath);
