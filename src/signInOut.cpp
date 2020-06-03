@@ -183,21 +183,17 @@ void signInOut(const std::string accountPath, currentUser& User)
             std::cin >> password;
 
             bool temp = enterAccount(User, password, username, accountPath);
-
-            switch (temp) {
-            case false: {
+            if (temp == true) {
+                system("CLS");
+                std::cout << "Вход в личный кабинет\n";
+                registrationState = false;
+                break;
+            } else {
                 system("CLS");
                 std::cout << "Неправильный логин или пароль\n";
                 system("PAUSE");
                 registrationMenu();
                 break;
-            }
-            case true: {
-                system("CLS");
-                std::cout << "Вход в личный кабинет\n";
-                registrationState = false;
-                break;
-            }
             }
             break;
         }
