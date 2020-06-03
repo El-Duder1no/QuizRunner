@@ -1,4 +1,4 @@
-﻿#include "userMenu.h"
+#include "userMenu.h"
 void UserMenu()
 {
     std::cout << "Выберите пункт меню:" << std::endl;
@@ -54,7 +54,8 @@ bool CheckResult(currentUser& user, std::vector<Results>& usersResults)
 {
     int chooseKey;
     std::vector<Results> CurrentUser;
-    for (int i = 0; i < usersResults.size(); ++i) {
+    int ResultSize = usersResults.size();
+	for (int i = 0; i < ResultSize; ++i) {
         if (usersResults[i].username == user.username) {
             CurrentUser.push_back(usersResults[i]);
         }
@@ -68,7 +69,8 @@ bool CheckResult(currentUser& user, std::vector<Results>& usersResults)
                       << "\n Баллы"
                       << "\t | \t"
                       << "Время прохождения\n";
-            for (int i = 0; i < CurrentUser.size(); ++i) {
+                      int CurrentUserSize = CurrentUser.size();
+            for (int i = 0; i < CurrentUserSize; ++i) {
                 std::cout << CurrentUser[i].point << "\t | \t"
                           << CurrentUser[i].time << "\n";
             }
