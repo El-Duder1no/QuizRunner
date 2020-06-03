@@ -249,7 +249,7 @@ bool Filing(
         return false;
     } else if (!textBuf.empty()) {
         int textBufSize = textBuf.size();
-		while (i < textBufSize) {
+        while (i < textBufSize) {
             questions << textBuf[i].type << std::endl;
             questions << textBuf[i].question << std::endl;
             int RightAnswersSize = textBuf[i].RightAnswers.size();
@@ -269,7 +269,7 @@ void AddQuestions(
     int i = 0, chooseKey;
     if (!textOut.empty()) {
         int textOutSize = textOut.size();
-	    while (i < textOutSize) {
+        while (i < textOutSize) {
             PrintQuestions(textOut, i);
 
             std::cout << std::endl
@@ -283,7 +283,7 @@ void AddQuestions(
                 textBuf.push_back(textOut[i]);
                 textOut.erase(textOut.begin() + i);
                 textOutSize = textOut.size();
-				CLS();
+                CLS();
                 break;
             }
             case '2': {
@@ -315,8 +315,8 @@ void RemoveQuestion(
         std::vector<Questions>& text, std::vector<Questions>& textOut)
 {
     int i = 0, chooseKey;
-    int textSize = text.size(); 
-	while (i < textSize) {
+    int textSize = text.size();
+    while (i < textSize) {
         PrintQuestions(text, i);
         std::cout << std::endl
                   << "1.Удалить вопрос из теста" << std::endl
@@ -329,7 +329,7 @@ void RemoveQuestion(
             textOut.push_back(text[i]);
             text.erase(text.begin() + i);
             textSize = text.size();
-			CLS();
+            CLS();
             break;
         }
         case '2': {
