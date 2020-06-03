@@ -2,6 +2,7 @@
 #define SIGN_IN_OUT_H
 
 #define CAESAR_SHIFT 3
+#define _CRT_SECURE_NO_WARNINGS
 
 #include "accountStruct.h"
 #include "binSearch.h"
@@ -14,7 +15,8 @@
 #include <ctype.h>
 #include <fstream>
 #include <iostream>
-#include <string.h>
+#include <string>
+#include <cstring>
 #include <vector>
 
 void registrationMenu();

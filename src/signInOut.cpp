@@ -32,7 +32,7 @@ bool isLoginCorrect(const std::string username)
 	int usernameSize = username.length();
 
     char* buff = new char[usernameSize];
-    strcpy_s(buff, usernameSize + 1, username.c_str());
+	strcpy(buff, username.c_str());
 
     for (int i = 0; i < usernameSize; i++) {
         if (isgraph(buff[i]) == false) {
@@ -50,7 +50,7 @@ bool isPassCorrect(const std::string password)
 	int passwordSize = password.length();
 
     char* buff = new char[passwordSize + 1];
-    strcpy_s(buff, passwordSize + 1, password.c_str());
+	strcpy(buff, password.c_str());
 
     bool isUpper = false, isDigit = false;
     for (int i = 0; i < passwordSize + 1; i++) {
