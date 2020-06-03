@@ -1,11 +1,11 @@
-#include "signInOut.h"
+﻿#include "signInOut.h"
 
 void registrationMenu()
 {
     std::cout << "Выберите пункт меню:\n";
     std::cout << "1 - Вход в учетную запись\n";
     std::cout << "2 - Регистрация\n";
-    std::cout << "ESC - выход\n";
+    std::cout << "3 - Выход\n";
     std::cout << ">> ";
 }
 void registrationInfo()
@@ -169,7 +169,8 @@ void signInOut(const std::string accountPath, currentUser& User)
 
     registrationMenu();
     while (registrationState) {
-        switch (chooseKey = _getch()) {
+        std::cin >> chooseKey;
+        switch (chooseKey) {
         // ВХОД
         case '1': {
             std::string username, password;
@@ -177,9 +178,9 @@ void signInOut(const std::string accountPath, currentUser& User)
             CLS();
 
             std::cout << "Введите логин:\n>>";
-            std::getline(std::cin, username);
+            std::cin >> username;
             std::cout << "Введите пароль:\n>>";
-            std::getline(std::cin, password);
+            std::cin >> password;
 
             bool temp = enterAccount(User, password, username, accountPath);
 
@@ -207,9 +208,9 @@ void signInOut(const std::string accountPath, currentUser& User)
             registrationInfo();
 
             std::cout << "Введите логин:\n>>";
-            std::getline(std::cin, username);
+            std::cin >> username;
             std::cout << "Введите пароль:\n>>";
-            std::getline(std::cin, password);
+            std::cin >> password;
 
             int temp = registration(username, password, accountPath);
             switch (temp) {
@@ -254,7 +255,7 @@ void signInOut(const std::string accountPath, currentUser& User)
             break;
         }
         // ВЫХОД ИЗ ПРОГРАММЫ
-        case 27: {
+        case '3': {
             registrationState = false;
             CLS();
             break;

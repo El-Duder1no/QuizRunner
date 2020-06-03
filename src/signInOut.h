@@ -11,7 +11,6 @@
 #include "screenFunctions.h"
 #include "selectSort.h"
 
-#include <conio.h>
 #include <cstring>
 #include <ctype.h>
 #include <fstream>
