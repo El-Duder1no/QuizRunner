@@ -4,7 +4,7 @@ void UserMenu()
     std::cout << "Выберите пункт меню:" << std::endl;
     std::cout << "1 - Просмотр результатов" << std::endl;
     std::cout << "2 - Начать тест" << std::endl;
-    std::cout << "ESC - Выход" << std::endl;
+    std::cout << "3 - Выход" << std::endl;
     std::cout << ">> ";
 }
 
@@ -20,8 +20,9 @@ bool User(const std::string ResultsPath, currentUser& user)
     int chooseKey;
     while (userMenuState) {
         UserMenu();
-        switch (chooseKey = _getch()) {
-        case '1': {
+        std::cin >> chooseKey;
+        switch (chooseKey) {
+		case '1': {
             CLS();
             if (!CheckResult(user, UsersResults)) {
                 std::cout << "Предыдущие результаты не найдены!\n\n";
@@ -35,7 +36,7 @@ bool User(const std::string ResultsPath, currentUser& user)
             CLS();
             break;
         }
-        case 27: {
+        case '3': {
             userMenuState = false;
             break;
         }
@@ -76,8 +77,9 @@ bool CheckResult(currentUser& user, std::vector<Results>& usersResults)
             }
             std::cout << "\n\n 1.Вернуться в меню\n"
                       << "<<";
-            switch (chooseKey = _getch()) {
-            case '1': {
+            std::cin >> chooseKey;
+        switch (chooseKey) {
+		case '1': {
                 CLS();
                 check = false;
                 break;
