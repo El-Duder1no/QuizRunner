@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include <sstream>
 
 #include "Questions.h"
 #include "currentUserStruct.h"
@@ -24,11 +25,11 @@ double checkAnswers(
         const std::vector<Questions>& Test,
         const std::vector<std::string> answers);
 
-bool writeResults(
-        const std::string resultsPath,
+bool writeResults (
+		const std::string resultsPath,
         currentUser currUser,
-        const int result,
-        const int time);
+        const std::string result,
+        const std::string time)
 
 void testPass(
         const std::string testPath,

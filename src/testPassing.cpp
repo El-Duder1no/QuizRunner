@@ -60,13 +60,12 @@ double checkAnswers(
 bool writeResults(
         const std::string resultsPath,
         currentUser currUser,
-        const int result,
-        const int time)
+        const std::string result,
+        const std::string time)
 {
     std::ofstream resultsFIle(resultsPath);
 
     if (!resultsFIle.is_open()) {
-        std::cout << "ban\n";
         return false;
     }
 
@@ -110,9 +109,16 @@ void testPass(
     double time = duration.count();
     double result = checkAnswers(Test, answers);
 
-    std::cout << "Ваш результат: " << result << "%\n";
-    std::cout << std::setprecision(3) << "Время прохождения теста: " << time
+	std::string strResults, strTime;
+	std::stringstream temp;
+    temp << result;
+	temp >> strResults;
+    temp << time;
+    temp >> strTime;
+	
+    std::cout << "Ваш результат: " << strResults << "%\n";
+    std::cout << std::setprecision(3) << "Время прохождения теста: " << strTime
               << " сек.\n";
 
-    writeResults(resultsPath, currUser, result, time);
+    writeResults(resultsPath, currUser, strResults, strTime);
 }
