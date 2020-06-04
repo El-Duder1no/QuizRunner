@@ -7,11 +7,10 @@
 #include "signInOut.h"
 
 #ifdef _WIN32
-	#define ACCOUNTS_PATH "..\\res\\test_files\\Accounts.txt"
+#define ACCOUNTS_PATH "..\\res\\test_files\\Accounts.txt"
 #else
-	#define ACCOUNTS_PATH "res/test_files/Accounts.txt"
+#define ACCOUNTS_PATH "res/test_files/Accounts.txt"
 #endif
-
 
 std::string username, password;
 std::vector<Account> accounts;
@@ -92,7 +91,7 @@ TEST(accountParseTest, correct)
     ASSERT_STREQ(accounts[0].password.c_str(), password.c_str());
     EXPECT_EQ(accounts[0].accountType, 0);
 
-	username = "ip912s24";
+    username = "ip912s24";
     password = "Doskde6w";
     ASSERT_STREQ(accounts[1].username.c_str(), username.c_str());
     ASSERT_STREQ(accounts[1].password.c_str(), password.c_str());
