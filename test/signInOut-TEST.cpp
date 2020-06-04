@@ -6,7 +6,12 @@
 #include "currentUserStruct.h"
 #include "signInOut.h"
 
-#define ACCOUNTS_PATH "..\\res\\test_files\\Accounts.txt"
+#ifdef _WIN32
+	#define ACCOUNTS_PATH "..\\res\\test_files\\Accounts.txt"
+#else
+	#define ACCOUNTS_PATH "res/test_files/Accounts.txt"
+#endif
+
 
 std::string username, password;
 std::vector<Account> accounts;
@@ -77,14 +82,20 @@ TEST(PasswordTest, incorrect)
     EXPECT_FALSE(isPassCorrect(password));
 }
 
-TEST(accauntParseTest, correct)
+TEST(accountParseTest, correct)
 {
     accountsParse(accounts, ACCOUNTS_PATH);
-    EXPECT_EQ(accounts[0].username, "OlegPetrovich");
-    EXPECT_EQ(accounts[0].password, "Sdvvz3ug");
+
+    username = "OlegPetrovich";
+    password = "Sdvvz3ug";
+    ASSERT_STREQ(accounts[0].username.c_str(), username.c_str());
+    ASSERT_STREQ(accounts[0].password.c_str(), password.c_str());
     EXPECT_EQ(accounts[0].accountType, 0);
-    EXPECT_EQ(accounts[1].username, "ip912s24");
-    EXPECT_EQ(accounts[1].password, "Doskde6w");
+
+	username = "ip912s24";
+    password = "Doskde6w";
+    ASSERT_STREQ(accounts[1].username.c_str(), username.c_str());
+    ASSERT_STREQ(accounts[1].password.c_str(), password.c_str());
     EXPECT_EQ(accounts[1].accountType, 1);
 }
 
