@@ -48,7 +48,8 @@ int main()
         if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
             cout << "Fail\n";
         }
-    } else {
+    }
+	if (currUser.accountType == 0) {
         if (!User(RESULTS_PATH, currUser)) {
             cout << "Fail\n";
         }
