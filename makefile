@@ -18,7 +18,7 @@ all: $(EXE) $(TEST)
 
 .PHONY: clean all
 
-$(EXE): $(DIR_SRC)/main.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/screenFunctions.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/adminMenu.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/userMenu.o $(DIR_SRC)/resultsParse.o
+$(EXE): $(DIR_SRC)/main.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/screenFunctions.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/adminMenu.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/userMenu.o $(DIR_SRC)/resultsParse.o $(DIR_SRC)/testPassing.o
 	g++ $(FLAGS) $^ -o $@
 
 $(TEST): $(DIR_TEST)/signInOut-TEST.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/screenFunctions.o $(DIR_TEST)/resultParse-TEST.o $(DIR_SRC)/resultsParse.o
@@ -51,6 +51,8 @@ $(DIR_SRC)/testFunctions.o: src/testFunctions.cpp
 $(DIR_SRC)/userMenu.o: src/userMenu.cpp
 	$(OBJ)
 $(DIR_SRC)/resultsParse.o: src/resultsParse.cpp
+	$(OBJ)
+$(DIR_SRC)/testPassing.o: src/testPassing.cpp
 	$(OBJ)
 
 clean:

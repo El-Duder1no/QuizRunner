@@ -7,6 +7,7 @@
 #include "screenFunctions.h"
 #include "selectSort.h"
 #include "signInOut.h"
+#include "testPassing.h"
 #include "userMenu.h"
 
 #include <fstream>
@@ -43,11 +44,15 @@ int main()
 
     signInOut(ACCOUNTS_PATH, currUser);
 
-    if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
-        cout << "Fail\n";
+    if (currUser.accountType == 1) {
+        if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
+            cout << "Fail\n";
+        }
     }
-    if (!User(RESULTS_PATH, currUser)) {
-        cout << "Fail\n";
+	if (currUser.accountType == 0) {
+        if (!User(RESULTS_PATH, currUser)) {
+            cout << "Fail\n";
+        }
     }
 
     PAUSE();
