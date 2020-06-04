@@ -21,10 +21,10 @@ all: $(EXE) $(TEST)
 $(EXE): $(DIR_SRC)/main.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/screenFunctions.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/adminMenu.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/userMenu.o $(DIR_SRC)/resultsParse.o
 	g++ $(FLAGS) $^ -o $@
 
-$(TEST): $(DIR_TEST)/test.o
+$(TEST): $(DIR_TEST)/signInOut-TEST.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/screenFunctions.o
 	$(TEST_FLAGS) $^ -o $@
 	
-$(DIR_TEST)/test.o: test/test.cpp
+$(DIR_TEST)/signInOut-TEST.o: test/signInOut-TEST.cpp
 	$(OBJ-TEST)
 	
 $(DIR_SRC)/main.o: src/main.cpp

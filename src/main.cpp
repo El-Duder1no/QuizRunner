@@ -18,11 +18,21 @@
 
 using namespace std;
 
+#ifdef _WIN32
 #define ACCOUNTS_PATH "..\\res\\Accounts.txt"
 #define TEST_PATH "..\\res\\Test.txt"
 #define QUESTIONS_PATH "..\\res\\Questions.txt"
 #define NOT_IN_TEST_PATH "..\\res\\NotInTheTest.txt"
 #define RESULTS_PATH "..\\res\\Results.txt"
+#define TESTFILE "..\\res\\test_files\\Accounts.txt"
+#else
+#define ACCOUNTS_PATH "res/Accounts.txt"
+#define TEST_PATH "res/Test.txt"
+#define QUESTIONS_PATH "res/Questions.txt"
+#define NOT_IN_TEST_PATH "res/NotInTheTest.txt"
+#define RESULTS_PATH "res/Results.txt"
+#define TESTFILE "res/test_files/Accounts.txt"
+#endif
 
 int main()
 {
