@@ -4,11 +4,11 @@
 #define ANSWERS_SIZE 4
 #include "Questions.h"
 #include "parseString.h"
+#include <algorithm>
 #include <cstdlib>
 #include <fstream>
 #include <string>
 #include <vector>
-#include <algorithm>
 
 bool ParseFirstQuestions(
         std::ifstream& questions, std::vector<Questions>& text);

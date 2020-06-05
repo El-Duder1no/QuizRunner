@@ -28,9 +28,6 @@ bool CheckPath(std::ifstream& questions, std::vector<Questions>& QuestionsBank)
                 }
                 break;
             }
-            defaul : {
-                return false;
-            }
             }
         }
         return true;
