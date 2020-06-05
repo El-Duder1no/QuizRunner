@@ -1,4 +1,4 @@
-﻿#include "Questions.h"
+#include "Questions.h"
 #include "adminMenu.h"
 #include "binSearch.h"
 #include "currentUserStruct.h"
@@ -49,7 +49,7 @@ int main()
             cout << "Fail\n";
         }
     }
-	if (currUser.accountType == 0) {
+    if (currUser.accountType == 0) {
         if (!User(RESULTS_PATH, currUser)) {
             cout << "Fail\n";
         }
