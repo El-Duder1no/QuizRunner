@@ -33,9 +33,6 @@ using namespace std;
 #define RESULTS_PATH "res/Results.txt"
 #endif
 
-#define QUIZ_PATH "D:\\code\\TRPO\\QuizRunner\\res\\test_files\\Questions.txt"
-#include "testFunctions.h"
-
 int main()
 {
     setlocale(LC_ALL, "RUS");
@@ -46,7 +43,7 @@ int main()
 
     switch (currUser.accountType) {
     case 0: {
-        if (!User(RESULTS_PATH, currUser)) {
+        if (!User(RESULTS_PATH, TEST_PATH, QUESTIONS_PATH, currUser)) {
             cout << "Fail\n";
         }
     }
