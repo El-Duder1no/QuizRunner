@@ -65,5 +65,4 @@ TEST(QuestionsParse, INCORRECT_PARSE)
 
     getline(WrongQuestionsFile, type, '\n');
     EXPECT_FALSE(ParseFirstQuestions(WrongQuestionsFile, actual));
-    question.clear();
 }
