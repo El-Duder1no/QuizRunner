@@ -1,4 +1,4 @@
-﻿#ifndef adminMenu
+#ifndef adminMenu
 #define adminMenu
 
 #include "screenFunctions.h"
@@ -30,7 +30,7 @@ void AddQuestions(
 void AddQuestions(
         std::vector<Questions>& textBuf, std::vector<Questions>& textOut);
 void PrintQuestions(std::vector<Questions>& questions, int i);
-bool Filing(
+void Filing(
         std::fstream& questions,
         std::vector<Questions>& textBuf,
         const std::string questionsPath);
