@@ -36,7 +36,12 @@ bool User(const std::string ResultsPath, currentUser& user)
             break;
         }
         case '2': {
-            // TestStart
+            testPass(
+                    TEST_PATH,
+                    NOT_IN_TEST_PATH,
+                    QUESTIONS_PATH,
+                    RESULTS_PATH,
+                    user);
             CLS();
             break;
         }
@@ -109,4 +114,3 @@ void printResults(std::vector<Results>& CurrentUserResults)
     }
     return;
 }
-
