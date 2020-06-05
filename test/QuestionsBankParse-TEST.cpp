@@ -1,7 +1,7 @@
+#include "Questions.h"
+#include "parseForTXT.h"
 #include "resultStruct.h"
 #include "resultsParse.h"
-#include "parseForTXT.h"
-#include "Questuions.h"
 #include <fstream>
 #include <gtest/gtest.h>
 #include <string>
@@ -23,12 +23,12 @@ TEST(QuestionsParse, CORRECT_PARSE)
     std::string type;
     getline(QuestionsFile, type, '\n');
     EXPECT_TRUE(ParseThirdQuestions(QuestionsFile, actual));
- 
-	getline(QuestionsFile, type, '\n');
+
+    getline(QuestionsFile, type, '\n');
     EXPECT_TRUE(ParseSecondQuestions(QuestionsFile, actual));
-    
-	getline(QuestionsFile, type, '\n');
+
+    getline(QuestionsFile, type, '\n');
     EXPECT_TRUE(ParseThirdQuestions(QuestionsFile, actual));
-    
+
     question.clear();
 }
