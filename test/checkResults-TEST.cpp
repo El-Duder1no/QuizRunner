@@ -1,12 +1,12 @@
-#include <fstream>
-#include <gtest/gtest.h>
-#include <string>
-#include <vector>
-
+#include "currentUserStruct.h"
 #include "resultStruct.h"
 #include "resultsParse.h"
 #include "testFunctions.h"
 #include "userMenu.h"
+#include <fstream>
+#include <gtest/gtest.h>
+#include <string>
+#include <vector>
 
 #ifdef _WIN32
 #define RESULTS_PATH "..\\res\\test_files\\Results.txt"
