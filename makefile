@@ -21,10 +21,13 @@ all: $(EXE) $(TEST)
 $(EXE): $(DIR_SRC)/main.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/screenFunctions.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/adminMenu.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/userMenu.o $(DIR_SRC)/resultsParse.o $(DIR_SRC)/testPassing.o
 	g++ $(FLAGS) $^ -o $@
 
-$(TEST): $(DIR_TEST)/signInOut-TEST.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/screenFunctions.o $(DIR_TEST)/resultParse-TEST.o $(DIR_SRC)/resultsParse.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/userMenu.o $(DIR_TEST)/checkResults-TEST.o $(DIR_TEST)/checkPath-TEST.o
+$(TEST): $(DIR_TEST)/signInOut-TEST.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/screenFunctions.o $(DIR_TEST)/resultParse-TEST.o $(DIR_SRC)/resultsParse.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/userMenu.o $(DIR_TEST)/checkResults-TEST.o $(DIR_TEST)/checkPath-TEST.o $(DIR_TEST)/QuestionsBankParse-TEST.o
 	$(TEST_FLAGS) $^ -o $@
 	
 $(DIR_TEST)/signInOut-TEST.o: test/signInOut-TEST.cpp
+	$(OBJ-TEST)
+
+$(DIR_TEST)/QuestionsBankParse-TEST.o: test/QuestionsBankParse-TEST.cpp
 	$(OBJ-TEST)
 	
 $(DIR_TEST)/checkResults-TEST.o: test/checkResults-TEST.cpp
