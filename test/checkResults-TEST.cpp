@@ -14,11 +14,11 @@
 #define RESULTS_PATH "res/test_files/Results.txt"
 #endif
 
-std::vector<Results> userResult;
-std::vector<Results> currResult;
-
 TEST(checkResults, noResults)
 {
+    std::vector<Results> userResult;
+    std::vector<Results> currResult;
+
     std::ifstream File(RESULTS_PATH);
 
     currentUser currUser;
@@ -33,6 +33,9 @@ TEST(checkResults, noResults)
 
 TEST(USER_RESULTS, resultExist)
 {
+    std::vector<Results> userResult;
+    std::vector<Results> currResult;
+
     std::ifstream File(RESULTS_PATH);
     currentUser currUser;
     currUser.username = "ip912s24";

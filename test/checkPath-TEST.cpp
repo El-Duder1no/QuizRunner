@@ -16,28 +16,24 @@
 #define NO_FILE_PATH "res/test_files/"
 #endif
 
-std::vector<Results> userResult;
-std::vector<Questions> question;
-
 TEST(CheckPath, InCorrectPATH)
 {
+    std::vector<Results> userResult;
+    std::vector<Questions> question;
     std::ifstream ResultsPath(NO_FILE_PATH);
     EXPECT_FALSE(CheckPath(ResultsPath, userResult));
 
     std::ifstream QuestionsPath(NO_FILE_PATH);
     EXPECT_FALSE(CheckPath(QuestionsPath, question));
-    question.clear();
-    userResult.clear();
 }
 
 TEST(CheckPath, CorrectPATH)
 {
+    std::vector<Results> userResult;
+    std::vector<Questions> question;
     std::ifstream File(RESULTS_PATH);
     EXPECT_TRUE(CheckPath(File, userResult));
 
     std::ifstream QuestionsFile(QUESTIONS_PATH);
     EXPECT_TRUE(CheckPath(QuestionsFile, question));
-
-    question.clear();
-    userResult.clear();
 }
