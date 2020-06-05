@@ -1,11 +1,11 @@
-﻿#include "adminMenu.h"
+#include "adminMenu.h"
 
 void AdminMenu()
 {
-    std::cout << "Выберите пункт меню:" << std::endl;
-    std::cout << "1 - Создание теста" << std::endl;
-    std::cout << "2 - Редактирование теста" << std::endl;
-    std::cout << "3 - Выход" << std::endl;
+    std::cout << "Select menu item:" << std::endl;
+    std::cout << "1 - Create test" << std::endl;
+    std::cout << "2 - Editing test" << std::endl;
+    std::cout << "3 - Exit" << std::endl;
     std::cout << ">> ";
 }
 
@@ -36,23 +36,15 @@ bool Administrator(
             case '1': {
                 CLS();
                 CreateTest(QuestionsBank, QuestionsForTest, QuestionsOutOfTest);
-                if (!Filing(Test, QuestionsForTest, TestPath)) {
-                    return 0;
-                }
-                if (!Filing(NotInTest, QuestionsOutOfTest, NotInTestPath)) {
-                    return 0;
-                }
+                Filing(Test, QuestionsForTest, TestPath);
+                Filing(NotInTest, QuestionsOutOfTest, NotInTestPath);
                 break;
             }
             case '2': {
                 CLS();
                 EditingTest(QuestionsForTest, QuestionsOutOfTest);
-                if (!Filing(Test, QuestionsForTest, TestPath)) {
-                    return 0;
-                }
-                if (!Filing(NotInTest, QuestionsOutOfTest, NotInTestPath)) {
-                    return 0;
-                }
+                Filing(Test, QuestionsForTest, TestPath);
+                Filing(NotInTest, QuestionsOutOfTest, NotInTestPath);
                 break;
             }
             case '3': {
@@ -61,7 +53,7 @@ bool Administrator(
                 break;
             }
             default: {
-                std::cout << "Ошибка ввода" << std::endl;
+                std::cout << "Input Error" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -87,9 +79,10 @@ void CreateTest(
             AddQuestions(text, textBuf, textOut);
             return;
         } else {
-            std::cout << "У вас уже создан тест, вы можете:" << std::endl
-                      << "1. Удалить существующий тест" << std::endl
-                      << "2. Вернуться в меню" << std::endl
+            std::cout << "You have already created a test, you can:"
+                      << std::endl
+                      << "1. Delete existing test" << std::endl
+                      << "2. Return to menu" << std::endl
                       << "<< ";
             std::cin >> chooseKey;
             switch (chooseKey) {
@@ -105,7 +98,7 @@ void CreateTest(
                 break;
             }
             default: {
-                std::cout << "ОШИБКА ВВОДА" << std::endl;
+                std::cout << "Input Error" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -122,9 +115,9 @@ void EditingTest(
     char chooseKey;
     while (Editing) {
         if (!textBuf.empty()) {
-            std::cout << "1.Удалить некоторые вопросы из теста" << std::endl
-                      << "2.Добавить вопросы в существубщий тест" << std::endl
-                      << "3.Вернуться в меню." << std::endl
+            std::cout << "1.Remove some questions from the test" << std::endl
+                      << "2.Add questions to an existing test" << std::endl
+                      << "3.Return to menu." << std::endl
                       << "<< ";
             char n;
             std::cin >> n;
@@ -146,15 +139,15 @@ void EditingTest(
                 break;
             }
             default: {
-                std::cout << "ОШИБКА ВВОДА" << std::endl;
+                std::cout << "Input Error" << std::endl;
                 PAUSE();
                 CLS();
                 break;
             }
             }
         } else {
-            std::cout << "Нет существующего теста!" << std::endl
-                      << "1. Вернуться в меню" << std::endl
+            std::cout << "No existing test!" << std::endl
+                      << "1. Return to menu" << std::endl
                       << "<< ";
             std::cin >> chooseKey;
             switch (chooseKey) {
@@ -164,7 +157,7 @@ void EditingTest(
                 break;
             }
             default: {
-                std::cout << "Ошибка ввода" << std::endl;
+                std::cout << "Input Error" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -176,14 +169,13 @@ void EditingTest(
 
 void PrintQuestions(std::vector<Questions>& questions, int i)
 {
-    std::cout << "Номер вопроса: " << i + 1 << " | " << questions.size()
+    std::cout << "Question number: " << i + 1 << " | " << questions.size()
               << std::endl;
-    std::cout << "Вопрос: " << questions[i].question << std::endl;
+    std::cout << "Question: " << questions[i].question << std::endl;
     int questionsSize = questions[i].RightAnswers.size();
     for (int j = 0; j < questionsSize; ++j) {
-        std::cout << "Варианты ответов: " << questions[i].answers[j]
-                  << std::endl;
-        std::cout << "Правильные ответы: " << questions[i].RightAnswers[j]
+        std::cout << "Answer options: " << questions[i].answers[j] << std::endl;
+        std::cout << "Right answers: " << questions[i].RightAnswers[j]
                   << std::endl;
     }
 }
@@ -200,9 +192,9 @@ void AddQuestions(
     while (i < textSize) {
         PrintQuestions(text, i);
         std::cout << std::endl
-                  << "1.Добавить вопрос в тест" << std::endl
-                  << "2.Следующий вопрос" << std::endl
-                  << "3.Вернуться в меню." << std::endl
+                  << "1.Add question to test" << std::endl
+                  << "2.Next question" << std::endl
+                  << "3.Return to menu." << std::endl
                   << "<< ";
         std::cin >> chooseKey;
         switch (chooseKey) {
@@ -220,7 +212,7 @@ void AddQuestions(
         }
 
         default: {
-            std::cout << "ОШИБКА ВВОДА" << std::endl;
+            std::cout << "Input Error" << std::endl;
             PAUSE();
             CLS();
             break;
@@ -239,18 +231,16 @@ void AddQuestions(
     return;
 }
 
-bool Filing(
+void Filing(
         std::fstream& questions,
         std::vector<Questions>& textBuf,
         const std::string questionsPath)
 {
+    int i = 0;
     questions.close();
     questions.open(
             questionsPath.c_str(), std::ofstream::out | std::ofstream::trunc);
-    int i = 0;
-    if (!questions) {
-        return false;
-    } else if (!textBuf.empty()) {
+    if (!textBuf.empty()) {
         int textBufSize = textBuf.size();
         while (i < textBufSize) {
             questions << textBuf[i].type << std::endl;
@@ -262,23 +252,24 @@ bool Filing(
             }
             ++i;
         }
+    } else {
+        return;
     }
-    return true;
 }
-
 void AddQuestions(
         std::vector<Questions>& textBuf, std::vector<Questions>& textOut)
 {
-    int i = 0, chooseKey;
+    int i = 0;
+    char chooseKey;
     if (!textOut.empty()) {
         int textOutSize = textOut.size();
         while (i < textOutSize) {
             PrintQuestions(textOut, i);
 
             std::cout << std::endl
-                      << "1.Добавить вопрос в тест" << std::endl
-                      << "2.Следующий вопрос" << std::endl
-                      << "3.Вернуться назад" << std::endl
+                      << "1.Add question to test" << std::endl
+                      << "2.Next question" << std::endl
+                      << "3.Return to the test edit menu" << std::endl
                       << "<< ";
             std::cin >> chooseKey;
             switch (chooseKey) {
@@ -295,7 +286,7 @@ void AddQuestions(
                 break;
             }
             default: {
-                std::cout << "ОШИБКА ВВОДА" << std::endl;
+                std::cout << "Input Error" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -307,7 +298,7 @@ void AddQuestions(
             }
         }
     } else {
-        std::cout << "В тест добавлены все вопросы!\n";
+        std::cout << "All questions are added to the test!\n";
         PAUSE();
         CLS();
     }
@@ -317,14 +308,15 @@ void AddQuestions(
 void RemoveQuestion(
         std::vector<Questions>& text, std::vector<Questions>& textOut)
 {
-    int i = 0, chooseKey;
+    int i = 0;
+	char chooseKey;
     int textSize = text.size();
     while (i < textSize) {
         PrintQuestions(text, i);
         std::cout << std::endl
-                  << "1.Удалить вопрос из теста" << std::endl
-                  << "2.Следующий вопрос" << std::endl
-                  << "3.Вернуться в меню." << std::endl
+                  << "1.Remove question from test" << std::endl
+                  << "2.Next question" << std::endl
+                  << "3.Return to the test Editing menu." << std::endl
                   << "<< ";
         std::cin >> chooseKey;
         switch (chooseKey) {
@@ -342,7 +334,7 @@ void RemoveQuestion(
         }
 
         default: {
-            std::cout << "Ошибка ввода" << std::endl;
+            std::cout << "Input Error" << std::endl;
             PAUSE();
             CLS();
             break;
@@ -355,3 +347,4 @@ void RemoveQuestion(
     }
     return;
 }
+
