@@ -15,6 +15,7 @@
 #endif
 
 std::vector<Results> userResult;
+std::vector<Results> currResult;
 
 TEST(checkResults, noResults)
 {
@@ -25,8 +26,9 @@ TEST(checkResults, noResults)
     currUser.accountType = 1;
     CheckPath(File, userResult);
 
-    EXPECT_FALSE(CheckResult(currUser, userResult));
+    EXPECT_FALSE(CheckResult(currUser, userResult, currResult));
     userResult.clear();
+    currResult.clear();
 }
 
 TEST(USER_RESULTS, resultExist)
@@ -36,6 +38,7 @@ TEST(USER_RESULTS, resultExist)
     currUser.username = "ip912s24";
     currUser.accountType = 1;
     CheckPath(File, userResult);
-    EXPECT_TRUE(CheckResult(currUser, userResult));
+    EXPECT_TRUE(CheckResult(currUser, userResult, currResult));
+    currResult.clear();
     userResult.clear();
 }
