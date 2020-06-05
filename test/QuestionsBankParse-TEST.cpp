@@ -28,7 +28,7 @@ TEST(QuestionsParse, CORRECT_PARSE)
     EXPECT_TRUE(ParseSecondQuestions(QuestionsFile, actual));
 
     getline(QuestionsFile, type, '\n');
-    EXPECT_TRUE(ParseThirdQuestions(QuestionsFile, actual));
+    EXPECT_TRUE(ParseFirstQuestions(QuestionsFile, actual));
 
     actual.clear();
 }
