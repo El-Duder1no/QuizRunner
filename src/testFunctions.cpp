@@ -11,25 +11,26 @@ bool CheckPath(std::ifstream& questions, std::vector<Questions>& QuestionsBank)
             getline(questions, type, '\n');
             switch (atoi(type.c_str())) {
             case 1: {
-                if (!ParseFirstQuestions(questions, QuestionsBank)){
-				
+                if (!ParseFirstQuestions(questions, QuestionsBank)) {
                     return false;
-                }break;
+                }
+                break;
             }
             case 2: {
-                if (!ParseSecondQuestions(questions, QuestionsBank))
-                {
-					    return false;
-               } break;
+                if (!ParseSecondQuestions(questions, QuestionsBank)) {
+                    return false;
+                }
+                break;
             }
             case 3: {
-                if (!ParseThirdQuestions(questions, QuestionsBank))
-                {
-				    return false;
-                }break;
+                if (!ParseThirdQuestions(questions, QuestionsBank)) {
+                    return false;
+                }
+                break;
             }
-            defaul:
+            defaul : {
                 return false;
+            }
             }
         }
         return true;
