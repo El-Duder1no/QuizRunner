@@ -12,7 +12,7 @@ bool ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
     std::vector<std::string> word;
     parseString(temp, ", ", words);
     parseString(temp, ", ", word);
-    if (words.size() != 4) {
+    if (words.size() != ANSWERS_SIZE) {
         return false;
     }
     for (int i = 0; i < ANSWERS_SIZE; ++i) {
@@ -52,7 +52,7 @@ bool ParseSecondQuestions(
     std::vector<std::string> word;
     parseString(temp, ", ", words);
     parseString(temp, ", ", word);
-    if (words.size() != 4) {
+    if (words.size() != ANSWERS_SIZE) {
         return false;
     }
     for (int i = 0; i < ANSWERS_SIZE; ++i) {
@@ -81,7 +81,7 @@ bool ParseSecondQuestions(
         }
     }
     sort(words.begin(), words.end());
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < ANSWERS_SIZE; ++i) {
         words[i] = words[i].substr(2);
     }
 
