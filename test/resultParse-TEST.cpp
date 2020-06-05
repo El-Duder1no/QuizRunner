@@ -9,27 +9,6 @@
 #define RESULTS_PATH "res/test_files/Results.txt"
 #endif
 
-bool resultsTest(
-        std::ifstream& results,
-        std::vector<Results>& actual,
-        const std::vector<Results>& expected)
-{
-    resultsParse(results, actual);
-
-    int count = 0;
-    for (int i = 0; i < 2; i++) {
-        if (actual[i].username == expected[i].username
-            && actual[i].point == expected[i].point
-            && actual[i].time == expected[i].time) {
-            count++;
-        }
-    }
-    if (count == 2)
-        return true;
-    else
-        return false;
-}
-
 TEST(resultParseTest, correct)
 {
     std::ifstream file(RESULTS_PATH);

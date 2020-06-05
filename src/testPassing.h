@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 #include "Questions.h"
@@ -14,7 +15,6 @@
 
 void testFilling(
         const std::string testPath,
-        const std::string notInTheTestPath,
         const std::string questionsPath,
         std::vector<Questions>& Test);
 
@@ -27,12 +27,11 @@ double checkAnswers(
 bool writeResults(
         const std::string resultsPath,
         currentUser currUser,
-        const int result,
-        const int time);
+        const std::string result,
+        const std::string time);
 
 void testPass(
         const std::string testPath,
-        const std::string notInTheTestPath,
         const std::string questionsPath,
         const std::string resultsPath,
         currentUser currUser);

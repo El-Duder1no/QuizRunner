@@ -33,26 +33,28 @@ using namespace std;
 #define RESULTS_PATH "res/Results.txt"
 #endif
 
+#define QUIZ_PATH "D:\\code\\TRPO\\QuizRunner\\res\\test_files\\Questions.txt"
+#include "testFunctions.h"
+
 int main()
 {
     setlocale(LC_ALL, "RUS");
-
-    ifstream inputText;
-    vector<Questions> QuestionsBank;
 
     currentUser currUser;
 
     signInOut(ACCOUNTS_PATH, currUser);
 
-    if (currUser.accountType == 1) {
+    switch (currUser.accountType) {
+    case 0: {
+        if (!User(RESULTS_PATH, currUser)) {
+            cout << "Fail\n";
+        }
+    }
+    case 1: {
         if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
             cout << "Fail\n";
         }
     }
-    if (currUser.accountType == 0) {
-        if (!User(RESULTS_PATH, currUser)) {
-            cout << "Fail\n";
-        }
     }
 
     PAUSE();

@@ -2,7 +2,6 @@
 
 void testFilling(
         const std::string testPath,
-        const std::string notInTheTestPath,
         const std::string questionsPath,
         std::vector<Questions>& Test)
 {
@@ -60,13 +59,12 @@ double checkAnswers(
 bool writeResults(
         const std::string resultsPath,
         currentUser currUser,
-        const int result,
-        const int time)
+        const std::string result,
+        const std::string time)
 {
     std::ofstream resultsFIle(resultsPath);
 
     if (!resultsFIle.is_open()) {
-        std::cout << "ban\n";
         return false;
     }
 
@@ -78,14 +76,13 @@ bool writeResults(
 
 void testPass(
         const std::string testPath,
-        const std::string notInTheTestPath,
         const std::string questionsPath,
         const std::string resultsPath,
         currentUser currUser)
 {
     std::vector<Questions> Test;
     std::vector<std::string> answers;
-    testFilling(testPath, notInTheTestPath, questionsPath, Test);
+    testFilling(testPath, questionsPath, Test);
 
     int lastQuestion = Test.size();
     int currentQuestion = 0;
@@ -110,9 +107,16 @@ void testPass(
     double time = duration.count();
     double result = checkAnswers(Test, answers);
 
-    std::cout << "Ваш результат: " << result << "%\n";
-    std::cout << std::setprecision(3) << "Время прохождения теста: " << time
+    std::string strResults, strTime;
+    std::stringstream temp;
+    temp << result;
+    temp >> strResults;
+    temp << time;
+    temp >> strTime;
+
+    std::cout << "Ваш результат: " << strResults << "%\n";
+    std::cout << std::setprecision(3) << "Время прохождения теста: " << strTime
               << " сек.\n";
 
-    writeResults(resultsPath, currUser, result, time);
+    writeResults(resultsPath, currUser, strResults, strTime);
 }
