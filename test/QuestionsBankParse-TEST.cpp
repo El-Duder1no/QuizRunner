@@ -31,8 +31,6 @@ TEST(QuestionsParse, CORRECT_PARSE)
 
     getline(QuestionsFile, type, '\n');
     EXPECT_TRUE(ParseFirstQuestions(QuestionsFile, actual));
-
-    question.clear();
 }
 
 TEST(QuestionsParse, INCORRECT_PARSE)
