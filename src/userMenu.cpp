@@ -107,5 +107,6 @@ void printResults(std::vector<Results>& CurrentUserResults)
         }
         }
     }
+    return;
 }
 
