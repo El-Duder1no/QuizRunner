@@ -37,10 +37,10 @@ bool User(const std::string ResultsPath, currentUser& user)
         }
         case '2': {
             testPass(
-                    TEST_PATH,
-                    NOT_IN_TEST_PATH,
-                    QUESTIONS_PATH,
-                    RESULTS_PATH,
+                    TEST-PATH,
+                    NOT-IN-TEST-PATH,
+                    QUESTIONS-PATH,
+                    RESULTS-PATH,
                     user);
             CLS();
             break;

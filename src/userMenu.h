@@ -15,6 +15,19 @@
 #include <string>
 #include <vector>
 
+#ifdef _WIN32
+#define TEST-PATH "..\\res\\Test.txt"
+#define QUESTIONS-PATH "..\\res\\Questions.txt"
+#define NOT-IN-TEST-PATH "..\\res\\NotInTheTest.txt"
+#define RESULTS-PATH "..\\res\\Results.txt"
+#else
+#define TEST-PATH "res/Test.txt"
+#define QUESTIONS-PATH "res/Questions.txt"
+#define NOT-IN-TEST-PATH "res/NotInTheTest.txt"
+#define RESULTS-PATH "res/Results.txt"
+#endif
+
+
 bool User(const std::string ResultsPath, currentUser& user);
 void UserMenu();
 bool CheckResult(
