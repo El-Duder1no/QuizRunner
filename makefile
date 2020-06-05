@@ -27,7 +27,7 @@ $(TEST): $(DIR_TEST)/signInOut-TEST.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseStr
 $(DIR_TEST)/signInOut-TEST.o: test/signInOut-TEST.cpp
 	$(OBJ-TEST)
 	
-$(DIR_TEST)/checkResults-TEST.o: test/checkResults-TEST-TEST.cpp
+$(DIR_TEST)/checkResults-TEST.o: test/checkResults-TEST.cpp
 	$(OBJ-TEST)
 	
 $(DIR_TEST)/resultParse-TEST.o: test/resultParse-TEST.cpp
