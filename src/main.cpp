@@ -33,12 +33,12 @@ using namespace std;
 #define RESULTS_PATH "res/Results.txt"
 #endif
 
+#define QUIZ_PATH "D:\\code\\TRPO\\QuizRunner\\res\\test_files\\Questions.txt"
+#include "testFunctions.h"
+
 int main()
 {
     setlocale(LC_ALL, "RUS");
-
-    ifstream inputText;
-    vector<Questions> QuestionsBank;
 
     currentUser currUser;
 
