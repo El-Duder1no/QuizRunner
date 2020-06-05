@@ -12,9 +12,9 @@
 #define QUESTIONS_PATH "..\\res\\test_files\\Questions.txt"
 #define NO_FILE_PATH "\\res\\test_files\\"
 #else
-#define QUESTIONS_PATH "../res/test_files/Questions.txt"	
-#define RESULTS_PATH "/res/test_files/Results.txt"
-#define NO_FILE_PATH "/res/test_files/"
+#define QUESTIONS_PATH "res/test_files/Questions.txt"
+#define RESULTS_PATH "res/test_files/Results.txt"
+#define NO_FILE_PATH "res/test_files/"
 #endif
 
 std::vector<Results> userResult;
