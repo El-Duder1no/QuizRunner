@@ -46,11 +46,13 @@ int main()
         if (!User(RESULTS_PATH, TEST_PATH, QUESTIONS_PATH, currUser)) {
             cout << "Fail\n";
         }
+        break;
     }
     case 1: {
         if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
             cout << "Fail\n";
         }
+        break;
     }
     }
 
