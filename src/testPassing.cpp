@@ -109,13 +109,13 @@ void testPass(
     double time = duration.count();
     double result = checkAnswers(Test, answers);
 
-	std::string strResults, strTime;
-	std::stringstream temp;
+    std::string strResults, strTime;
+    std::stringstream temp;
     temp << result;
-	temp >> strResults;
+    temp >> strResults;
     temp << time;
     temp >> strTime;
-	
+
     std::cout << "Ваш результат: " << strResults << "%\n";
     std::cout << std::setprecision(3) << "Время прохождения теста: " << strTime
               << " сек.\n";
