@@ -1,6 +1,6 @@
-﻿#include "parseForTXT.h"
+#include "parseForTXT.h"
 
-void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
+bool ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
 {
     Questions buff;
     std::string CheckAnswer, temp, TrueAnswer, FalseAnswers;
@@ -12,9 +12,13 @@ void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
     std::vector<std::string> word;
     parseString(temp, ", ", words);
     parseString(temp, ", ", word);
+    if (words.size() != 4) {
+        return false;
+    }
     for (int i = 0; i < ANSWERS_SIZE; ++i) {
         words[i] = words[i].substr(2);
     }
+
     FalseAnswers = words[0] + " " + words[1] + " " + words[2] + " " + words[3];
 
     for (int i = 0; i < ANSWERS_SIZE; ++i) {
@@ -31,9 +35,10 @@ void ParseFirstQuestions(std::ifstream& questions, std::vector<Questions>& text)
     buff.answers.push_back(FalseAnswers);
     buff.RightAnswers.push_back(TrueAnswer);
     text.push_back(buff);
+    return true;
 }
 
-void ParseSecondQuestions(
+bool ParseSecondQuestions(
         std::ifstream& questions, std::vector<Questions>& text)
 {
     Questions buff;
@@ -47,6 +52,9 @@ void ParseSecondQuestions(
     std::vector<std::string> word;
     parseString(temp, ", ", words);
     parseString(temp, ", ", word);
+    if (words.size() != 4) {
+        return false;
+    }
     for (int i = 0; i < ANSWERS_SIZE; ++i) {
         word[i] = word[i].substr(2);
     }
@@ -55,28 +63,24 @@ void ParseSecondQuestions(
     for (int i = 0; i < ANSWERS_SIZE; ++i) {
         temp = words[i].substr(0, 1);
         switch (CheckAnswer = atoi(temp.c_str())) {
-        case 1:
-            if (i != 0) {
-                swap(words[0], words[i]);
-            }
-            break;
-        case 2:
-            if (i != 1) {
-                swap(words[1], words[i]);
-            }
-            break;
-        case 3:
-            if (i != 2) {
-                swap(words[2], words[i]);
-            }
-            break;
-        case 4:
-            if (i != 3) {
-                swap(words[3], words[i]);
-            }
+        case 1: {
             break;
         }
+        case 2: {
+            break;
+        }
+        case 3: {
+            break;
+        }
+        case 4: {
+            break;
+        }
+        default: {
+            return false;
+        }
+        }
     }
+    sort(words.begin(), words.end());
     for (int i = 0; i < 4; ++i) {
         words[i] = words[i].substr(2);
     }
@@ -86,9 +90,10 @@ void ParseSecondQuestions(
     buff.answers.push_back(FalseAnswers);
     buff.RightAnswers.push_back(TrueAnswers);
     text.push_back(buff);
+    return true;
 }
 
-void ParseThirdQuestions(std::ifstream& questions, std::vector<Questions>& text)
+bool ParseThirdQuestions(std::ifstream& questions, std::vector<Questions>& text)
 {
     Questions buff;
     std::string temp, TrueAnswers;
@@ -98,6 +103,9 @@ void ParseThirdQuestions(std::ifstream& questions, std::vector<Questions>& text)
 
     getline(questions, temp, '\n');
     parseString(temp, ", ", words);
+    if (words.size() != 2) {
+        return false;
+    }
     for (int i = 0; i < 2; ++i) {
         words[i] = words[i].substr(2);
     }
@@ -106,6 +114,7 @@ void ParseThirdQuestions(std::ifstream& questions, std::vector<Questions>& text)
     buff.answers.push_back(TrueAnswers);
     buff.RightAnswers.push_back(TrueAnswers);
     text.push_back(buff);
+    return true;
 }
 
 void ParseTest(
