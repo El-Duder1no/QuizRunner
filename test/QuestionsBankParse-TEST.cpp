@@ -90,13 +90,10 @@ TEST(TestParse, CORRECT_PARSE)
     for (int i = 0; i < questionSize; ++i) {
         ASSERT_STREQ(actual[i].type.c_str(), expected[i].type.c_str());
         ASSERT_STREQ(actual[i].question.c_str(), expected[i].question.c_str());
-
+        ASSERT_STREQ(
+                actual[i].answers[0].c_str(), expected[i].answers[0].c_str());
         int questionsSize = actual[i].RightAnswers.size();
         for (int j = 0; j < questionsSize; ++j) {
-            ASSERT_STREQ(
-                    actual[i].answers[j].c_str(),
-                    expected[i].answers[j].c_str());
-
             ASSERT_STREQ(
                     actual[i].RightAnswers[j].c_str(),
                     expected[i].RightAnswers[j].c_str());
