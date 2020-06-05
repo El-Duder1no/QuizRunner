@@ -15,7 +15,6 @@
 
 void testFilling(
         const std::string testPath,
-        const std::string notInTheTestPath,
         const std::string questionsPath,
         std::vector<Questions>& Test);
 
@@ -33,7 +32,6 @@ bool writeResults(
 
 void testPass(
         const std::string testPath,
-        const std::string notInTheTestPath,
         const std::string questionsPath,
         const std::string resultsPath,
         currentUser currUser);

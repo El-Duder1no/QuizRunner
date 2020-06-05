@@ -2,7 +2,6 @@
 
 void testFilling(
         const std::string testPath,
-        const std::string notInTheTestPath,
         const std::string questionsPath,
         std::vector<Questions>& Test)
 {
@@ -77,14 +76,13 @@ bool writeResults(
 
 void testPass(
         const std::string testPath,
-        const std::string notInTheTestPath,
         const std::string questionsPath,
         const std::string resultsPath,
         currentUser currUser)
 {
     std::vector<Questions> Test;
     std::vector<std::string> answers;
-    testFilling(testPath, notInTheTestPath, questionsPath, Test);
+    testFilling(testPath, questionsPath, Test);
 
     int lastQuestion = Test.size();
     int currentQuestion = 0;
