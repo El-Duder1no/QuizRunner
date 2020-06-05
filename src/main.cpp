@@ -44,15 +44,17 @@ int main()
 
     signInOut(ACCOUNTS_PATH, currUser);
 
-    if (currUser.accountType == 1) {
+    switch (currUser.accountType) {
+    case 0: {
+        if (!User(RESULTS_PATH, currUser)) {
+            cout << "Fail\n";
+        }
+    }
+    case 1: {
         if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
             cout << "Fail\n";
         }
     }
-    if (currUser.accountType == 0) {
-        if (!User(RESULTS_PATH, currUser)) {
-            cout << "Fail\n";
-        }
     }
 
     PAUSE();
