@@ -16,15 +16,15 @@
 #include <vector>
 
 #ifdef _WIN32
-#define TEST-PATH "..\\res\\Test.txt"
-#define QUESTIONS-PATH "..\\res\\Questions.txt"
-#define NOT-IN-TEST-PATH "..\\res\\NotInTheTest.txt"
-#define RESULTS-PATH "..\\res\\Results.txt"
+#define PATH_TEST "..\\res\\Test.txt"
+#define PATH_QUESTIONS "..\\res\\Questions.txt"
+#define PATH_NOT_IN_TEST "..\\res\\NotInTheTest.txt"
+#define PATH_RESULTS "..\\res\\Results.txt"
 #else
-#define TEST-PATH "res/Test.txt"
-#define QUESTIONS-PATH "res/Questions.txt"
-#define NOT-IN-TEST-PATH "res/NotInTheTest.txt"
-#define RESULTS-PATH "res/Results.txt"
+#define PATH_TEST "res/Test.txt"
+#define PATH_QUESTIONS "res/Questions.txt"
+#define PATH_NOT_IN_TEST "res/NotInTheTest.txt"
+#define PATH_RESULTS "res/Results.txt"
 #endif
 
 
