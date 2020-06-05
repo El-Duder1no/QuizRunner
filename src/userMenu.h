@@ -7,6 +7,7 @@
 #include "resultStruct.h"
 #include "screenFunctions.h"
 #include "testFunctions.h"
+#include "testPassing.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
