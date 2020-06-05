@@ -309,7 +309,7 @@ void RemoveQuestion(
         std::vector<Questions>& text, std::vector<Questions>& textOut)
 {
     int i = 0;
-	char chooseKey;
+    char chooseKey;
     int textSize = text.size();
     while (i < textSize) {
         PrintQuestions(text, i);
