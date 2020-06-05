@@ -14,6 +14,7 @@
 #else
 #define QUESTIONS_PATH "res/test_files/Questions.txt"
 #define TEST_PATH "res/test_files/Test.txt"
+#define FALSE_QUESTIONS_PATH "res/test_files/WrongQuestions.txt"
 #endif
 
 TEST(QuestionsParse, CORRECT_PARSE)
