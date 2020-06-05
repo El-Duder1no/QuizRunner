@@ -30,5 +30,5 @@ TEST(QuestionsParse, CORRECT_PARSE)
     getline(QuestionsFile, type, '\n');
     EXPECT_TRUE(ParseThirdQuestions(QuestionsFile, actual));
 
-    question.clear();
+    actual.clear();
 }
