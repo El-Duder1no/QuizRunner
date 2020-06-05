@@ -169,14 +169,14 @@ void EditingTest(
 
 void PrintQuestions(std::vector<Questions>& questions, int i)
 {
-    std::cout << "Question number: " << i + 1 << " | " << questions.size()
+    std::cout << "\nQuestion number: " << i + 1 << " | " << questions.size()
               << std::endl;
     std::cout << "Question: " << questions[i].question << std::endl;
     int questionsSize = questions[i].RightAnswers.size();
+    std::cout << "Answer options: " << questions[i].answers[0] << std::endl
+              << "Right answers: ";
     for (int j = 0; j < questionsSize; ++j) {
-        std::cout << "Answer options: " << questions[i].answers[j] << std::endl;
-        std::cout << "Right answers: " << questions[i].RightAnswers[j]
-                  << std::endl;
+        std::cout << questions[i].RightAnswers[j] << " ";
     }
 }
 
@@ -347,4 +347,3 @@ void RemoveQuestion(
     }
     return;
 }
-
