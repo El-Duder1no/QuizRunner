@@ -1,4 +1,4 @@
-﻿#include "testFunctions.h"
+#include "testFunctions.h"
 
 bool CheckPath(std::ifstream& questions, std::vector<Questions>& QuestionsBank)
 {
@@ -10,15 +10,26 @@ bool CheckPath(std::ifstream& questions, std::vector<Questions>& QuestionsBank)
             std::string type;
             getline(questions, type, '\n');
             switch (atoi(type.c_str())) {
-            case 1:
-                ParseFirstQuestions(questions, QuestionsBank);
-                break;
-            case 2:
-                ParseSecondQuestions(questions, QuestionsBank);
-                break;
-            case 3:
-                ParseThirdQuestions(questions, QuestionsBank);
-                break;
+            case 1: {
+                if (!ParseFirstQuestions(questions, QuestionsBank)){
+				
+                    return false;
+                }break;
+            }
+            case 2: {
+                if (!ParseSecondQuestions(questions, QuestionsBank))
+                {
+					    return false;
+               } break;
+            }
+            case 3: {
+                if (!ParseThirdQuestions(questions, QuestionsBank))
+                {
+				    return false;
+                }break;
+            }
+            defaul:
+                return false;
             }
         }
         return true;
@@ -54,3 +65,4 @@ bool CheckPath(std::ifstream& results, std::vector<Results>& userResult)
         return true;
     }
 }
+
