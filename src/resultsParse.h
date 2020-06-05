@@ -1,4 +1,4 @@
-﻿#ifndef RESULT_PARSE_H
+#ifndef RESULT_PARSE_H
 #define RESULT_PARSE_H
 
 #include "parseString.h"

@@ -1,10 +1,10 @@
-﻿#include "userMenu.h"
+#include "userMenu.h"
 void UserMenu()
 {
-    std::cout << "Выберите пункт меню:" << std::endl;
-    std::cout << "1 - Просмотр результатов" << std::endl;
-    std::cout << "2 - Начать тест" << std::endl;
-    std::cout << "3 - Выход" << std::endl;
+    std::cout << "Select menu item:" << std::endl;
+    std::cout << "1 - View past results" << std::endl;
+    std::cout << "2 - Start test" << std::endl;
+    std::cout << "3 - Exit" << std::endl;
     std::cout << ">> ";
 }
 
@@ -12,22 +12,26 @@ bool User(const std::string ResultsPath, currentUser& user)
 {
     std::ifstream results(ResultsPath.c_str());
     std::vector<Results> UsersResults;
+    std::vector<Results> CurrentUserResults;
     if (!CheckPath(results, UsersResults)) {
         std::cout << "File open error";
         return false;
     }
     bool userMenuState = true;
-    int chooseKey;
+    char chooseKey;
     while (userMenuState) {
         UserMenu();
         std::cin >> chooseKey;
         switch (chooseKey) {
         case '1': {
             CLS();
-            if (!CheckResult(user, UsersResults)) {
-                std::cout << "Предыдущие результаты не найдены!\n\n";
+            if (!CheckResult(user, UsersResults, CurrentUserResults)) {
+                std::cout << " No previous results found!\n\n";
                 PAUSE();
+            } else {
+                printResults(CurrentUserResults);
             }
+            PAUSE();
             CLS();
             break;
         }
@@ -41,7 +45,7 @@ bool User(const std::string ResultsPath, currentUser& user)
             break;
         }
         default: {
-            std::cout << "Ошибка ввода" << std::endl;
+            std::cout << "Input Error" << std::endl;
             PAUSE();
             CLS();
             break;
@@ -51,47 +55,58 @@ bool User(const std::string ResultsPath, currentUser& user)
     return true;
 }
 
-bool CheckResult(currentUser& user, std::vector<Results>& usersResults)
+bool CheckResult(
+        currentUser& user,
+        std::vector<Results>& usersResults,
+        std::vector<Results>& CurrentUserResults)
 {
-    int chooseKey;
-    std::vector<Results> CurrentUser;
+    CurrentUserResults.clear();
     int ResultSize = usersResults.size();
     for (int i = 0; i < ResultSize; ++i) {
         if (usersResults[i].username == user.username) {
-            CurrentUser.push_back(usersResults[i]);
+            CurrentUserResults.push_back(usersResults[i]);
         }
     }
-    if (CurrentUser.empty()) {
+    if (CurrentUserResults.empty()) {
         return false;
     } else {
-        bool check = true;
-        while (check) {
-            std::cout << "Результаты пользователя: " << user.username
-                      << "\n Баллы"
-                      << "\t | \t"
-                      << "Время прохождения\n";
-            int CurrentUserSize = CurrentUser.size();
-            for (int i = 0; i < CurrentUserSize; ++i) {
-                std::cout << CurrentUser[i].point << "\t | \t"
-                          << CurrentUser[i].time << "\n";
-            }
-            std::cout << "\n\n 1.Вернуться в меню\n"
-                      << "<<";
-            std::cin >> chooseKey;
-            switch (chooseKey) {
-            case '1': {
-                CLS();
-                check = false;
-                break;
-            }
-            default: {
-                std::cout << "Ошибка ввода" << std::endl;
-                PAUSE();
-                CLS();
-                break;
-            }
-            }
-        }
         return true;
     }
 }
+
+void printResults(std::vector<Results>& CurrentUserResults)
+{
+    char chooseKey;
+    bool check = true;
+    int i = 0;
+    while (check) {
+        std::cout << "User results: " << CurrentUserResults[i].username
+                  << "\n Points"
+                  << "\t | \t"
+                  << "Time\n";
+        int CurrentUserSize = CurrentUserResults.size();
+        for (; i < CurrentUserSize; ++i) {
+            std::cout << CurrentUserResults[i].point << "\t | \t"
+                      << CurrentUserResults[i].time << "\n";
+        }
+        std::cout << "\n\n 1.Return to menu\n"
+                  << "<<";
+        std::cin >> chooseKey;
+        switch (chooseKey) {
+        case '1': {
+            CLS();
+            check = false;
+            break;
+        }
+        default: {
+            std::cout << "Input Error" << std::endl;
+            PAUSE();
+            CLS();
+            i = 0;
+            break;
+        }
+        }
+    }
+    return;
+}
+

@@ -1,4 +1,4 @@
-﻿#ifndef TEST_FUNCTIONS
+#ifndef TEST_FUNCTIONS
 #define TEST_FUNCTIONS
 #include "Questions.h"
 #include "parseForTXT.h"

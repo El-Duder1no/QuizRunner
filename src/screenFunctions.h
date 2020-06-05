@@ -1,4 +1,4 @@
-﻿#ifndef SCREEN_FUNC_H
+#ifndef SCREEN_FUNC_H
 #define SCREEN_FUNC_H
 
 #include <cstdlib>

@@ -1,19 +1,20 @@
-﻿#ifndef PARSE_FOR_TXT
+#ifndef PARSE_FOR_TXT
 #define PARSE_FOR_TXT
 #define RIGHT_ANSWER 3
 #define ANSWERS_SIZE 4
 #include "Questions.h"
 #include "parseString.h"
+#include <algorithm>
 #include <cstdlib>
 #include <fstream>
 #include <string>
 #include <vector>
 
-void ParseFirstQuestions(
+bool ParseFirstQuestions(
         std::ifstream& questions, std::vector<Questions>& text);
-void ParseSecondQuestions(
+bool ParseSecondQuestions(
         std::ifstream& questions, std::vector<Questions>& text);
-void ParseThirdQuestions(
+bool ParseThirdQuestions(
         std::ifstream& questions, std::vector<Questions>& text);
 void ParseTest(
         std::fstream& questions,
