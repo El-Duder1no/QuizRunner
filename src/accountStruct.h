@@ -1,4 +1,4 @@
-﻿#ifndef ACC_STRUCT_H
+#ifndef ACC_STRUCT_H
 #define ACC_STRUCT_H
 
 #include <string>
