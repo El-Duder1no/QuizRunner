@@ -1,4 +1,4 @@
-﻿#include "screenFunctions.h"
+#include "screenFunctions.h"
 
 void CLS()
 {
@@ -11,6 +11,6 @@ void CLS()
 
 void PAUSE()
 {
-    std::cout << "Нажмите любую клавишу чтобы продолжить" << std::endl;
+    std::cout << "Press any key to continue" << std::endl;
     std::cin.get();
 }
