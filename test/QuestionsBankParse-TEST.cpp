@@ -8,6 +8,7 @@
 #include <vector>
 
 #ifdef _WIN32
+#define FALSE_QUESTIONS_PATH "..\\res\\test_files\\WrongQuestions.txt"
 #define QUESTIONS_PATH "..\\res\\test_files\\Questions.txt"
 #define TEST_PATH "..\\res\\test_files\\Test.txt"
 #else
@@ -30,5 +31,38 @@ TEST(QuestionsParse, CORRECT_PARSE)
     getline(QuestionsFile, type, '\n');
     EXPECT_TRUE(ParseFirstQuestions(QuestionsFile, actual));
 
-    actual.clear();
+    question.clear();
+}
+
+TEST(QuestionsParse, INCORRECT_PARSE)
+{
+    std::ifstream WrongQuestionsFile(FALSE_QUESTIONS_PATH);
+    std::vector<Questions> actual;
+    QuestionsFile.seekg(std::ios_base::beg);
+    std::string type;
+
+    getline(WrongQuestionsFile, type, '\n');
+    EXPECT_FALSE(ParseSecondQuestions(WrongQuestionsFile, actual));
+
+    getline(WrongQuestionsFile, type, '\n');
+    EXPECT_FALSE(ParseSecondQuestions(WrongQuestionsFile, actual));
+
+    getline(WrongQuestionsFile, type, '\n');
+    EXPECT_FALSE(ParseSecondQuestions(WrongQuestionsFile, actual));
+
+    getline(WrongQuestionsFile, type, '\n');
+    EXPECT_FALSE(ParseThirdQuestions(WrongQuestionsFile, actual));
+
+    getline(WrongQuestionsFile, type, '\n');
+    EXPECT_FALSE(ParseThirdQuestions(WrongQuestionsFile, actual));
+
+    getline(WrongQuestionsFile, type, '\n');
+    EXPECT_FALSE(ParseThirdQuestions(WrongQuestionsFile, actual));
+
+    getline(WrongQuestionsFile, type, '\n');
+    EXPECT_FALSE(ParseFirstQuestions(WrongQuestionsFile, actual));
+
+    getline(WrongQuestionsFile, type, '\n');
+    EXPECT_FALSE(ParseFirstQuestions(WrongQuestionsFile, actual));
+    question.clear();
 }
