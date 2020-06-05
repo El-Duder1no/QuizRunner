@@ -1,11 +1,10 @@
+#include "Questions.h"
+#include "resultStruct.h"
+#include "testFunctions.h"
 #include <fstream>
 #include <gtest/gtest.h>
 #include <string>
 #include <vector>
-
-#include "Questions.h"
-#include "resultStruct.h"
-#include "testFunctions.h"
 
 #ifdef _WIN32
 #define RESULTS_PATH "..\\res\\test_files\\Results.txt"
