@@ -29,7 +29,7 @@ bool writeResults(
         const std::string resultsPath,
         currentUser currUser,
         const std::string result,
-        const std::string time)
+        const std::string time);
 
 void testPass(
         const std::string testPath,
