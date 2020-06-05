@@ -37,7 +37,7 @@ TEST(QuestionsParse, INCORRECT_PARSE)
 {
     std::ifstream WrongQuestionsFile(FALSE_QUESTIONS_PATH);
     std::vector<Questions> actual;
-    QuestionsFile.seekg(std::ios_base::beg);
+    WrongQuestionsFile.seekg(std::ios_base::beg);
     std::string type;
 
     getline(WrongQuestionsFile, type, '\n');
