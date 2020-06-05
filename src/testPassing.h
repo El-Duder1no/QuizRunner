@@ -18,7 +18,7 @@ void testFilling(
         const std::string questionsPath,
         std::vector<Questions>& Test);
 
-void printQuestion(std::vector<Questions>& Test, const int index);
+void printQuestion(const std::vector<Questions> Test, const int index);
 
 double checkAnswers(
         const std::vector<Questions>& Test,

@@ -12,14 +12,14 @@ void testFilling(
 
     testQuestions.close();
 
-    if (Test.size() == 0) {
+    if (Test.empty()) {
         CheckPath(jobBank, Test);
     }
 
     jobBank.close();
 }
 
-void printQuestion(std::vector<Questions>& Test, const int index)
+void printQuestion(const std::vector<Questions> Test, const int index)
 {
     std::cout << "Quection ¹" << index + 1 << "\n\n";
     if (Test[index].type == "1" || Test[index].type == "2") {
@@ -91,6 +91,7 @@ void testPass(
 
     auto start = std::chrono::high_resolution_clock::now();
     while (currentQuestion < lastQuestion) {
+        CLS();
         printQuestion(Test, currentQuestion);
 
         std::string answer;

@@ -217,6 +217,7 @@ void signInOut(const std::string accountPath, currentUser& User)
                 break;
             }
             case 1: {
+                CLS();
                 std::cout << "Registration completed successfully.\n";
                 User.username = username;
                 User.accountType = 0;
