@@ -63,4 +63,3 @@ bool CheckPath(std::ifstream& results, std::vector<Results>& userResult)
         return true;
     }
 }
-

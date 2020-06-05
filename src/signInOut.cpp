@@ -2,25 +2,25 @@
 
 void registrationMenu()
 {
-    std::cout << "Выберите пункт меню:\n";
-    std::cout << "1 - Вход в учетную запись\n";
-    std::cout << "2 - Регистрация\n";
-    std::cout << "3 - Выход\n";
+    std::cout << "Select menu item:\n";
+    std::cout << "1 - Sign in\n";
+    std::cout << "2 - Sign up\n";
+    std::cout << "3 - Exit\n";
     std::cout << ">> ";
 }
 void registrationInfo()
 {
     CLS();
 
-    std::cout << "Длина имени пользователя должна\n"
-              << "составлять от 3 до 20 символов.\n"
-              << "Также, оно может состоять \n"
-              << "из букв латинского алфавита, цифр или знаков\n\n";
+    std::cout << "The username must be between\n"
+              << "3 and 20 characters long.\n"
+              << "Also, it must consist of \n"
+              << "letters of the Latin alphabet, numbers or characters\n\n";
 
-    std::cout << "Длина пароля от 8 до 25 символов.\n"
-              << "Пароль должен состоять из букв\n"
-              << "латинского алфавита и должен содержать\n"
-              << "как минимум одну заглавную букву и цифру.\n\n";
+    std::cout
+            << "The password must be between 8 and 25 characters long.\n"
+            << "password must consist of the Latin alphabet\n"
+            << "and must contain at least one uppercase letter and number.\n\n";
 }
 
 bool isLoginCorrect(const std::string username)
@@ -177,20 +177,19 @@ void signInOut(const std::string accountPath, currentUser& User)
 
             CLS();
 
-            std::cout << "Введите логин:\n>>";
+            std::cout << "Enter login:\n>>";
             std::cin >> username;
-            std::cout << "Введите пароль:\n>>";
+            std::cout << "Enter password:\n>>";
             std::cin >> password;
 
             bool temp = enterAccount(User, password, username, accountPath);
             if (temp == true) {
                 system("CLS");
-                std::cout << "Вход в личный кабинет\n";
                 registrationState = false;
                 break;
             } else {
                 system("CLS");
-                std::cout << "Неправильный логин или пароль\n";
+                std::cout << "Incorrect login or password\n";
                 system("PAUSE");
                 registrationMenu();
                 break;
@@ -203,22 +202,23 @@ void signInOut(const std::string accountPath, currentUser& User)
 
             registrationInfo();
 
-            std::cout << "Введите логин:\n>>";
+            std::cout << "Enter login:\n>>";
             std::cin >> username;
-            std::cout << "Введите пароль:\n>>";
+            std::cout << "Enter password:\n>>";
             std::cin >> password;
 
             int temp = registration(username, password, accountPath);
             switch (temp) {
             case 0: {
                 CLS();
-                std::cout << "Такой аккаунт уже существует\n";
+                std::cout << "This account already exists.\n";
                 PAUSE();
                 registrationMenu();
                 break;
             }
             case 1: {
-                std::cout << "Регистрация прошла успешно\n";
+                CLS();
+                std::cout << "Registration completed successfully.\n";
                 User.username = username;
                 User.accountType = 0;
 
@@ -226,7 +226,6 @@ void signInOut(const std::string accountPath, currentUser& User)
                         accountPath, std::ios_base::app | std::ios_base::ate);
 
                 if (!file.is_open()) {
-                    std::cerr << "\nФайл не открыт!\n";
                     break;
                 }
 
@@ -242,7 +241,7 @@ void signInOut(const std::string accountPath, currentUser& User)
             }
             case 2: {
                 CLS();
-                std::cout << "Введен неправильный логин или пароль\n";
+                std::cout << "Incorrect login or password\n";
                 PAUSE();
                 registrationMenu();
                 break;
@@ -257,7 +256,7 @@ void signInOut(const std::string accountPath, currentUser& User)
             break;
         }
         default: {
-            std::cout << "ОШИБКА ВВОДА\n";
+            std::cout << "Input Error\n";
             break;
         }
         }

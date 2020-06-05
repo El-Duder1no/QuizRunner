@@ -12,24 +12,24 @@ void testFilling(
 
     testQuestions.close();
 
-    if (Test.size() == 0) {
+    if (Test.empty()) {
         CheckPath(jobBank, Test);
     }
 
     jobBank.close();
 }
 
-void printQuestion(std::vector<Questions>& Test, const int index)
+void printQuestion(const std::vector<Questions> Test, const int index)
 {
-    std::cout << "Вопрос №" << index + 1 << "\n\n";
+    std::cout << "Quection №" << index + 1 << "\n\n";
     if (Test[index].type == "1" || Test[index].type == "2") {
         std::cout << "  " << Test[index].question << "\n\n";
-        std::cout << "Варианты ответов:\n";
+        std::cout << "Answer options:\n";
         std::cout << "" << Test[index].answers[0] << "\n";
-        std::cout << "\nОтвет: ";
+        std::cout << "\nAnswer: ";
     } else {
         std::cout << Test[index].question << "\n\n";
-        std::cout << "Ответ: ";
+        std::cout << "Answer: ";
     }
 }
 
@@ -91,6 +91,7 @@ void testPass(
 
     auto start = std::chrono::high_resolution_clock::now();
     while (currentQuestion < lastQuestion) {
+        CLS();
         printQuestion(Test, currentQuestion);
 
         std::string answer;
@@ -114,9 +115,9 @@ void testPass(
     temp << time;
     temp >> strTime;
 
-    std::cout << "Ваш результат: " << strResults << "%\n";
-    std::cout << std::setprecision(3) << "Время прохождения теста: " << strTime
-              << " сек.\n";
+    std::cout << "Your result: " << strResults << "%\n";
+    std::cout << std::setprecision(3) << "Test time: " << strTime
+              << " seconds\n";
 
     writeResults(resultsPath, currUser, strResults, strTime);
 }

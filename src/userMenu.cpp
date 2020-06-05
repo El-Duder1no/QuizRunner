@@ -8,7 +8,11 @@ void UserMenu()
     std::cout << ">> ";
 }
 
-bool User(const std::string ResultsPath, currentUser& user)
+bool User(
+        const std::string ResultsPath,
+        const std::string testPath,
+        const std::string questionsPath,
+        currentUser& user)
 {
     std::ifstream results(ResultsPath.c_str());
     std::vector<Results> UsersResults;
@@ -36,12 +40,7 @@ bool User(const std::string ResultsPath, currentUser& user)
             break;
         }
         case '2': {
-            testPass(
-                    PATH_TEST,
-                    PATH_NOT_IN_TEST,
-                    PATH_QUESTIONS,
-                    PATH_RESULTS,
-                    user);
+            testPass(testPath, questionsPath, ResultsPath, user);
             CLS();
             break;
         }
