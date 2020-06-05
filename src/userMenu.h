@@ -1,4 +1,4 @@
-﻿#ifndef userMenu
+#ifndef userMenu
 
 #define userMenu
 #include "accountStruct.h"
@@ -16,5 +16,9 @@
 
 bool User(const std::string ResultsPath, currentUser& user);
 void UserMenu();
-bool CheckResult(currentUser& user, std::vector<Results>& usersResults);
+bool CheckResult(
+        currentUser& user,
+        std::vector<Results>& usersResults,
+        std::vector<Results>& CurrentUserResults);
+void printResults(std::vector<Results>& CurrentUserResults);        
 #endif
