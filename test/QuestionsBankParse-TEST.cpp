@@ -92,11 +92,29 @@ TEST(TestParse, CORRECT_PARSE)
         ASSERT_STREQ(actual[i].question.c_str(), expected[i].question.c_str());
         ASSERT_STREQ(
                 actual[i].answers[0].c_str(), expected[i].answers[0].c_str());
-        int questionsSize = actual[i].RightAnswers.size();
+        int questionsSize = actual[i].answers.size();
+        for (int j = 0; j < questionsSize; ++j) {
+            ASSERT_STREQ(
+                    actual[i].answers[j].c_str(),
+                    expected[i].answers[j].c_str());
+        }
+
         for (int j = 0; j < questionsSize; ++j) {
             ASSERT_STREQ(
                     actual[i].RightAnswers[j].c_str(),
                     expected[i].RightAnswers[j].c_str());
         }
     }
+}
+
+std::cout << "Question: " << questions[i].question << std::endl;
+int questionsSize = questions[i].answers.size();
+std::cout << "Answer options: ";
+for (int j = 0; j < questionsSize; ++j) {
+    std::cout << questions[i].answers[j] << " ";
+}
+std::cout << "\nRight answers: ";
+questionsSize = questions[i].RightAnswers.size();
+for (int j = 0; j < questionsSize; ++j) {
+    std::cout << questions[i].RightAnswers[j] << " ";
 }
