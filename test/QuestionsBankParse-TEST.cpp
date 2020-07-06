@@ -70,12 +70,12 @@ TEST(TestParse, CORRECT_PARSE)
     std::vector<Questions> expected;
     Questions buff;
     std::string temp, TrueAnswers, WrongAnswers;
-    buff.type = "2";
-    buff.question = "Arrange numbers in ascending order:";
+    buff.type[0] = "2";
+    buff.question[0] = "Arrange numbers in ascending order:";
     WrongAnswers = "2 4 5 3";
     TrueAnswers = "2 3 4 5";
-    buff.answers.push_back(WrongAnswers);
-    buff.RightAnswers.push_back(TrueAnswers);
+    buff.answers[0].push_back(WrongAnswers);
+    buff.RightAnswers[0].push_back(TrueAnswers);
     expected.push_back(buff);
     std::fstream TestFile(TEST_PATH);
     std::vector<Questions> actual;
@@ -84,13 +84,13 @@ TEST(TestParse, CORRECT_PARSE)
     getline(TestFile, type, '\n');
     ParseTest(TestFile, actual, type);
 
-    buff.type = "1";
-    buff.question = "2+2= ?";
+    buff.type[1] = "1";
+    buff.question[1] = "2+2= ?";
 
     WrongAnswers = "3 5 4 8";
     TrueAnswers = "4";
-    buff.answers.push_back(WrongAnswers);
-    buff.RightAnswers.push_back(TrueAnswers);
+    buff.answers[1].push_back(WrongAnswers);
+    buff.RightAnswers[1].push_back(TrueAnswers);
     expected.push_back(buff);
     getline(TestFile, type, '\n');
     ParseTest(TestFile, actual, type);
