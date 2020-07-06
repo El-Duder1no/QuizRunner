@@ -99,7 +99,7 @@ TEST(TestParse, CORRECT_PARSE)
         ASSERT_STREQ(actual[i].type.c_str(), expected[i].type.c_str());
         ASSERT_STREQ(actual[i].question.c_str(), expected[i].question.c_str());
         ASSERT_STREQ(
-                actual[i].answers[0].c_str(), expected[i].answers[0].c_str());
+                actual[i].answers[i].c_str(), expected[i].answers[i].c_str());
         int questionsSize = actual[i].answers.size();
         for (int j = 0; j < questionsSize; ++j) {
             ASSERT_STREQ(
