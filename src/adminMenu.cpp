@@ -173,17 +173,12 @@ void PrintQuestions(std::vector<Questions>& questions, int i)
               << std::endl;
     std::cout << "Question: " << questions[i].question << std::endl;
     int questionsSize = questions[i].answers.size();
-    //  std::cout  << std::endl << questionsSize << std::endl;
     std::cout << "Answer options: ";
     for (int j = 0; j < questionsSize; ++j) {
         std::cout << questions[i].answers[j] << " ";
     }
-
     std::cout << "\nRight answers: ";
-    // std::cout  << std::endl << questionsSize << std::endl;
     questionsSize = questions[i].RightAnswers.size();
-    //    std::cout  << std::endl << questionsSize << std::endl;
-
     for (int j = 0; j < questionsSize; ++j) {
         std::cout << questions[i].RightAnswers[j] << " ";
     }
