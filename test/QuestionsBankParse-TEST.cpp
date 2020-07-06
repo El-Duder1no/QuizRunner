@@ -85,8 +85,8 @@ TEST(TestParse, CORRECT_PARSE)
     TestFile.seekg(std::ios_base::beg);
     std::string type;
     getline(TestFile, type, '\n');
-    ParseTest(TestFile, actual, type)
-	int questionSize = actual.size();
+    ParseTest(TestFile, actual, type);
+    int questionSize = actual.size();
 
     for (int i = 0; i < questionSize; ++i) {
         ASSERT_STREQ(actual[i].type.c_str(), expected[i].type.c_str());
