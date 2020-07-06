@@ -72,10 +72,7 @@ TEST(TestParse, CORRECT_PARSE)
     std::string temp, TrueAnswers, WrongAnswers;
     buff.type = "2";
     buff.question = "Arrange numbers in ascending order:";
-    std::vector<std::string> words;
-
     WrongAnswers = "2 4 5 3";
-
     TrueAnswers = "2 3 4 5";
     buff.answers.push_back(WrongAnswers);
     buff.RightAnswers.push_back(TrueAnswers);
@@ -86,8 +83,18 @@ TEST(TestParse, CORRECT_PARSE)
     std::string type;
     getline(TestFile, type, '\n');
     ParseTest(TestFile, actual, type);
-    int questionSize = actual.size();
 
+    buff.type = "1";
+    buff.question = "2+2= ?";
+
+    WrongAnswers = "3 5 4 8";
+    TrueAnswers = "4";
+    buff.answers.push_back(WrongAnswers);
+    buff.RightAnswers.push_back(TrueAnswers);
+    expected.push_back(buff);
+    getline(TestFile, type, '\n');
+    ParseTest(TestFile, actual, type);
+    int questionSize = actual.size();
     for (int i = 0; i < questionSize; ++i) {
         ASSERT_STREQ(actual[i].type.c_str(), expected[i].type.c_str());
         ASSERT_STREQ(actual[i].question.c_str(), expected[i].question.c_str());
