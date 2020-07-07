@@ -172,9 +172,13 @@ void PrintQuestions(std::vector<Questions>& questions, int i)
     std::cout << "\nQuestion number: " << i + 1 << " | " << questions.size()
               << std::endl;
     std::cout << "Question: " << questions[i].question << std::endl;
-    int questionsSize = questions[i].RightAnswers.size();
-    std::cout << "Answer options: " << questions[i].answers[0] << std::endl
-              << "Right answers: ";
+    int questionsSize = questions[i].answers.size();
+    std::cout << "Answer options: ";
+    for (int j = 0; j < questionsSize; ++j) {
+        std::cout << questions[i].answers[j] << " ";
+    }
+    std::cout << "\nRight answers: ";
+    questionsSize = questions[i].RightAnswers.size();
     for (int j = 0; j < questionsSize; ++j) {
         std::cout << questions[i].RightAnswers[j] << " ";
     }
@@ -247,9 +251,13 @@ void Filing(
             questions << textBuf[i].question << std::endl;
             int RightAnswersSize = textBuf[i].RightAnswers.size();
             for (int j = 0; j < RightAnswersSize; ++j) {
-                questions << textBuf[i].answers[j] << std::endl;
-                questions << textBuf[i].RightAnswers[j] << std::endl;
+                questions << textBuf[i].answers[j] << " ";
             }
+            questions << std::endl;
+            for (int j = 0; j < RightAnswersSize; ++j) {
+                questions << textBuf[i].RightAnswers[j] << " ";
+            }
+            questions << std::endl;
             ++i;
         }
     } else {

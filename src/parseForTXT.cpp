@@ -129,12 +129,15 @@ void ParseTest(
 
     if (type == "3") {
         getline(questions, temp, '\n');
-        parseString(temp, ", ", words);
+        parseString(temp, " ", words);
         int wordsSize = words.size();
         for (int i = 0; i < wordsSize; ++i) {
-            buff.answers.push_back(words[i]);
-            buff.RightAnswers.push_back(words[i]);
+            words[i] = words[i].substr(2);
+            buff.answers[i] = words[i];
+            buff.RightAnswers[i] = words[i];
         }
+        getline(questions, temp, '\n');
+
     } else {
         getline(questions, temp, '\n');
         WrongAnswers = temp;

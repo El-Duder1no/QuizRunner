@@ -72,27 +72,56 @@ TEST(TestParse, CORRECT_PARSE)
     std::string temp, TrueAnswers, WrongAnswers;
     buff.type = "2";
     buff.question = "Arrange numbers in ascending order:";
-    std::vector<std::string> words;
-
     WrongAnswers = "2 4 5 3";
-
     TrueAnswers = "2 3 4 5";
     buff.answers.push_back(WrongAnswers);
     buff.RightAnswers.push_back(TrueAnswers);
     expected.push_back(buff);
     std::fstream TestFile(TEST_PATH);
     std::vector<Questions> actual;
-    TestFile.seekg(std::ios_base::beg);
-    std::string type;
-    getline(TestFile, type, '\n');
-    int questionSize = actual.size();
 
-    for (int i = 0; i < questionSize; ++i) {
+    TestFile.seekg(std::ios_base::beg);
+    while (!TestFile.eof()) {
+        std::string type;
+        getline(TestFile, type, '\n');
+        if (!(type != ""))
+            ParseTest(TestFile, actual, type);
+    }
+    buff.type = "1";
+    buff.question = "2+2= ?";
+
+    WrongAnswers = "3 5 4 8";
+    TrueAnswers = "4";
+    buff.answers.push_back(WrongAnswers);
+    buff.RightAnswers.push_back(TrueAnswers);
+    expected.push_back(buff);
+
+    buff.type = "3";
+    buff.question = "1/2= ?";
+    std::string a, b;
+    a = "0.5";
+    b = "0,5";
+    WrongAnswers = b + a;
+    TrueAnswers = b + a;
+    buff.answers.push_back(b);
+    buff.answers.push_back(a);
+    buff.RightAnswers.push_back(b);
+    buff.RightAnswers.push_back(a);
+    expected.push_back(buff);
+
+    int QuestionSize = actual.size();
+    for (int i = 0; i < QuestionSize; ++i) {
         ASSERT_STREQ(actual[i].type.c_str(), expected[i].type.c_str());
         ASSERT_STREQ(actual[i].question.c_str(), expected[i].question.c_str());
         ASSERT_STREQ(
-                actual[i].answers[0].c_str(), expected[i].answers[0].c_str());
-        int questionsSize = actual[i].RightAnswers.size();
+                actual[i].answers[i].c_str(), expected[i].answers[i].c_str());
+        int questionsSize = actual[i].answers.size();
+        for (int j = 0; j < questionsSize; ++j) {
+            ASSERT_STREQ(
+                    actual[i].answers[j].c_str(),
+                    expected[i].answers[j].c_str());
+        }
+        questionsSize = actual[i].RightAnswers.size();
         for (int j = 0; j < questionsSize; ++j) {
             ASSERT_STREQ(
                     actual[i].RightAnswers[j].c_str(),
