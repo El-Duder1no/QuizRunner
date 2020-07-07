@@ -74,28 +74,43 @@ TEST(TestParse, CORRECT_PARSE)
     buff.question = "Arrange numbers in ascending order:";
     WrongAnswers = "2 4 5 3";
     TrueAnswers = "2 3 4 5";
-    buff.answers[0] = WrongAnswers;
-    buff.RightAnswers[0] = TrueAnswers;
+    buff.answers.push_back(WrongAnswers);
+    buff.RightAnswers.push_back(TrueAnswers);
     expected.push_back(buff);
     std::fstream TestFile(TEST_PATH);
     std::vector<Questions> actual;
-    TestFile.seekg(std::ios_base::beg);
-    std::string type;
-    getline(TestFile, type, '\n');
-    ParseTest(TestFile, actual, type);
 
+    TestFile.seekg(std::ios_base::beg);
+    while (!TestFile.eof()) {
+        std::string type;
+        getline(TestFile, type, '\n');
+        if (!(type != ""))
+            ParseTest(TestFile, actual, type);
+    }
     buff.type = "1";
     buff.question = "2+2= ?";
 
     WrongAnswers = "3 5 4 8";
     TrueAnswers = "4";
-    buff.answers[1] = WrongAnswers;
-    buff.RightAnswers[1] = TrueAnswers;
+    buff.answers.push_back(WrongAnswers);
+    buff.RightAnswers.push_back(TrueAnswers);
     expected.push_back(buff);
-    getline(TestFile, type, '\n');
-    ParseTest(TestFile, actual, type);
-    int questionSize = actual.size();
-    for (int i = 0; i < questionSize; ++i) {
+
+    buff.type = "3";
+    buff.question = "1/2= ?";
+    std::string a, b;
+    a = "0.5";
+    b = "0,5";
+    WrongAnswers = b + a;
+    TrueAnswers = b + a;
+    buff.answers.push_back(b);
+    buff.answers.push_back(a);
+    buff.RightAnswers.push_back(b);
+    buff.RightAnswers.push_back(a);
+    expected.push_back(buff);
+
+    int QuestionSize = actual.size();
+    for (int i = 0; i < QuestionSize; ++i) {
         ASSERT_STREQ(actual[i].type.c_str(), expected[i].type.c_str());
         ASSERT_STREQ(actual[i].question.c_str(), expected[i].question.c_str());
         ASSERT_STREQ(
