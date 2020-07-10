@@ -109,27 +109,23 @@ bool enterAccount(
     std::vector<Account> accounts;
     accountsParse(accounts, accountPath);
 
-    int accountsSize = accounts.size();
-    int* index = new int[accountsSize];
-    for (int i = 0; i < accountsSize; i++) {
-        index[i] = i;
-    }
-    SelectSort(accounts, index);
-
     int passwordSize = password.size();
     for (int i = 0; i < passwordSize; i++) {
         password[i] += CAESAR_SHIFT;
     }
 
-    int temp = BinSearch(accounts, index, username);
+    std::vector<Account>::iterator searchResult;
+    searchResult = std::find_if(
+            accounts.begin(), accounts.end(), [username](const Account& a) {
+                return a.username == username;
+            });
 
-    if (temp != -1 && accounts[index[temp]].password == password) {
-        User.username = accounts[index[temp]].username;
-        User.accountType = accounts[index[temp]].accountType;
-        delete[] index;
+    if (searchResult != accounts.end()
+        && (*searchResult).password == password) {
+        User.username = (*searchResult).username;
+        User.accountType = (*searchResult).accountType;
         return true;
     } else {
-        delete[] index;
         return false;
     }
 }
@@ -142,17 +138,13 @@ int registration(
     std::vector<Account> accounts;
     accountsParse(accounts, accountPath);
 
-    int accountsSize = accounts.size();
-    int* index = new int[accountsSize];
-    for (int i = 0; i < accountsSize; i++) {
-        index[i] = i;
-    }
-    SelectSort(accounts, index);
-    int temp = BinSearch(accounts, index, username);
+    std::vector<Account>::iterator searchResult;
+    searchResult = std::find_if(
+            accounts.begin(), accounts.end(), [username](const Account& a) {
+                return a.username == username;
+            });
 
-    delete[] index;
-
-    if (temp != -1) {
+    if (searchResult != accounts.end()) {
         return 0;
     }
     if (isPassCorrect(password) == true && isLoginCorrect(username) == true) {
@@ -171,7 +163,6 @@ void signInOut(const std::string accountPath, currentUser& User)
     while (registrationState) {
         std::cin >> chooseKey;
         switch (chooseKey) {
-        // ВХОД
         case '1': {
             std::string username, password;
 
@@ -196,7 +187,6 @@ void signInOut(const std::string accountPath, currentUser& User)
             }
             break;
         }
-        // РЕГИСТРАЦИЯ
         case '2': {
             std::string username, password;
 
@@ -249,7 +239,6 @@ void signInOut(const std::string accountPath, currentUser& User)
             }
             break;
         }
-        // ВЫХОД ИЗ ПРОГРАММЫ
         case '3': {
             registrationState = false;
             CLS();
