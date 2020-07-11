@@ -14,43 +14,44 @@ TEST_FLAGS = g++ $(GFLAGS) $(LDFLAGS) -L$(GTEST_DIR)/lib -l gtest_main -l gtest 
 OBJ = g++ $(FLAGS) -c $^ -o $@
 OBJ-TEST = g++ $(GFLAGS) $(LDFLAGS) -I src -c $^ -o $@
 
-all: $(EXE) $(TEST)
+SOURCES = $(DIR_SRC)/main.o $(DIR_SRC)/parseString.o $(DIR_SRC)/screenFunctions.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/adminMenu.o \
+	$(DIR_SRC)/parseForTXT.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/userMenu.o $(DIR_SRC)/resultsParse.o $(DIR_SRC)/testPassing.o
+TEST_SOURCES = $(DIR_TEST)/signInOut-TEST.o $(DIR_SRC)/parseString.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/screenFunctions.o \
+	$(DIR_TEST)/resultParse-TEST.o $(DIR_SRC)/resultsParse.o $(DIR_TEST)/testPassing-TEST.o $(DIR_SRC)/testPassing.o \
+	$(DIR_SRC)/testFunctions.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/userMenu.o $(DIR_TEST)/checkResults-TEST.o \
+	$(DIR_TEST)/checkPath-TEST.o $(DIR_TEST)/QuestionsBankParse-TEST.o
 
-.PHONY: clean all
+.PHONY: all clean 
 
-$(EXE): $(DIR_SRC)/main.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/screenFunctions.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/adminMenu.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/userMenu.o $(DIR_SRC)/resultsParse.o $(DIR_SRC)/testPassing.o
+all: makeDir $(EXE) $(TEST)
+
+makeDir:
+	mkdir -p bin/ build/src build/test
+
+$(EXE): $(SOURCES)
 	g++ $(FLAGS) $^ -o $@
 
-$(TEST): $(DIR_TEST)/signInOut-TEST.o $(DIR_SRC)/binSearch.o $(DIR_SRC)/parseString.o $(DIR_SRC)/selectSort.o $(DIR_SRC)/signInOut.o $(DIR_SRC)/screenFunctions.o $(DIR_TEST)/resultParse-TEST.o $(DIR_SRC)/resultsParse.o $(DIR_TEST)/testPassing-TEST.o $(DIR_SRC)/testPassing.o $(DIR_SRC)/testFunctions.o $(DIR_SRC)/parseForTXT.o $(DIR_SRC)/userMenu.o $(DIR_TEST)/checkResults-TEST.o $(DIR_TEST)/checkPath-TEST.o $(DIR_TEST)/QuestionsBankParse-TEST.o
+$(TEST): $(TEST_SOURCES)
 	$(TEST_FLAGS) $^ -o $@
 	
 $(DIR_TEST)/signInOut-TEST.o: test/signInOut-TEST.cpp
 	$(OBJ-TEST)
-
 $(DIR_TEST)/QuestionsBankParse-TEST.o: test/QuestionsBankParse-TEST.cpp
 	$(OBJ-TEST)
-	
 $(DIR_TEST)/checkResults-TEST.o: test/checkResults-TEST.cpp
 	$(OBJ-TEST)
-	
 $(DIR_TEST)/resultParse-TEST.o: test/resultParse-TEST.cpp
 	$(OBJ-TEST)
-
 $(DIR_TEST)/checkPath-TEST.o: test/checkPath-TEST.cpp
 	$(OBJ-TEST)
-	
 $(DIR_TEST)/testPassing-TEST.o: test/testPassing-TEST.cpp
 	$(OBJ-TEST)
 	
 $(DIR_SRC)/main.o: src/main.cpp
 	$(OBJ)
-$(DIR_SRC)/binSearch.o: src/binSearch.cpp
-	$(OBJ)
 $(DIR_SRC)/parseString.o: src/parseString.cpp
 	$(OBJ)
 $(DIR_SRC)/screenFunctions.o: src/screenFunctions.cpp
-	$(OBJ)
-$(DIR_SRC)/selectSort.o: src/selectSort.cpp
 	$(OBJ)
 $(DIR_SRC)/signInOut.o: src/signInOut.cpp
 	$(OBJ)
@@ -68,6 +69,5 @@ $(DIR_SRC)/testPassing.o: src/testPassing.cpp
 	$(OBJ)
 
 clean:
-	rm -rf $(DIR_SRC)/*.o
-	rm -rf $(DIR_TEST)/*.o
-	rm bin/*.exe
+	rm -r bin/
+	rm -r build/
