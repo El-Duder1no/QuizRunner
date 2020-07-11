@@ -20,21 +20,21 @@ int main()
 
     currentUser currUser;
 
-    signInOut(ACCOUNTS_PATH, currUser);
-
-    switch (currUser.accountType) {
-    case 0: {
-        if (!User(RESULTS_PATH, TEST_PATH, QUESTIONS_PATH, currUser)) {
-            cout << "Fail\n";
+    while (signInOut(ACCOUNTS_PATH, currUser)) {
+        switch (currUser.accountType) {
+        case 0: {
+            if (!User(RESULTS_PATH, TEST_PATH, QUESTIONS_PATH, currUser)) {
+                cout << "Fail\n";
+            }
+            break;
         }
-        break;
-    }
-    case 1: {
-        if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
-            cout << "Fail\n";
+        case 1: {
+            if (!Administrator(QUESTIONS_PATH, TEST_PATH, NOT_IN_TEST_PATH)) {
+                cout << "Fail\n";
+            }
+            break;
         }
-        break;
-    }
+        }
     }
 
     PAUSE();
