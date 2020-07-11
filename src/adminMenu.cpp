@@ -2,11 +2,11 @@
 
 void AdminMenu()
 {
-    std::cout << "Select menu item:" << std::endl;
-    std::cout << "1 - Create test" << std::endl;
-    std::cout << "2 - Editing test" << std::endl;
-    std::cout << "3 - Exit" << std::endl;
-    std::cout << ">> ";
+    std::cout << "  Select menu item:" << std::endl;
+    std::cout << "  1 - Create test" << std::endl;
+    std::cout << "  2 - Editing test" << std::endl;
+    std::cout << "  3 - Exit" << std::endl;
+    std::cout << "  >> ";
 }
 
 bool Administrator(
@@ -53,7 +53,7 @@ bool Administrator(
                 break;
             }
             default: {
-                std::cout << "Input Error" << std::endl;
+                std::cout << "  Input Error" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -79,11 +79,11 @@ void CreateTest(
             AddQuestions(text, textBuf, textOut);
             return;
         } else {
-            std::cout << "You have already created a test, you can:"
+            std::cout << "  You have already created a test, you can:"
                       << std::endl
-                      << "1. Delete existing test" << std::endl
-                      << "2. Return to menu" << std::endl
-                      << "<< ";
+                      << "  1. Delete existing test" << std::endl
+                      << "  2. Return to menu" << std::endl
+                      << "  >> ";
             std::cin >> chooseKey;
             switch (chooseKey) {
             case '1': {
@@ -98,7 +98,7 @@ void CreateTest(
                 break;
             }
             default: {
-                std::cout << "Input Error" << std::endl;
+                std::cout << "  Input Error" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -115,10 +115,10 @@ void EditingTest(
     char chooseKey;
     while (Editing) {
         if (!textBuf.empty()) {
-            std::cout << "1.Remove some questions from the test" << std::endl
-                      << "2.Add questions to an existing test" << std::endl
-                      << "3.Return to menu." << std::endl
-                      << "<< ";
+            std::cout << "  1.Remove some questions from the test" << std::endl
+                      << "  2.Add questions to an existing test" << std::endl
+                      << "  3.Return to menu." << std::endl
+                      << "  >> ";
             char n;
             std::cin >> n;
             switch (chooseKey = n) {
@@ -139,16 +139,16 @@ void EditingTest(
                 break;
             }
             default: {
-                std::cout << "Input Error" << std::endl;
+                std::cout << "  Input Error" << std::endl;
                 PAUSE();
                 CLS();
                 break;
             }
             }
         } else {
-            std::cout << "No existing test!" << std::endl
-                      << "1. Return to menu" << std::endl
-                      << "<< ";
+            std::cout << "  No existing test!" << std::endl
+                      << "  1. Return to menu" << std::endl
+                      << "  >> ";
             std::cin >> chooseKey;
             switch (chooseKey) {
             case '1': {
@@ -157,7 +157,7 @@ void EditingTest(
                 break;
             }
             default: {
-                std::cout << "Input Error" << std::endl;
+                std::cout << "  Input Error" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -169,15 +169,15 @@ void EditingTest(
 
 void PrintQuestions(std::vector<Questions>& questions, int i)
 {
-    std::cout << "\nQuestion number: " << i + 1 << " | " << questions.size()
-              << std::endl;
-    std::cout << "Question: " << questions[i].question << std::endl;
+    std::cout << "\n  Question number: " << i + 1 << " | " << questions.size()
+              << "\n";
+    std::cout << "  Question: " << questions[i].question << "\n\n";
     int questionsSize = questions[i].answers.size();
-    std::cout << "Answer options: ";
+    std::cout << "  Answer options: ";
     for (int j = 0; j < questionsSize; ++j) {
         std::cout << questions[i].answers[j] << " ";
     }
-    std::cout << "\nRight answers: ";
+    std::cout << "\n  Right answers: ";
     questionsSize = questions[i].RightAnswers.size();
     for (int j = 0; j < questionsSize; ++j) {
         std::cout << questions[i].RightAnswers[j] << " ";
@@ -196,10 +196,10 @@ void AddQuestions(
     while (i < textSize) {
         PrintQuestions(text, i);
         std::cout << std::endl
-                  << "1.Add question to test" << std::endl
-                  << "2.Next question" << std::endl
-                  << "3.Return to menu." << std::endl
-                  << "<< ";
+                  << "\n  1.Add question to test" << std::endl
+                  << "  2.Next question" << std::endl
+                  << "  3.Return to menu." << std::endl
+                  << "  >> ";
         std::cin >> chooseKey;
         switch (chooseKey) {
         case '1': {
@@ -216,7 +216,7 @@ void AddQuestions(
         }
 
         default: {
-            std::cout << "Input Error" << std::endl;
+            std::cout << "  Input Error" << std::endl;
             PAUSE();
             CLS();
             break;
@@ -275,10 +275,10 @@ void AddQuestions(
             PrintQuestions(textOut, i);
 
             std::cout << std::endl
-                      << "1.Add question to test" << std::endl
-                      << "2.Next question" << std::endl
-                      << "3.Return to the test edit menu" << std::endl
-                      << "<< ";
+                      << "\n  1.Add question to test" << std::endl
+                      << "  2.Next question" << std::endl
+                      << "  3.Return to the test edit menu" << std::endl
+                      << "  >> ";
             std::cin >> chooseKey;
             switch (chooseKey) {
             case '1': {
@@ -294,7 +294,7 @@ void AddQuestions(
                 break;
             }
             default: {
-                std::cout << "Input Error" << std::endl;
+                std::cout << "  Input Error" << std::endl;
                 PAUSE();
                 CLS();
                 break;
@@ -306,7 +306,7 @@ void AddQuestions(
             }
         }
     } else {
-        std::cout << "All questions are added to the test!\n";
+        std::cout << "  All questions are added to the test!\n";
         PAUSE();
         CLS();
     }
@@ -322,10 +322,10 @@ void RemoveQuestion(
     while (i < textSize) {
         PrintQuestions(text, i);
         std::cout << std::endl
-                  << "1.Remove question from test" << std::endl
-                  << "2.Next question" << std::endl
-                  << "3.Return to the test Editing menu." << std::endl
-                  << "<< ";
+                  << "\n  1.Remove question from test" << std::endl
+                  << "  2.Next question" << std::endl
+                  << "  3.Return to the test Editing menu." << std::endl
+                  << "  >> ";
         std::cin >> chooseKey;
         switch (chooseKey) {
         case '1': {
@@ -342,7 +342,7 @@ void RemoveQuestion(
         }
 
         default: {
-            std::cout << "Input Error" << std::endl;
+            std::cout << "  Input Error" << std::endl;
             PAUSE();
             CLS();
             break;

@@ -1,11 +1,11 @@
 #include "userMenu.h"
 void UserMenu()
 {
-    std::cout << "Select menu item:" << std::endl;
-    std::cout << "1 - View past results" << std::endl;
-    std::cout << "2 - Start test" << std::endl;
-    std::cout << "3 - Exit" << std::endl;
-    std::cout << ">> ";
+    std::cout << "  Select menu item:" << std::endl;
+    std::cout << "  1 - View past results" << std::endl;
+    std::cout << "  2 - Start test" << std::endl;
+    std::cout << "  3 - Exit" << std::endl;
+    std::cout << "  >> ";
 }
 
 bool User(
@@ -18,7 +18,7 @@ bool User(
     std::vector<Results> UsersResults;
     std::vector<Results> CurrentUserResults;
     if (!CheckPath(results, UsersResults)) {
-        std::cout << "File open error";
+        std::cout << "  File open error";
         return false;
     }
     bool userMenuState = true;
@@ -30,8 +30,7 @@ bool User(
         case '1': {
             CLS();
             if (!CheckResult(user, UsersResults, CurrentUserResults)) {
-                std::cout << " No previous results found!\n\n";
-                PAUSE();
+                std::cout << "  No previous results found!\n\n";
             } else {
                 printResults(CurrentUserResults);
             }
@@ -46,10 +45,11 @@ bool User(
         }
         case '3': {
             userMenuState = false;
+            CLS();
             break;
         }
         default: {
-            std::cout << "Input Error" << std::endl;
+            std::cout << "  Input Error" << std::endl;
             PAUSE();
             CLS();
             break;
@@ -84,8 +84,8 @@ void printResults(std::vector<Results>& CurrentUserResults)
     bool check = true;
     int i = 0;
     while (check) {
-        std::cout << "User results: " << CurrentUserResults[i].username
-                  << "\n Points"
+        std::cout << "  User results: " << CurrentUserResults[i].username
+                  << "\n  Points"
                   << "\t | \t"
                   << "Time\n";
         int CurrentUserSize = CurrentUserResults.size();
@@ -93,8 +93,8 @@ void printResults(std::vector<Results>& CurrentUserResults)
             std::cout << CurrentUserResults[i].point << "\t | \t"
                       << CurrentUserResults[i].time << "\n";
         }
-        std::cout << "\n\n 1.Return to menu\n"
-                  << "<<";
+        std::cout << "\n\n  1.Return to menu\n"
+                  << "  >> ";
         std::cin >> chooseKey;
         switch (chooseKey) {
         case '1': {
@@ -103,7 +103,7 @@ void printResults(std::vector<Results>& CurrentUserResults)
             break;
         }
         default: {
-            std::cout << "Input Error" << std::endl;
+            std::cout << "  Input Error" << std::endl;
             PAUSE();
             CLS();
             i = 0;
