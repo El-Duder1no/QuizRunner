@@ -17,10 +17,10 @@ void registrationInfo()
               << "  Also, it must consist of \n"
               << "  letters of the Latin alphabet, numbers or characters\n\n";
 
-    std::cout
-            << "  The password must be between 8 and 25 characters long.\n"
-            << "  password must consist of the Latin alphabet\n"
-            << "  and must contain at least one uppercase letter and number.\n\n";
+    std::cout << "  The password must be between 8 and 25 characters long.\n"
+              << "  password must consist of the Latin alphabet\n"
+              << "  and must contain at least one uppercase letter and "
+                 "number.\n\n";
 }
 
 bool isLoginCorrect(const std::string username)
