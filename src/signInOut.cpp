@@ -175,13 +175,13 @@ bool signInOut(const std::string accountPath, currentUser& User)
 
             bool temp = enterAccount(User, password, username, accountPath);
             if (temp == true) {
-                system("CLS");
+                CLS();
                 registrationState = false;
                 break;
             } else {
-                system("CLS");
+                CLS();
                 std::cout << "  Incorrect login or password\n\n";
-                system("PAUSE");
+                PAUSE();
                 registrationMenu();
                 break;
             }
