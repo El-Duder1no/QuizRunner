@@ -5,12 +5,11 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "accountStruct.h"
-#include "binSearch.h"
 #include "currentUserStruct.h"
 #include "parseString.h"
 #include "screenFunctions.h"
-#include "selectSort.h"
 
+#include <algorithm>
 #include <cstring>
 #include <ctype.h>
 #include <fstream>
