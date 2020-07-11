@@ -8,11 +8,12 @@
 
 using namespace std;
 
-#define ACCOUNTS_PATH "res/Accounts.txt"
-#define TEST_PATH "res/Test.txt"
-#define QUESTIONS_PATH "res/Questions.txt"
-#define NOT_IN_TEST_PATH "res/NotInTheTest.txt"
-#define RESULTS_PATH "res/Results.txt"
+// D:/code/TRPO/QuizRunner/
+#define ACCOUNTS_PATH "D:/code/TRPO/QuizRunner/res/Accounts.txt"
+#define TEST_PATH "D:/code/TRPO/QuizRunner/res/Test.txt"
+#define QUESTIONS_PATH "D:/code/TRPO/QuizRunner/res/Questions.txt"
+#define NOT_IN_TEST_PATH "D:/code/TRPO/QuizRunner/res/NotInTheTest.txt"
+#define RESULTS_PATH "D:/code/TRPO/QuizRunner/res/Results.txt"
 
 int main()
 {

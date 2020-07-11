@@ -2,7 +2,6 @@
 
 void registrationMenu()
 {
-    CLS();
     std::cout << "  Select menu item:\n";
     std::cout << "  1 - Sign in\n";
     std::cout << "  2 - Sign up\n";
@@ -181,7 +180,7 @@ bool signInOut(const std::string accountPath, currentUser& User)
                 break;
             } else {
                 system("CLS");
-                std::cout << "  Incorrect login or password\n";
+                std::cout << "  Incorrect login or password\n\n";
                 system("PAUSE");
                 registrationMenu();
                 break;
@@ -202,14 +201,14 @@ bool signInOut(const std::string accountPath, currentUser& User)
             switch (temp) {
             case 0: {
                 CLS();
-                std::cout << "  This account already exists.\n";
+                std::cout << "  This account already exists.\n\n";
                 PAUSE();
                 registrationMenu();
                 break;
             }
             case 1: {
                 CLS();
-                std::cout << "  Registration completed successfully.\n";
+                std::cout << "  Registration completed successfully.\n\n";
                 User.username = username;
                 User.accountType = 0;
 
@@ -232,7 +231,7 @@ bool signInOut(const std::string accountPath, currentUser& User)
             }
             case 2: {
                 CLS();
-                std::cout << "  Incorrect login or password\n";
+                std::cout << "  Incorrect login or password\n\n";
                 PAUSE();
                 registrationMenu();
                 break;
@@ -246,7 +245,7 @@ bool signInOut(const std::string accountPath, currentUser& User)
             return false;
         }
         default: {
-            std::cout << "  Input Error\n";
+            std::cout << "  Input Error\n\n";
             break;
         }
         }
