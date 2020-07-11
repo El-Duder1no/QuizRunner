@@ -25,6 +25,8 @@ TEST_SOURCES = $(DIR_TEST)/signInOut-TEST.o $(DIR_SRC)/parseString.o $(DIR_SRC)/
 
 all: makeDir $(EXE) $(TEST)
 
+quiz: makeDir $(EXE)
+
 makeDir:
 	mkdir -p bin/ build/src build/test
 
