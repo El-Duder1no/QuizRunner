@@ -2,25 +2,25 @@
 
 void registrationMenu()
 {
-    std::cout << "Select menu item:\n";
-    std::cout << "1 - Sign in\n";
-    std::cout << "2 - Sign up\n";
-    std::cout << "3 - Exit\n";
-    std::cout << ">> ";
+    std::cout << "  Select menu item:\n";
+    std::cout << "  1 - Sign in\n";
+    std::cout << "  2 - Sign up\n";
+    std::cout << "  3 - Exit\n";
+    std::cout << "  >> ";
 }
 void registrationInfo()
 {
     CLS();
 
-    std::cout << "The username must be between\n"
-              << "3 and 20 characters long.\n"
-              << "Also, it must consist of \n"
-              << "letters of the Latin alphabet, numbers or characters\n\n";
+    std::cout << "  The username must be between\n"
+              << "  3 and 20 characters long.\n"
+              << "  Also, it must consist of \n"
+              << "  letters of the Latin alphabet, numbers or characters\n\n";
 
     std::cout
-            << "The password must be between 8 and 25 characters long.\n"
-            << "password must consist of the Latin alphabet\n"
-            << "and must contain at least one uppercase letter and number.\n\n";
+            << "  The password must be between 8 and 25 characters long.\n"
+            << "  password must consist of the Latin alphabet\n"
+            << "  and must contain at least one uppercase letter and number.\n\n";
 }
 
 bool isLoginCorrect(const std::string username)
@@ -168,9 +168,9 @@ void signInOut(const std::string accountPath, currentUser& User)
 
             CLS();
 
-            std::cout << "Enter login:\n>>";
+            std::cout << "  Enter login:\n  >> ";
             std::cin >> username;
-            std::cout << "Enter password:\n>>";
+            std::cout << "  Enter password:\n  >> ";
             std::cin >> password;
 
             bool temp = enterAccount(User, password, username, accountPath);
@@ -180,7 +180,7 @@ void signInOut(const std::string accountPath, currentUser& User)
                 break;
             } else {
                 system("CLS");
-                std::cout << "Incorrect login or password\n";
+                std::cout << "  Incorrect login or password\n";
                 system("PAUSE");
                 registrationMenu();
                 break;
@@ -192,23 +192,23 @@ void signInOut(const std::string accountPath, currentUser& User)
 
             registrationInfo();
 
-            std::cout << "Enter login:\n>>";
+            std::cout << "  Enter login:\n>> ";
             std::cin >> username;
-            std::cout << "Enter password:\n>>";
+            std::cout << "  Enter password:\n>> ";
             std::cin >> password;
 
             int temp = registration(username, password, accountPath);
             switch (temp) {
             case 0: {
                 CLS();
-                std::cout << "This account already exists.\n";
+                std::cout << "  This account already exists.\n";
                 PAUSE();
                 registrationMenu();
                 break;
             }
             case 1: {
                 CLS();
-                std::cout << "Registration completed successfully.\n";
+                std::cout << "  Registration completed successfully.\n";
                 User.username = username;
                 User.accountType = 0;
 
@@ -231,7 +231,7 @@ void signInOut(const std::string accountPath, currentUser& User)
             }
             case 2: {
                 CLS();
-                std::cout << "Incorrect login or password\n";
+                std::cout << "  Incorrect login or password\n";
                 PAUSE();
                 registrationMenu();
                 break;
@@ -245,7 +245,7 @@ void signInOut(const std::string accountPath, currentUser& User)
             break;
         }
         default: {
-            std::cout << "Input Error\n";
+            std::cout << "  Input Error\n";
             break;
         }
         }

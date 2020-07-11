@@ -21,15 +21,15 @@ void testFilling(
 
 void printQuestion(const std::vector<Questions> Test, const int index)
 {
-    std::cout << "Quection ¹" << index + 1 << "\n\n";
+    std::cout << "  Quection ¹" << index + 1 << "\n\n";
     if (Test[index].type == "1" || Test[index].type == "2") {
         std::cout << "  " << Test[index].question << "\n\n";
-        std::cout << "Answer options:\n";
-        std::cout << "" << Test[index].answers[0] << "\n";
-        std::cout << "\nAnswer: ";
+        std::cout << "  Answer options:\n";
+        std::cout << "  " << Test[index].answers[0] << "\n";
+        std::cout << "\n  Answer: ";
     } else {
-        std::cout << Test[index].question << "\n\n";
-        std::cout << "Answer: ";
+        std::cout << "  " << Test[index].question << "\n\n";
+        std::cout << "  Answer: ";
     }
 }
 
@@ -115,8 +115,8 @@ void testPass(
     temp << time;
     temp >> strTime;
 
-    std::cout << "Your result: " << strResults << "%\n";
-    std::cout << std::setprecision(3) << "Test time: " << strTime
+    std::cout << "  Your result: " << strResults << "%\n";
+    std::cout << std::setprecision(3) << "  Test time: " << strTime
               << " seconds\n";
 
     writeResults(resultsPath, currUser, strResults, strTime);
