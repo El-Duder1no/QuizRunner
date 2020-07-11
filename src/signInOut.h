@@ -34,6 +34,6 @@ int registration(
         const std::string password,
         const std::string accountPath);
 
-void signInOut(const std::string accountPath, currentUser& User);
+bool signInOut(const std::string accountPath, currentUser& User);
 
 #endif

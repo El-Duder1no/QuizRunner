@@ -2,6 +2,7 @@
 
 void registrationMenu()
 {
+    CLS();
     std::cout << "  Select menu item:\n";
     std::cout << "  1 - Sign in\n";
     std::cout << "  2 - Sign up\n";
@@ -154,7 +155,7 @@ int registration(
     }
 }
 
-void signInOut(const std::string accountPath, currentUser& User)
+bool signInOut(const std::string accountPath, currentUser& User)
 {
     char chooseKey;
     bool registrationState = true;
@@ -192,9 +193,9 @@ void signInOut(const std::string accountPath, currentUser& User)
 
             registrationInfo();
 
-            std::cout << "  Enter login:\n>> ";
+            std::cout << "  Enter login:\n  >> ";
             std::cin >> username;
-            std::cout << "  Enter password:\n>> ";
+            std::cout << "  Enter password:\n  >> ";
             std::cin >> password;
 
             int temp = registration(username, password, accountPath);
@@ -242,7 +243,7 @@ void signInOut(const std::string accountPath, currentUser& User)
         case '3': {
             registrationState = false;
             CLS();
-            break;
+            return false;
         }
         default: {
             std::cout << "  Input Error\n";
