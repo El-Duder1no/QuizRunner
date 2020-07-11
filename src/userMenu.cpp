@@ -4,7 +4,7 @@ void UserMenu()
     std::cout << "  Select menu item:" << std::endl;
     std::cout << "  1 - View past results" << std::endl;
     std::cout << "  2 - Start test" << std::endl;
-    std::cout << "  3 - Exit" << std::endl;
+    std::cout << "  3 - Log out" << std::endl;
     std::cout << "  >> ";
 }
 
