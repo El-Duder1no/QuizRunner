@@ -251,4 +251,6 @@ bool signInOut(const std::string accountPath, currentUser& User)
         }
         }
     }
+
+    return true;
 }
