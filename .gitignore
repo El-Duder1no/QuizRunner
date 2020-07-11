@@ -6,4 +6,4 @@
 bin/*
 build/*
 thirdparty/*
-/res/*.txt
+res/*.txt
