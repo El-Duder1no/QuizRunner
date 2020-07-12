@@ -8,9 +8,8 @@
 #include <sstream>
 #include <string>
 
-#include "Questions.h"
-#include "currentUserStruct.h"
 #include "screenFunctions.h"
+#include "structures.h"
 #include "testFunctions.h"
 
 void testFilling(

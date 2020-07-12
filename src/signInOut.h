@@ -4,7 +4,6 @@
 #define CAESAR_SHIFT 3
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "accountStruct.h"
 #include "parseString.h"
 #include "screenFunctions.h"
 #include "structures.h"
