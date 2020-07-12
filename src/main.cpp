@@ -1,6 +1,6 @@
 #include "adminMenu.h"
-#include "currentUserStruct.h"
 #include "signInOut.h"
+#include "structures.h"
 #include "userMenu.h"
 
 #include <iostream>

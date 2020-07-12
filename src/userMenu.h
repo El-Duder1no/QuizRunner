@@ -1,13 +1,15 @@
-#ifndef userMenu
+#ifndef USER_MENU_H
+#define USER_MENU_H
 
-#define userMenu
-#include "accountStruct.h"
-#include "currentUserStruct.h"
+#include "structures.h"
+//#include "accountStruct.h"
+//#include "currentUserStruct.h"
 #include "parseString.h"
-#include "resultStruct.h"
+//#include "resultStruct.h"
 #include "screenFunctions.h"
 #include "testFunctions.h"
 #include "testPassing.h"
+
 #include <fstream>
 #include <iostream>
 #include <sstream>

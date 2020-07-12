@@ -1,4 +1,5 @@
 #include "userMenu.h"
+
 void UserMenu()
 {
     std::cout << "  Select menu item:" << std::endl;

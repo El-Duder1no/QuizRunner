@@ -2,7 +2,9 @@
 #define RESULT_PARSE_H
 
 #include "parseString.h"
-#include "resultStruct.h"
+#include "structures.h"
+//#include "resultStruct.h"
+
 #include <fstream>
 #include <vector>
 

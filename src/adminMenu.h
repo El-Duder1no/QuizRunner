@@ -2,7 +2,9 @@
 #define adminMenu
 
 #include "screenFunctions.h"
+#include "structures.h"
 #include "testFunctions.h"
+
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -10,7 +12,7 @@
 #include <string>
 #include <vector>
 
-#include "Questions.h"
+//#include "Questions.h"
 
 bool Administrator(
         const std::string questionsPath,

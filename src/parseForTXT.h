@@ -1,9 +1,13 @@
-#ifndef PARSE_FOR_TXT
-#define PARSE_FOR_TXT
+#ifndef PARSE_FOR_TXT_H
+#define PARSE_FOR_TXT_H
+
 #define RIGHT_ANSWER 3
 #define ANSWERS_SIZE 4
-#include "Questions.h"
+
+//#include "Questions.h"
 #include "parseString.h"
+#include "structures.h"
+
 #include <algorithm>
 #include <cstdlib>
 #include <fstream>
