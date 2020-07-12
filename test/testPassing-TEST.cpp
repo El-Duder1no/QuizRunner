@@ -2,21 +2,14 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-#include "Questions.h"
-#include "currentUserStruct.h"
 #include "screenFunctions.h"
+#include "structures.h"
 #include "testFunctions.h"
 #include "testPassing.h"
 
-#ifdef _WIN32
-#define RESULTS_PATH "..\\res\\test_files\\ResultsWrite.txt"
-#define WRONG_RESULTS_PATH "..\\res\\test_files"
-#define QUIZ_PATH "..\\res\\test_files\\Questions.txt"
-#else
 #define RESULTS_PATH "res/test_files/ResultsWrite.txt"
 #define WRONG_RESULTS_PATH "res/test_files"
 #define QUIZ_PATH "res/test_files/Questions.txt"
-#endif
 
 TEST(checkAnswerTest, allOptions)
 {

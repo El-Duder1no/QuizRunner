@@ -1,21 +1,14 @@
-#include "Questions.h"
-#include "resultStruct.h"
+#include "structures.h"
 #include "testFunctions.h"
+
 #include <fstream>
 #include <gtest/gtest.h>
 #include <string>
 #include <vector>
 
-#ifdef _WIN32
-#define RESULTS_PATH "..\\res\\test_files\\Results.txt"
-#define QUESTIONS_PATH "..\\res\\test_files\\Questions.txt"
-#define NO_FILE_PATH "\\res\\test_files\\noFile.txt"
-
-#else
 #define QUESTIONS_PATH "res/test_files/Questions.txt"
 #define RESULTS_PATH "res/test_files/Results.txt"
 #define NO_FILE_PATH "res/test_files/noFile.txt"
-#endif
 
 TEST(CheckPath, InCorrectPATH)
 {

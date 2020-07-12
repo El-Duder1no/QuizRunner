@@ -3,14 +3,10 @@
 #include <string>
 #include <vector>
 
-#include "currentUserStruct.h"
 #include "signInOut.h"
+#include "structures.h"
 
-#ifdef _WIN32
-#define ACCOUNTS_PATH "..\\res\\test_files\\Accounts.txt"
-#else
 #define ACCOUNTS_PATH "res/test_files/Accounts.txt"
-#endif
 
 std::string username, password;
 std::vector<Account> accounts;

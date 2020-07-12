@@ -3,11 +3,7 @@
 
 #include "resultsParse.h"
 
-#ifdef _WIN32
-#define RESULTS_PATH "..\\res\\test_files\\Results.txt"
-#else
 #define RESULTS_PATH "res/test_files/Results.txt"
-#endif
 
 TEST(resultParseTest, correct)
 {

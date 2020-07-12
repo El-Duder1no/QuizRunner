@@ -1,21 +1,15 @@
-#include "Questions.h"
 #include "parseForTXT.h"
-#include "resultStruct.h"
 #include "resultsParse.h"
+#include "structures.h"
+
 #include <fstream>
 #include <gtest/gtest.h>
 #include <string>
 #include <vector>
 
-#ifdef _WIN32
-#define FALSE_QUESTIONS_PATH "..\\res\\test_files\\WrongQuestions.txt"
-#define QUESTIONS_PATH "..\\res\\test_files\\Questions.txt"
-#define TEST_PATH "..\\res\\test_files\\Test.txt"
-#else
 #define QUESTIONS_PATH "res/test_files/Questions.txt"
 #define TEST_PATH "res/test_files/Test.txt"
 #define FALSE_QUESTIONS_PATH "res/test_files/WrongQuestions.txt"
-#endif
 
 TEST(QuestionsParse, CORRECT_PARSE)
 {
