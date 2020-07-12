@@ -1,6 +1,6 @@
 #include "screenFunctions.h"
 
-void CLS()
+void cls()
 {
 #ifdef _WIN32
     system("cls");
@@ -9,7 +9,7 @@ void CLS()
 #endif
 }
 
-void PAUSE()
+void pause()
 {
     std::cout << "\n  Press any key to continue" << std::endl;
     std::cin.get();

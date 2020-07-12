@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 
-void CLS();
-void PAUSE();
+void cls();
+void pause();
 
 #endif

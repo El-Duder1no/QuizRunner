@@ -29,30 +29,30 @@ bool User(
         std::cin >> chooseKey;
         switch (chooseKey) {
         case '1': {
-            CLS();
+            cls();
             if (!CheckResult(user, UsersResults, CurrentUserResults)) {
                 std::cout << "  No previous results found!\n\n";
             } else {
                 printResults(CurrentUserResults);
             }
-            PAUSE();
-            CLS();
+            pause();
+            cls();
             break;
         }
         case '2': {
             testPass(testPath, questionsPath, ResultsPath, user);
-            CLS();
+            cls();
             break;
         }
         case '3': {
             userMenuState = false;
-            CLS();
+            cls();
             break;
         }
         default: {
             std::cout << "  Input Error" << std::endl;
-            PAUSE();
-            CLS();
+            pause();
+            cls();
             break;
         }
         }
@@ -99,14 +99,14 @@ void printResults(std::vector<Results>& CurrentUserResults)
         std::cin >> chooseKey;
         switch (chooseKey) {
         case '1': {
-            CLS();
+            cls();
             check = false;
             break;
         }
         default: {
             std::cout << "  Input Error" << std::endl;
-            PAUSE();
-            CLS();
+            pause();
+            cls();
             i = 0;
             break;
         }

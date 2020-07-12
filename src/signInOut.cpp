@@ -10,7 +10,7 @@ void registrationMenu()
 }
 void registrationInfo()
 {
-    CLS();
+    cls();
 
     std::cout << "  The username must be between\n"
               << "  3 and 20 characters long.\n"
@@ -166,7 +166,7 @@ bool signInOut(const std::string accountPath, currentUser& User)
         case '1': {
             std::string username, password;
 
-            CLS();
+            cls();
 
             std::cout << "  Enter login:\n  >> ";
             std::cin >> username;
@@ -175,13 +175,13 @@ bool signInOut(const std::string accountPath, currentUser& User)
 
             bool temp = enterAccount(User, password, username, accountPath);
             if (temp == true) {
-                CLS();
+                cls();
                 registrationState = false;
                 break;
             } else {
-                CLS();
+                cls();
                 std::cout << "  Incorrect login or password\n\n";
-                PAUSE();
+                pause();
                 registrationMenu();
                 break;
             }
@@ -200,14 +200,14 @@ bool signInOut(const std::string accountPath, currentUser& User)
             int temp = registration(username, password, accountPath);
             switch (temp) {
             case 0: {
-                CLS();
+                cls();
                 std::cout << "  This account already exists.\n\n";
-                PAUSE();
+                pause();
                 registrationMenu();
                 break;
             }
             case 1: {
-                CLS();
+                cls();
                 std::cout << "  Registration completed successfully.\n\n";
                 User.username = username;
                 User.accountType = 0;
@@ -230,9 +230,9 @@ bool signInOut(const std::string accountPath, currentUser& User)
                 break;
             }
             case 2: {
-                CLS();
+                cls();
                 std::cout << "  Incorrect login or password\n\n";
-                PAUSE();
+                pause();
                 registrationMenu();
                 break;
             }
@@ -241,7 +241,7 @@ bool signInOut(const std::string accountPath, currentUser& User)
         }
         case '3': {
             registrationState = false;
-            CLS();
+            cls();
             return false;
         }
         default: {

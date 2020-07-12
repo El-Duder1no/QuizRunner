@@ -34,14 +34,14 @@ bool Administrator(
             std::cin >> chooseKey;
             switch (chooseKey) {
             case '1': {
-                CLS();
+                cls();
                 CreateTest(QuestionsBank, QuestionsForTest, QuestionsOutOfTest);
                 Filing(Test, QuestionsForTest, TestPath);
                 Filing(NotInTest, QuestionsOutOfTest, NotInTestPath);
                 break;
             }
             case '2': {
-                CLS();
+                cls();
                 EditingTest(QuestionsForTest, QuestionsOutOfTest);
                 Filing(Test, QuestionsForTest, TestPath);
                 Filing(NotInTest, QuestionsOutOfTest, NotInTestPath);
@@ -49,13 +49,13 @@ bool Administrator(
             }
             case '3': {
                 adminMenuState = false;
-                CLS();
+                cls();
                 break;
             }
             default: {
                 std::cout << "  Input Error" << std::endl;
-                PAUSE();
-                CLS();
+                pause();
+                cls();
                 break;
             }
             }
@@ -89,18 +89,18 @@ void CreateTest(
             case '1': {
                 textBuf.clear();
                 textOut.clear();
-                CLS();
+                cls();
                 break;
             }
             case '2': {
-                CLS();
+                cls();
                 Create = false;
                 break;
             }
             default: {
                 std::cout << "  Input Error" << std::endl;
-                PAUSE();
-                CLS();
+                pause();
+                cls();
                 break;
             }
             }
@@ -123,25 +123,25 @@ void EditingTest(
             std::cin >> n;
             switch (chooseKey = n) {
             case '1': {
-                CLS();
+                cls();
                 RemoveQuestion(textBuf, textOut);
 
                 break;
             }
             case '2': {
-                CLS();
+                cls();
                 AddQuestions(textBuf, textOut);
                 break;
             }
             case '3': {
-                CLS();
+                cls();
                 Editing = false;
                 break;
             }
             default: {
                 std::cout << "  Input Error" << std::endl;
-                PAUSE();
-                CLS();
+                pause();
+                cls();
                 break;
             }
             }
@@ -152,14 +152,14 @@ void EditingTest(
             std::cin >> chooseKey;
             switch (chooseKey) {
             case '1': {
-                CLS();
+                cls();
                 Editing = false;
                 break;
             }
             default: {
                 std::cout << "  Input Error" << std::endl;
-                PAUSE();
-                CLS();
+                pause();
+                cls();
                 break;
             }
             }
@@ -205,20 +205,20 @@ void AddQuestions(
         case '1': {
             textBuf.push_back(text[i]);
             ++i;
-            CLS();
+            cls();
             break;
         }
         case '2': {
             textOut.push_back(text[i]);
             ++i;
-            CLS();
+            cls();
             break;
         }
 
         default: {
             std::cout << "  Input Error" << std::endl;
-            PAUSE();
-            CLS();
+            pause();
+            cls();
             break;
         }
         case '3': {
@@ -227,7 +227,7 @@ void AddQuestions(
                     textOut.push_back(text[i]);
                 }
             }
-            CLS();
+            cls();
             return;
         }
         }
@@ -285,30 +285,30 @@ void AddQuestions(
                 textBuf.push_back(textOut[i]);
                 textOut.erase(textOut.begin() + i);
                 textOutSize = textOut.size();
-                CLS();
+                cls();
                 break;
             }
             case '2': {
                 ++i;
-                CLS();
+                cls();
                 break;
             }
             default: {
                 std::cout << "  Input Error" << std::endl;
-                PAUSE();
-                CLS();
+                pause();
+                cls();
                 break;
             }
             case '3': {
-                CLS();
+                cls();
                 return;
             }
             }
         }
     } else {
         std::cout << "  All questions are added to the test!\n";
-        PAUSE();
-        CLS();
+        pause();
+        cls();
     }
     return;
 }
@@ -332,23 +332,23 @@ void RemoveQuestion(
             textOut.push_back(text[i]);
             text.erase(text.begin() + i);
             textSize = text.size();
-            CLS();
+            cls();
             break;
         }
         case '2': {
             ++i;
-            CLS();
+            cls();
             break;
         }
 
         default: {
             std::cout << "  Input Error" << std::endl;
-            PAUSE();
-            CLS();
+            pause();
+            cls();
             break;
         }
         case '3': {
-            CLS();
+            cls();
             return;
         }
         }
