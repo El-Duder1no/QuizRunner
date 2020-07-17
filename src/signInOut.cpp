@@ -181,7 +181,7 @@ bool signInOut(const std::string accountPath, currentUser& User)
             } else {
                 cls();
                 std::cout << "  Incorrect login or password\n\n";
-                pause();
+                myPause();
                 registrationMenu();
                 break;
             }
@@ -202,7 +202,7 @@ bool signInOut(const std::string accountPath, currentUser& User)
             case 0: {
                 cls();
                 std::cout << "  This account already exists.\n\n";
-                pause();
+                myPause();
                 registrationMenu();
                 break;
             }
@@ -232,7 +232,7 @@ bool signInOut(const std::string accountPath, currentUser& User)
             case 2: {
                 cls();
                 std::cout << "  Incorrect login or password\n\n";
-                pause();
+                myPause();
                 registrationMenu();
                 break;
             }

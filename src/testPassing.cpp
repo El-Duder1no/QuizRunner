@@ -87,7 +87,7 @@ void testPass(
     int lastQuestion = Test.size();
     int currentQuestion = 0;
 
-    pause();
+    myPause();
 
     auto start = std::chrono::high_resolution_clock::now();
     while (currentQuestion < lastQuestion) {
@@ -98,7 +98,7 @@ void testPass(
         std::getline(std::cin, answer);
         answers.push_back(answer);
 
-        pause();
+        myPause();
         cls();
         currentQuestion++;
     }

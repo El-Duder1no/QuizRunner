@@ -9,7 +9,7 @@ void cls()
 #endif
 }
 
-void pause()
+void myPause()
 {
     std::cout << "\n  Press any key to continue" << std::endl;
     std::cin.get();

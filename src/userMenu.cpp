@@ -35,7 +35,7 @@ bool User(
             } else {
                 printResults(CurrentUserResults);
             }
-            pause();
+            myPause();
             cls();
             break;
         }
@@ -51,7 +51,7 @@ bool User(
         }
         default: {
             std::cout << "  Input Error" << std::endl;
-            pause();
+            myPause();
             cls();
             break;
         }
@@ -105,7 +105,7 @@ void printResults(std::vector<Results>& CurrentUserResults)
         }
         default: {
             std::cout << "  Input Error" << std::endl;
-            pause();
+            myPause();
             cls();
             i = 0;
             break;

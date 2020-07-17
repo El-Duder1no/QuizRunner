@@ -54,7 +54,7 @@ bool Administrator(
             }
             default: {
                 std::cout << "  Input Error" << std::endl;
-                pause();
+                myPause();
                 cls();
                 break;
             }
@@ -99,7 +99,7 @@ void CreateTest(
             }
             default: {
                 std::cout << "  Input Error" << std::endl;
-                pause();
+                myPause();
                 cls();
                 break;
             }
@@ -140,7 +140,7 @@ void EditingTest(
             }
             default: {
                 std::cout << "  Input Error" << std::endl;
-                pause();
+                myPause();
                 cls();
                 break;
             }
@@ -158,7 +158,7 @@ void EditingTest(
             }
             default: {
                 std::cout << "  Input Error" << std::endl;
-                pause();
+                myPause();
                 cls();
                 break;
             }
@@ -217,7 +217,7 @@ void AddQuestions(
 
         default: {
             std::cout << "  Input Error" << std::endl;
-            pause();
+            myPause();
             cls();
             break;
         }
@@ -295,7 +295,7 @@ void AddQuestions(
             }
             default: {
                 std::cout << "  Input Error" << std::endl;
-                pause();
+                myPause();
                 cls();
                 break;
             }
@@ -307,7 +307,7 @@ void AddQuestions(
         }
     } else {
         std::cout << "  All questions are added to the test!\n";
-        pause();
+        myPause();
         cls();
     }
     return;
@@ -343,7 +343,7 @@ void RemoveQuestion(
 
         default: {
             std::cout << "  Input Error" << std::endl;
-            pause();
+            myPause();
             cls();
             break;
         }

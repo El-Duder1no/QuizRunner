@@ -5,6 +5,6 @@
 #include <iostream>
 
 void cls();
-void pause();
+void myPause();
 
 #endif
