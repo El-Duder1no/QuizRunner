@@ -44,7 +44,7 @@ TEST(checkAnswerTest, allOptions)
 
 TEST(writeResultsTest, correct)
 {
-    std::string result = "100", time = "67";
+    double result = "100", time = "67";
     currentUser currUser;
     currUser.username = "Oleg";
     currUser.accountType = 0;
@@ -56,7 +56,7 @@ TEST(writeResultsTest, correct)
 
 TEST(writeResultsTest, incorrect)
 {
-    std::string result = "100", time = "67";
+    double result = "100", time = "67";
     currentUser currUser;
     currUser.username = "OlegPetrovich";
     currUser.accountType = 0;
