@@ -59,10 +59,10 @@ double checkAnswers(
 bool writeResults(
         const std::string resultsPath,
         currentUser currUser,
-        const std::string result,
-        const std::string time)
+        const double result,
+        const double time)
 {
-    std::ofstream resultsFIle(resultsPath);
+    std::ofstream resultsFIle(resultsPath, std::ios_base::app);
 
     if (!resultsFIle.is_open()) {
         return false;
@@ -105,19 +105,16 @@ void testPass(
     auto end = std::chrono::high_resolution_clock::now();
 
     std::chrono::duration<float> duration = end - start;
-    double time = duration.count();
-    double result = checkAnswers(Test, answers);
+ 
+    double time = round(duration.count() * 10) / 10;
+    double result = round(checkAnswers(Test, answers) * 10) / 10;
 
-    std::string strResults, strTime;
-    std::stringstream temp;
-    temp << result;
-    temp >> strResults;
-    temp << time;
-    temp >> strTime;
-
-    std::cout << "  Your result: " << strResults << "%\n";
-    std::cout << std::setprecision(3) << "  Test time: " << strTime
+    std::cout << std::fixed;
+    std::cout << "  Your result: " << std::setprecision(1) << result << "%\n";
+    std::cout << std::setprecision(1) << "  Test time: " << time
               << " seconds\n";
 
-    writeResults(resultsPath, currUser, strResults, strTime);
+    myPause();
+
+    writeResults(resultsPath, currUser, result, time);
 }

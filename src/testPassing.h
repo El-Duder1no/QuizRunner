@@ -5,7 +5,6 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <sstream>
 #include <string>
 
 #include "screenFunctions.h"
@@ -26,8 +25,8 @@ double checkAnswers(
 bool writeResults(
         const std::string resultsPath,
         currentUser currUser,
-        const std::string result,
-        const std::string time);
+        const double result,
+        const double time);
 
 void testPass(
         const std::string testPath,
