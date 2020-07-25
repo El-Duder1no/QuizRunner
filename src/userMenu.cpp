@@ -37,7 +37,7 @@ bool User(
             } else {
                 printResults(CurrentUserResults);
             }
-            //myPause();
+            // myPause();
             cls();
             break;
         }

@@ -105,7 +105,7 @@ void testPass(
     auto end = std::chrono::high_resolution_clock::now();
 
     std::chrono::duration<float> duration = end - start;
- 
+
     double time = round(duration.count() * 10) / 10;
     double result = round(checkAnswers(Test, answers) * 10) / 10;
 
