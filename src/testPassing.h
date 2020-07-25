@@ -2,6 +2,7 @@
 #define TEST_PASSING_H
 
 #include <chrono>
+#include <cmath>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
