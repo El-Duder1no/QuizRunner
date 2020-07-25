@@ -11,6 +11,6 @@ void cls()
 
 void myPause()
 {
-    std::cout << "\n  Press any key to continue" << std::endl;
+    std::cout << "\n  Press any key to continue\n  ";
     std::cin.get();
 }
