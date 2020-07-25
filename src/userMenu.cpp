@@ -31,11 +31,13 @@ bool User(
         case '1': {
             cls();
             if (!CheckResult(user, UsersResults, CurrentUserResults)) {
-                std::cout << "  No previous results found!\n\n";
+                std::cout << "  No previous results found!\n";
+                std::cin.ignore();
+                myPause();
             } else {
                 printResults(CurrentUserResults);
             }
-            myPause();
+            //myPause();
             cls();
             break;
         }
@@ -86,15 +88,13 @@ void printResults(std::vector<Results>& CurrentUserResults)
     int i = 0;
     while (check) {
         std::cout << "  User results: " << CurrentUserResults[i].username
-                  << "\n  Points"
-                  << "\t | \t"
-                  << "Time\n";
+                  << "\n  Points |  Time\n";
         int CurrentUserSize = CurrentUserResults.size();
         for (; i < CurrentUserSize; ++i) {
-            std::cout << CurrentUserResults[i].point << "\t | \t"
+            std::cout << "  " << CurrentUserResults[i].point << "\t |  "
                       << CurrentUserResults[i].time << "\n";
         }
-        std::cout << "\n\n  1.Return to menu\n"
+        std::cout << "\n  1.Return to menu\n"
                   << "  >> ";
         std::cin >> chooseKey;
         switch (chooseKey) {
