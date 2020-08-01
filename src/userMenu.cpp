@@ -88,7 +88,6 @@ void printResults(currentUser& user)
 {
     char chooseKey;
     bool check = true;
-    int i = 0;
     while (check) {
         std::cout << "  User results: " << user.username
                   << "\n  Points |  Time\n";
