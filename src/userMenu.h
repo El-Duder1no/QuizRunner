@@ -28,5 +28,6 @@ bool CheckResult(
         std::vector<Results>& usersResults,
         std::vector<Results>& CurrentUserResults);
 void printResults(std::vector<Results>& CurrentUserResults);
+void printResults(currentUser& user);
 
 #endif
