@@ -14,7 +14,7 @@
 bool CheckPath(std::ifstream& questions);
 bool CheckPath(std::fstream& questions);
 void parseRes(std::ifstream& results, std::vector<Results>& userResult);
-bool parseQuestions(
+void parseQuestions(
         std::ifstream& questions, std::vector<Questions>& QuestionsBank);
 void parseTest(
         std::fstream& questions, std::vector<Questions>& QuestionForTest);

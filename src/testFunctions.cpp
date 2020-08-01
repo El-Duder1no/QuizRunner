@@ -35,7 +35,7 @@ void parseTest(std::fstream& questions, std::vector<Questions>& QuestionForTest)
     }
 }
 
-bool parseQuestions(
+void parseQuestions(
         std::ifstream& questions, std::vector<Questions>& QuestionsBank)
 {
     questions.seekg(std::ios_base::beg);
