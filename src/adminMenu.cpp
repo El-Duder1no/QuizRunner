@@ -20,15 +20,18 @@ bool Administrator(
     char chooseKey;
     bool adminMenuState = true;
 
-    if (!CheckPath(inputText, QuestionsBank)) {
+    if (!CheckPath(inputText)) {
         return false;
     }
-    if (!CheckPath(Test, QuestionsForTest)) {
+    if (!CheckPath(Test)) {
         return false;
     }
-    if (!CheckPath(NotInTest, QuestionsOutOfTest)) {
+    if (!CheckPath(NotInTest)) {
         return false;
     } else {
+        parseTest(Test, QuestionsForTest);
+        parseTest(NotInTest, QuestionsOutOfTest);
+        parseQuestions(inputText, QuestionsBank);
         while (adminMenuState) {
             AdminMenu();
             std::cin >> chooseKey;
@@ -42,6 +45,8 @@ bool Administrator(
             }
             case '2': {
                 cls();
+                parseTest(Test, QuestionsForTest);
+                parseTest(NotInTest, QuestionsOutOfTest);
                 EditingTest(QuestionsForTest, QuestionsOutOfTest);
                 Filing(Test, QuestionsForTest, TestPath);
                 Filing(NotInTest, QuestionsOutOfTest, NotInTestPath);
