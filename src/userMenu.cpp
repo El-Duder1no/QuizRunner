@@ -107,7 +107,6 @@ void printResults(currentUser& user)
             std::cout << "  Input Error" << std::endl;
             myPause();
             cls();
-            i = 0;
             break;
         }
         }
