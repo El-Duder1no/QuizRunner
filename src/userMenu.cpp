@@ -30,7 +30,7 @@ bool User(
         UserMenu();
         std::cin >> chooseKey;
         switch (chooseKey) {
-            //CheckResult(user, UsersResults, CurrentUserResults);
+            // CheckResult(user, UsersResults, CurrentUserResults);
         case '1': {
             cls();
             UsersResults.clear();
