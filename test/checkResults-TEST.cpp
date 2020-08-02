@@ -15,12 +15,10 @@ TEST(checkResults, noResults)
     std::vector<Results> userResult;
     std::vector<Results> currResult;
 
-    std::ifstream File(RESULTS_PATH);
-
     currentUser currUser;
     currUser.username = "name";
     currUser.accountType = 1;
-    CheckPath(File, userResult);
+    CheckPath(RESULTS_PATH, userResult);
 
     EXPECT_FALSE(CheckResult(currUser, userResult, currResult));
     userResult.clear();
@@ -32,11 +30,10 @@ TEST(USER_RESULTS, resultExist)
     std::vector<Results> userResult;
     std::vector<Results> currResult;
 
-    std::ifstream File(RESULTS_PATH);
     currentUser currUser;
     currUser.username = "ip912s24";
     currUser.accountType = 1;
-    CheckPath(File, userResult);
+    CheckPath(RESULTS_PATH, userResult);
     EXPECT_TRUE(CheckResult(currUser, userResult, currResult));
     currResult.clear();
     userResult.clear();
