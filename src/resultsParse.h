@@ -3,11 +3,10 @@
 
 #include "parseString.h"
 #include "structures.h"
-//#include "resultStruct.h"
 
 #include <fstream>
 #include <vector>
 
-void resultsParse(std::ifstream& results, std::vector<Results>& a);
+void resultsParse(const std::string resultsPath, std::vector<Results>& a);
 
 #endif

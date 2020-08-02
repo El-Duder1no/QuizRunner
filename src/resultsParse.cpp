@@ -1,7 +1,10 @@
 ﻿#include "resultsParse.h"
 
-void resultsParse(std::ifstream& results, std::vector<Results>& a)
+void resultsParse(const std::string resultsPath, std::vector<Results>& a)
 {
+    std::ifstream results(resultsPath);
+    results.clear();
+
     while (!results.eof()) {
         std::string temp;
         Results buff;
@@ -22,5 +25,6 @@ void resultsParse(std::ifstream& results, std::vector<Results>& a)
         words.clear();
         a.push_back(buff);
     }
+
     results.close();
 }
