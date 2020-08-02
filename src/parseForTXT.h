@@ -14,14 +14,6 @@
 #include <string>
 #include <vector>
 
-
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <stdlib.h>
-#include <string>
-#include <vector>
-
 bool ParseFirstQuestions(
         std::ifstream& questions, std::vector<Questions>& text);
 bool ParseSecondQuestions(
