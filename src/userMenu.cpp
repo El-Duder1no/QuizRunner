@@ -21,16 +21,16 @@ bool User(
 
     bool userMenuState = true;
     char chooseKey;
-    if (!CheckPath(results)) {
+    /*if (!CheckPath(results, UsersResults)) {
         std::cout << "  File open error";
         return false;
-    }
+    }*/
 
     while (userMenuState) {
         UserMenu();
         std::cin >> chooseKey;
         switch (chooseKey) {
-            CheckResult(user, UsersResults, CurrentUserResults);
+            //CheckResult(user, UsersResults, CurrentUserResults);
         case '1': {
             cls();
             UsersResults.clear();
