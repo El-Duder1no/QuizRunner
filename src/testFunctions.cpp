@@ -51,24 +51,21 @@ bool CheckPath(std::fstream& questions, std::vector<Questions>& QuestionForTest)
     }
 }
 
-bool CheckPath(std::ifstream& results, std::vector<Results>& userResult)
+bool CheckPath(const std::string resultsPath, std::vector<Results>& userResult)
 {
-    if (!results) {
+    std::ifstream results(resultsPath);
+
+    if (!results.is_open()) {
         return false;
     } else {
         results.seekg(std::ios_base::beg);
         while (!results.eof()) {
-            resultsParse(results, userResult);
+            resultsParse(resultsPath, userResult);
         }
         return true;
     }
-}
 
-void parseRes(
-        std::ifstream& results,
-        std::vector<Results>& userResult) // no questions ok?
-{
-    resultsParse(results, userResult);
+    results.close();
 }
 
 void parseTest(std::fstream& questions, std::vector<Questions>& QuestionForTest)

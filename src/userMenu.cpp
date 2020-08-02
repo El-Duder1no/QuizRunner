@@ -15,26 +15,20 @@ bool User(
         const std::string questionsPath,
         currentUser& user)
 {
-    std::ifstream results(ResultsPath.c_str());
     std::vector<Results> UsersResults;
     std::vector<Results> CurrentUserResults;
 
     bool userMenuState = true;
     char chooseKey;
-    /*if (!CheckPath(results, UsersResults)) {
-        std::cout << "  File open error";
-        return false;
-    }*/
 
     while (userMenuState) {
         UserMenu();
         std::cin >> chooseKey;
         switch (chooseKey) {
-            // CheckResult(user, UsersResults, CurrentUserResults);
         case '1': {
             cls();
             UsersResults.clear();
-            parseRes(results, UsersResults);
+            resultsParse(ResultsPath, UsersResults);
             if (!CheckResult(user, UsersResults, CurrentUserResults)) {
                 printResults(user);
             } else {
@@ -122,6 +116,7 @@ void printResults(std::vector<Results>& CurrentUserResults)
     while (check) {
         std::cout << "  User results: " << CurrentUserResults[i].username
                   << "\n  Points |  Time\n";
+
         int CurrentUserSize = CurrentUserResults.size();
         for (; i < CurrentUserSize; ++i) {
             std::cout << "  " << CurrentUserResults[i].point << "\t |  "
