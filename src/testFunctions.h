@@ -11,8 +11,10 @@
 #include <string>
 #include <vector>
 
-bool CheckPath(std::ifstream& questions);
-bool CheckPath(std::fstream& questions);
+bool CheckPath(std::ifstream& questions, std::vector<Questions>& QuestionsBank);
+bool CheckPath(
+        std::fstream& questions, std::vector<Questions>& QuestionForTest);
+bool CheckPath(std::ifstream& results, std::vector<Results>& userResult);
 void parseRes(std::ifstream& results, std::vector<Results>& userResult);
 bool parseQuestions(
         std::ifstream& questions, std::vector<Questions>& QuestionsBank);
