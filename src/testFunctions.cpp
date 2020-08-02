@@ -57,7 +57,7 @@ bool CheckPath(const std::string resultsPath, std::vector<Results>& userResult)
 
     if (!results.is_open()) {
         return false;
-    } 
+    }
 
     results.seekg(std::ios_base::beg);
     while (!results.eof()) {
