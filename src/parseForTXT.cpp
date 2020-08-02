@@ -130,14 +130,15 @@ void ParseTest(
     if (type == "3") {
         getline(questions, temp, '\n');
         parseString(temp, " ", words);
-        int wordsSize = words.size();
-        for (int i = 0; i < wordsSize; ++i) {
-            words[i] = words[i].substr(2);
-            buff.answers[i] = words[i];
-            buff.RightAnswers[i] = words[i];
-        }
+            for (int i = 0; i < 2; ++i) {
+        words[i] = words[i];
+        buff.RightAnswers.push_back(words[i]);
+        buff.answers.push_back(words[i]);
+    //std::cout<< "\n" << words[i];
+	}
         getline(questions, temp, '\n');
-
+    text.push_back(buff);
+    
     } else {
         getline(questions, temp, '\n');
         WrongAnswers = temp;
@@ -146,6 +147,7 @@ void ParseTest(
 
         buff.answers.push_back(WrongAnswers);
         buff.RightAnswers.push_back(TrueAnswers);
-    }
     text.push_back(buff);
+    }
+
 }
