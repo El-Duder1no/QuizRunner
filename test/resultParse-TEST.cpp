@@ -7,7 +7,6 @@
 
 TEST(resultParseTest, correct)
 {
-    std::ifstream file(RESULTS_PATH);
     std::vector<Results> actual;
     std::vector<Results> expected;
 
@@ -22,7 +21,7 @@ TEST(resultParseTest, correct)
     buff.time = "585";
     expected.push_back(buff);
 
-    resultsParse(file, actual);
+    resultsParse(RESULTS_PATH, actual);
     ASSERT_STREQ(actual[0].username.c_str(), expected[0].username.c_str());
     ASSERT_STREQ(actual[0].point.c_str(), expected[0].point.c_str());
     ASSERT_STREQ(actual[0].time.c_str(), expected[0].time.c_str());
